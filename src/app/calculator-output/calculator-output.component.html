@@ -1,0 +1,92 @@
+<mat-card class="example-card">
+  <mat-card-header>
+      <mat-card-title><h3>Fee Details *</h3></mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <mat-list>
+          <mat-list-item>
+              <h3 mat-line>Valuation</h3>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  {{calculations.valuation | currency:'USD':true:'1.0-0'}}
+              </p>
+              <p mat-line *ngIf="calculations.valuation === 0">
+                  --
+              </p>                
+          </mat-list-item>
+          <mat-list-item>
+              <h3 mat-line>Building Permit</h3>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  {{calculations.building.value + calculations.building.tech | currency:'USD':true:'1.0-0'}}
+              </p>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  <small><em>({{calculations.building.value | currency:'USD':true:'1.0-0'}} + {{calculations.building.tech | currency:'USD':true:'1.0-0'}} Technology Fee)</em></small>
+              </p>                     
+              <p mat-line *ngIf="calculations.valuation === 0">
+                  --
+              </p>                   
+          </mat-list-item>
+          <mat-list-item>
+              <h3 mat-line>Electrical Permit</h3>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  {{calculations.electrical.value + calculations.electrical.tech | currency:'USD':true:'1.0-0'}}
+              </p>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  <small><em>({{calculations.electrical.value | currency:'USD':true:'1.0-0'}} + {{calculations.electrical.tech | currency:'USD':true:'1.0-0'}} Technology Fee)</em></small>
+              </p>                        
+              <p mat-line *ngIf="calculations.valuation === 0">
+                  --
+              </p>                   
+          </mat-list-item>
+          <mat-list-item>
+              <h3 mat-line>Mechanical Permit</h3>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  {{calculations.mechanical.value + calculations.mechanical.tech | currency:'USD':true:'1.0-0'}}
+              </p>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  <small><em>({{calculations.mechanical.value | currency:'USD':true:'1.0-0'}} + {{calculations.mechanical.tech | currency:'USD':true:'1.0-0'}} Technology Fee)</em></small>
+              </p>                
+              <p mat-line *ngIf="calculations.valuation === 0">
+                  --
+              </p>                   
+          </mat-list-item>            
+          <mat-list-item>
+              <h3 mat-line>Plumbing Permit</h3>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  {{calculations.plumbing.value + calculations.plumbing.tech | currency:'USD':true:'1.0-0'}}
+              </p>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  <small><em>({{calculations.plumbing.value | currency:'USD':true:'1.0-0'}} + {{calculations.plumbing.tech | currency:'USD':true:'1.0-0'}} Technology Fee)</em></small>
+              </p>                     
+              <p mat-line *ngIf="calculations.valuation === 0">
+                  --
+              </p>                   
+          </mat-list-item>
+          <mat-list-item>
+              <h3 mat-line>Plan Review Fee</h3>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  {{calculations.review.value + calculations.review.tech | currency:'USD':true:'1.0-0'}}
+              </p>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  <small><em>({{calculations.review.value | currency:'USD':true:'1.0-0'}} + {{calculations.review.tech | currency:'USD':true:'1.0-0'}} Technology Fee)</em></small>
+              </p>                     
+              <p mat-line *ngIf="calculations.valuation === 0">
+                  --
+              </p>                   
+          </mat-list-item>            
+          <mat-list-item class="total">
+              <h3 mat-line>Total Permit</h3>
+              <p mat-line *ngIf="calculations.valuation > 0">
+                  <strong>{{(calculations.building.value + calculations.building.tech) + (calculations.review.value + calculations.review.tech) + (calculations.electrical.value + calculations.electrical.tech) + (calculations.plumbing.value + calculations.plumbing.tech) + (calculations.mechanical.value + calculations.mechanical.tech) | currency:'USD':true:'1.0-0'}}</strong>
+              </p>
+              <p mat-line *ngIf="calculations.valuation === 0">
+                  --
+              </p>                   
+          </mat-list-item>
+*<small><em> only represents Building and Trade permit fees</em></small>
+
+      </mat-list>
+  </mat-card-content>
+  <mat-card-actions style="margin:0 auto;">
+
+  </mat-card-actions>
+</mat-card>

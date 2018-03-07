@@ -1,0 +1,16 @@
+h2,  mat-dialog-content {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+}
+
+h2,  mat-dialog-content {
+    font-family: Roboto,"Helvetica Neue",sans-serif;
+    text-align: center;
+}
+
+.mat-dialog-actions {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    display: flex;
+}

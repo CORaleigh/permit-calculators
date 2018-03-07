@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <img alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
+    <h3>City of Raleigh</h3>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <span>Stormwater Device Permit Calculator</span>
+  </mat-toolbar-row>
+</mat-toolbar>
+<form>
+  <mat-form-field>
+    <input matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="Square Feet" [(ngModel)]="squareFeet"
+      name="squareFeet">
+  </mat-form-field>
+
+  <h3 class="mat-subheading-2">Total Stormwater Device Permit Fee</h3>
+  <h4 class="mat-subheading-1">{{squareFeet * 0.24 | currency}}</h4>
+</form>
