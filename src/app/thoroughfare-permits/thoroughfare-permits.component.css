@@ -14,7 +14,7 @@ img {
     margin-left: 3em;
 }
 
-mat-card, .mat-title {
+/* mat-card, .mat-title {
     margin-left: auto;
     margin-right: auto;
     max-width: 800px;
@@ -33,4 +33,57 @@ mat-card, .mat-title {
 
 .mat-form-field-wrapper {
     width: 100% !important;
+} */
+
+.mat-button {
+    margin-top:1em;
+}
+
+mat-form-field {
+    min-width: 220px;
+    margin-top: 1em;
+    margin-right: 2em;
+}
+
+mat-card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.mat-card-header, .mat-card-actions {
+    display:flex;
+    justify-content:center;
+}
+
+  .mat-headline {
+    text-align: center;
+}
+
+.mat-form-field-wrapper {
+    width: 100% !important;
+}
+.mat-card-title {
+    font-size: 24px;
+}
+
+.mat-card-subtitle {
+    font-size: 20px;
+}
+
+ .threshold-label {
+    text-align: right;
+    max-width: 100px;
+    margin-right: 2em;
+} 
+
+.threshold-container {
+    display:flex;
+    
+} 
+
+.mat-tab-header {
+    margin-bottom: 2em;
 }

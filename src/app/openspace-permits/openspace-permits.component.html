@@ -1,46 +1,48 @@
 <mat-toolbar color="primary">
-    <mat-toolbar-row>
-      <img alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
-      <h3>City of Raleigh</h3>
-    </mat-toolbar-row>
+  <mat-toolbar-row>
+    <img alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
+    <h3>City of Raleigh</h3>
+  </mat-toolbar-row>
 
-  </mat-toolbar>
-  <mat-card>
-      <mat-card-header>
-          <mat-card-title>Open Space Facility Fee Calculator</mat-card-title>
-        </mat-card-header>
-    <mat-card-content>
-  <h1 class="mat-headline"></h1>
-  <div #mapViewNode></div>
+</mat-toolbar>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Open Space Facility Fee Calculator</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <h1 class="mat-headline"></h1>
+    <div #mapViewNode></div>
 
-  <div class="mat-body-1">
-    The Open Space Facility Fee varies depending on which zone your project falls in.  Enter an address in the search box on the map, click on a location on the map, or select from the dropdown list.
-  </div>      
-<form>
+    <div class="mat-body-1">
+      The Open Space Facility Fee varies depending on which zone your project falls in. Enter an address in the search box on the
+      map, click on a location on the map, or select from the dropdown list.
+    </div>
+    <form>
 
-    <mat-form-field class="full-width">
+      <mat-form-field class="full-width">
         <mat-select placeholder="Open Space Zone" [(ngModel)]="zone" name="zone">
-          <mat-option *ngFor="let zone of zones"
-            [value]="zone">
+          <mat-option *ngFor="let zone of zones" [value]="zone">
             {{zone.zone}}
           </mat-option>
         </mat-select>
       </mat-form-field>
 
-  <mat-form-field class="full-width">
+      <mat-form-field class="full-width">
 
-      <input matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="# of Single-Family Dwelling Units" [(ngModel)]="single"
-        name="single">
-  </mat-form-field>
-  <mat-form-field class="full-width">
+        <input matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="# of Single-Family Dwelling Units"
+          [(ngModel)]="single" name="single">
+      </mat-form-field>
+      <mat-form-field class="full-width">
 
-      <input class="full-width" matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="# of Mult-Family Dwelling Units" [(ngModel)]="multi"
-        name="multi">
-  </mat-form-field>
-  <h3 class="mat-subheading-2">Total Open Space Fee</h3>
-  <h4 *ngIf="zone" class="mat-subheading-1">{{multi * zone.multi + single * zone.single | currency}}</h4>
-  <h4 *ngIf="!zone" class="mat-subheading-1">--</h4>
+        <input class="full-width" matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="# of Mult-Family Dwelling Units"
+          [(ngModel)]="multi" name="multi">
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-card-subtitle *ngIf="zone">Total Fee: {{multi * zone.multi + single * zone.single | currency}}</mat-card-subtitle>
+    <mat-card-subtitle *ngIf="!zone">Total Fee: --</mat-card-subtitle>
 
-</form>
-</mat-card-content>
+</mat-card-actions>  
 </mat-card>
+

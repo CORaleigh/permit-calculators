@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatSelectModule, MatDialogModule, MatCardModule, MatListModule, MatToolbarModule, MatIcon, MatIconModule, MatInputModule} from '@angular/material';
+import { MatButtonModule, MatSelectModule, MatDialogModule, MatCardModule, MatListModule, MatToolbarModule, MatIcon, MatIconModule, MatInputModule, MatTabsModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { AppRoutingModule }        from './app-routing.module';
@@ -23,6 +23,7 @@ import { BuildingPermitsComponent } from './building-permits/building-permits.co
 import { StormwaterPermitsComponent } from './stormwater-permits/stormwater-permits.component';
 import { OpenspacePermitsComponent } from './openspace-permits/openspace-permits.component';
 import { ThoroughfarePermitsComponent } from './thoroughfare-permits/thoroughfare-permits.component';
+import { LandusePipe } from './landuse.pipe';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { ThoroughfarePermitsComponent } from './thoroughfare-permits/thoroughfar
     BuildingPermitsComponent,
     StormwaterPermitsComponent,
     OpenspacePermitsComponent,
-    ThoroughfarePermitsComponent
+    ThoroughfarePermitsComponent,
+    LandusePipe
   ],
   imports: [
     HttpClientModule,
@@ -54,7 +56,8 @@ import { ThoroughfarePermitsComponent } from './thoroughfare-permits/thoroughfar
      MatInputModule,
      BrowserAnimationsModule,
      FlexLayoutModule,
-     AppRoutingModule   
+     AppRoutingModule,
+     MatTabsModule
   ],
   entryComponents: [SplashDialogComponent, HelpDialogComponent],
   providers: [],

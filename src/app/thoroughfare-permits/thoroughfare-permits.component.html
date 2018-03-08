@@ -3,48 +3,52 @@
     <img alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
     <h3>City of Raleigh</h3>
   </mat-toolbar-row>
-  <mat-toolbar-row>
-    <span>Thoroughfare Permit Calculator</span>
-  </mat-toolbar-row>
+  <!-- <mat-toolbar-row>
+    <span>Thoroughfare Facility Fee Calculator</span>
+  </mat-toolbar-row> -->
 </mat-toolbar>
-
-<mat-card class="example-card" *ngFor="let fee of fees">
+<mat-card>
   <mat-card-header>
-    <mat-card-title>
-      <h3>{{fee.landuse}}</h3>
-    </mat-card-title>
+    <mat-card-title>Thoroughfare Facility Fee Calculator</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-      <div *ngFor="let record of fee.records;">
-          <mat-form-field>
-              <mat-select placeholder="Landuse"  [(ngModel)]="record.landuse">
-                <mat-option *ngFor="let fee1 of fee.fees;"
-                  [value]="fee1">
-                  {{fee1.landuse}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            <mat-form-field *ngIf="!record?.landuse?.thresholds && record.landuse">
-                <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="record.landuse?.measureLabel"
-                  name="value"  [ngModel]="record.value" (ngModelChange)="recordValueChanged(record, $event)">
-            </mat-form-field> 
-            <div *ngIf="record?.landuse?.thresholds" id="single-fam-areas">
-                <div *ngFor="let threshold of record.landuse.thresholds">
-                  
+    <mat-tab-group>
+        <mat-tab [label]="fee.landuse" *ngFor="let fee of fees">
+          
+            <div *ngFor="let record of fee.records;">
+                <mat-divider [inset]="true"></mat-divider>
+
                 <mat-form-field>
-                    <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="record.landuse?.measureLabel"
-                      name="value"  [ngModel]="threshold.value" (ngModelChange)="thresholdValueChanged(threshold, record, $event)">
+                  <mat-select placeholder="Select land use" [(ngModel)]="record.landuse" (ngModelChange)="landuseChanged(fee, record.landuse)">
+                    <mat-option *ngFor="let fee1 of fee.fees | landuse:fee;let i = index;" [value]="fee1">
+                      {{fee1.landuse}}
+                    </mat-option>
+                  </mat-select>
                 </mat-form-field>
-                {{threshold.label}} 
+                <mat-form-field *ngIf="!record?.landuse?.thresholds && record.landuse">
+                  <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="record.landuse?.measureLabel" name="value"
+                    [ngModel]="record.value" (ngModelChange)="recordValueChanged(record, $event)">
+                </mat-form-field>
+                {{record.total|currency}}
+                <div *ngIf="record?.landuse?.thresholds" id="single-fam-areas">
+                  <div class="threshold-container" *ngFor="let threshold of record.landuse.thresholds">
+                    <!-- <div class="threshold-label">Units {{threshold.label}}</div> -->
+                    <mat-form-field>
+                      <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="threshold.label" name="value"
+                        [ngModel]="threshold.value" (ngModelChange)="thresholdValueChanged(threshold, record, $event)">
+                    </mat-form-field>
+                    
+                  </div>
                 </div>
-            </div>
-
-      </div>
+          
+              </div>      
+              <button mat-button mat-raised-button color="primary" (click)="addRecord(fee)">ADD</button>
+    
+        </mat-tab>
+      </mat-tab-group>
   </mat-card-content>
+  <mat-card-actions>
+      <mat-card-subtitle>Total Fee: {{total|currency}}</mat-card-subtitle>
 
-  <mat-card-actions style="margin:0 auto;">
-      <button mat-button mat-raised-button color="primary" (click)="addRecord(fee)">ADD</button>
-    </mat-card-actions>  
-
+  </mat-card-actions>
 </mat-card>
-<h3 class="mat-title">{{total|currency}}</h3>

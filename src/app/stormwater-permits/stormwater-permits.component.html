@@ -3,16 +3,26 @@
     <img alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
     <h3>City of Raleigh</h3>
   </mat-toolbar-row>
-  <mat-toolbar-row>
-    <span>Stormwater Device Permit Calculator</span>
-  </mat-toolbar-row>
+  <!-- <mat-toolbar-row>
+    <span>Stormwater Device Fee Calculator</span>
+  </mat-toolbar-row> -->
 </mat-toolbar>
-<form>
-  <mat-form-field>
-    <input matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="Square Feet" [(ngModel)]="squareFeet"
-      name="squareFeet">
-  </mat-form-field>
 
-  <h3 class="mat-subheading-2">Total Stormwater Device Permit Fee</h3>
-  <h4 class="mat-subheading-1">{{squareFeet * 0.24 | currency}}</h4>
-</form>
+
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Stormwater Device Fee Calculator</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <form>
+      <mat-form-field>
+        <span matPrefix>$&nbsp;</span>
+        <input matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="Construction Cost" [(ngModel)]="cost"
+          name="cost">
+      </mat-form-field>
+
+      <h3 class="mat-subheading-2">Total Stormwater Device Permit Fee</h3>
+      <h4 class="mat-subheading-1">{{cost * 0.24 | currency}}</h4>
+    </form>
+  </mat-card-content>
+</mat-card>

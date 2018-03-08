@@ -33,7 +33,7 @@ mat-card {
     margin-bottom: 1em;
 }
 
-.mat-card-header {
+.mat-card-header, .mat-card-actions {
     display:flex;
     justify-content:center;
 }
@@ -44,4 +44,11 @@ mat-card {
 
 .mat-form-field-wrapper {
     width: 100% !important;
+}
+.mat-card-title {
+    font-size: 24px;
+}
+
+.mat-card-subtitle {
+    font-size: 20px;
 }
