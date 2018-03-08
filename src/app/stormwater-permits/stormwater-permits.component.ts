@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class StormwaterPermitsComponent implements OnInit {
 
   constructor() { }
-  squareFeet: number =  0;
+  cost: number =  0;
   ngOnInit() {
   }
 
