@@ -24,7 +24,7 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            <mat-form-field *ngIf="!record?.landuse?.thresholds">
+            <mat-form-field *ngIf="!record?.landuse?.thresholds && record.landuse">
                 <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="record.landuse?.measureLabel"
                   name="value"  [ngModel]="record.value" (ngModelChange)="recordValueChanged(record, $event)">
             </mat-form-field> 
@@ -39,7 +39,6 @@
                 </div>
             </div>
 
-            {{record|json}}
       </div>
   </mat-card-content>
 
@@ -48,4 +47,4 @@
     </mat-card-actions>  
 
 </mat-card>
-{{total|currency}}
+<h3 class="mat-title">{{total|currency}}</h3>

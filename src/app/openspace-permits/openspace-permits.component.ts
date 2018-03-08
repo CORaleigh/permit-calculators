@@ -25,9 +25,8 @@ export class OpenspacePermitsComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    return loadModules(['esri/WebMap', 'esri/views/MapView', 'esri/widgets/Search', 'esri/layers/FeatureLayer'])
-    .then(([WebMap, MapView, Search, FeatureLayer]) => {
-
+    return loadModules(['esri/WebMap', 'esri/views/MapView', 'esri/widgets/Search', 'esri/layers/FeatureLayer', 'esri/tasks/support/Query', "esri/geometry/geometryEngine"])
+    .then(([WebMap, MapView, Search, FeatureLayer, Query, geometryEngine]) => {
 
       let webmap = new WebMap({
         portalItem: { // autocasts as new PortalItem()
@@ -35,6 +34,20 @@ export class OpenspacePermitsComponent implements OnInit {
         }
       });
       this.mapView = new MapView({map: webmap, container: this.mapViewEl.nativeElement}); 
+      this.mapView.when(() => {
+        let layer = this.mapView.map.allLayers.find(function(layer) {
+          return layer.title === "Open Space Facility Fee Zones";
+         });
+         layer.queryFeatures().then(results => {
+           let geoms = [];
+           results.features.forEach(feature => {
+             geoms.push(feature.geometry);
+           });
+           let union = geometryEngine.union(geoms);
+           debugger
+           this.search.sources.items[0].filter = {geometry: union};
+         });
+      });
       this.mapView.on('click', event => {
         this.search.search(event.mapPoint);
       });
@@ -45,18 +58,37 @@ export class OpenspacePermitsComponent implements OnInit {
       this.search = new Search({
         view: this.mapView
       });
+
+
       this.search.on('search-complete', event => {
         //this.located.emit(event.results[0]);
-        this.mapView.hitTest(this.mapView.toScreen(event.results[0].results[0].feature.geometry)).then(result => {
-          if (result.results.length > 0) {
-            let zoneNum = result.results[0].graphic.attributes.ZONE_NUMBER;
-            this.zones.forEach(zone => {
-              if (zone.zone === zoneNum) {
-                this.zone = zone;
-              }
-            });
-          }
-        })
+
+        let layer = this.mapView.map.allLayers.find(function(layer) {
+          return layer.title === "Open Space Facility Fee Zones";
+         });
+
+         if (layer) {
+          let query = new Query();
+          query.geometry = event.results[0].results[0].feature.geometry;
+          query.returnGeometry = false;
+          query.outFields = ['ZONE_NUMBER'];       
+          layer.queryFeatures(query).then(results => {
+            // prints the array of result graphics to the console
+            if (results.features.length > 0) {
+              let zoneNum = results.features[0].attributes.ZONE_NUMBER;
+              this.zones.forEach(zone => {
+                if (zone.zone === zoneNum) {
+                  this.zone = zone;
+                }
+              });
+              
+            } else {
+              this.zone = null;
+            }           
+          });
+         }
+ 
+
       }); 
       this.mapView.ui.add(this.search, {
         position: 'top-left',
