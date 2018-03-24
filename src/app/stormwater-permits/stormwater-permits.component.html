@@ -11,18 +11,30 @@
 
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Stormwater Device Fee Calculator</mat-card-title>
+    <mat-card-title>Stormwater Fee Calculator</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <form>
       <mat-form-field>
         <span matPrefix>$&nbsp;</span>
-        <input matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="Construction Cost" [(ngModel)]="cost"
+        <input matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="Stormwater Device Construction Cost" [(ngModel)]="cost"
           name="cost">
       </mat-form-field>
 
-      <h3 class="mat-subheading-2">Total Stormwater Device Permit Fee</h3>
+      <h3 class="mat-subheading-2">Stormwater Facility Replacement Fee</h3>
       <h4 class="mat-subheading-1">{{cost * 0.24 | currency}}</h4>
+          
+
+
+      
     </form>
   </mat-card-content>
+  <mat-card-actions>
+      <button mat-button>
+        <a href="https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/StormwaterReplacementFund.html" target="_blank">
+        More Information
+      </a>
+    </button>
+
+    </mat-card-actions>  
 </mat-card>

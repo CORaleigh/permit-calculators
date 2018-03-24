@@ -13,13 +13,14 @@ export class MainComponent implements OnInit {
     }, {
       label: "Stormwater Device Fees",
       route: "/stormwater"
-    }, {
-      label: "Open Space Facility Fees",
-      route: "/openspace"
-    }, {
-      label: "Thoroughfare Facility Fees",
-      route: "/thoroughfare"
     }
+    // , {
+    //   label: "Open Space Facility Fees",
+    //   route: "/openspace"
+    // }, {
+    //   label: "Thoroughfare Facility Fees",
+    //   route: "/thoroughfare"
+    // }
 
   ];
   constructor() { }

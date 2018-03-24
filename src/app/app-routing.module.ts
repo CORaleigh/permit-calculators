@@ -25,7 +25,8 @@ const appRoutes: Routes = [
   {
     path: 'stormwater',
     component: StormwaterPermitsComponent
-  },
+  }
+  ,
   {
     path: 'openspace',
     component: OpenspacePermitsComponent
