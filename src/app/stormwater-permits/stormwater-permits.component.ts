@@ -17,19 +17,22 @@ export class StormwaterPermitsComponent implements OnInit {
       units: 'Construction Cost',
       multiplier: 0.24,
       total: 0,
+      minimum: -1,
       url: 'https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/StormwaterReplacementFund.html'
     },
     {
       name: 'Land Disturbing Permit Fees',
       units: 'Acres',
       multiplier: 286,
-      total: 0
+      total: 0,
+      minimum: -1     
     },    
     {
       name: 'Land Disturbing Plan Review Fees',
       units: 'Acres',
       multiplier: 142,
-      total: 0
+      total: 0,
+      minimum: -1     
     }, 
     {
       name: 'Stormwater Control Permit',
@@ -71,7 +74,9 @@ export class StormwaterPermitsComponent implements OnInit {
 
    calculateTotal(fee) {
     if (fee.cost) {
-      fee.total = fee.multiplier * fee.cost.toFixed(1);
+      if (fee.units === 'Acres') {
+        fee.total = fee.multiplier * fee.cost.toFixed(1);
+      }
       if (fee.minimum) {
         if (fee.total < fee.minimum) {
           fee.total = fee.minimum;

@@ -27,7 +27,9 @@
         
           <mat-checkbox *ngIf="fee.checkbox" (change)="checkboxChanged($event, fee)">{{fee.name}}</mat-checkbox>
           <div>
-              <h4 class="mat-subheading-1">{{fee.total | currency}}</h4>               
+              <h4 *ngIf="fee.total > fee.minimum" class="mat-subheading-1">{{fee.total | currency}}</h4>     
+              <h4 *ngIf="fee.total <= fee.minimum" class="mat-subheading-1">{{fee.total | currency}}*</h4>
+              <span class="min-message" *ngIf="fee.total <= fee.minimum" >*minimum fee</h4>            
           </div>
           <div *ngIf="fee.url" class="more-info">
               <button mat-button>

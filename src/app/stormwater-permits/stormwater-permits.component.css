@@ -13,7 +13,8 @@ mat-form-field,
 .mat-subheading-1,
 .mat-subheading-2,
 mat-checkbox,
-.more-info{
+.more-info,
+.min-message{
   display: flex;
   align-items: center;
   justify-content: space-around;
