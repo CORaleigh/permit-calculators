@@ -11,7 +11,7 @@ export class MainComponent implements OnInit {
     label: "Building Permits",
     route: "/building"
     }, {
-      label: "Stormwater Device Fees",
+      label: "Stormwater Fees",
       route: "/stormwater"
     }
     // , {
