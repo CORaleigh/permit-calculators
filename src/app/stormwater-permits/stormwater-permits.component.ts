@@ -87,7 +87,7 @@ export class StormwaterPermitsComponent implements OnInit {
       }
     }
 
-    if (fee.cost) {
+    if (fee.cost && fee.selected) {
       if (fee.units === 'Acres') {
         fee.total = fee.multiplier * fee.cost.toFixed(1);
       } else if (fee.multiplier) {
@@ -109,32 +109,31 @@ export class StormwaterPermitsComponent implements OnInit {
      this.getTotalFees();
    }
    checkboxChanged(event, fee) {
+     fee.selected = event.selected;
     fee.total = (event.selected) ? fee.trueValue : fee.falseValue;
     this.getTotalFees();
    }
 
    listCheckBoxChanged(event, fee, help) {
      fee.selected = event.selected;
+     debugger;
      if (!event.selected) {
        fee.total = 0;
-     } else {
-      this.calculateTotal(null, fee);
      }
-
-    //  if (event.selected) {
-    //    if (fee.cost || fee.total < fee.minimum) {
-    //      fee.total = fee.minimum;
-    //    }
-    //  }
+    this.calculateTotal(null, fee);
    }
 
    getTotalFees () {
      this.total = 0;
      this.fees.forEach(fee => {
-       this.total += fee.total;
+      if (fee.selected) {
+        this.total += fee.total;
+      }
      });
      this.checkBoxes.forEach(fee => {
-       this.total += fee.total;
+       if (fee.selected) {
+         this.total += fee.total;
+       }
      });
    }
 
