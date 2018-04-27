@@ -18,7 +18,8 @@ export class StormwaterPermitsComponent implements OnInit {
       multiplier: 0.24,
       total: 0,
       url: 'https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/StormwaterReplacementFund.html',
-      selected: false
+      selected: false,
+      note: '*combined total of all stormwater devices'
     },
     {
       name: 'Land Disturbing Plan Review Fees',

@@ -29,7 +29,8 @@
                     <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="fee.units" [value]="fee.cost"
                       name="cost" (input)="calculateTotal($event, fee)">
 
-                </mat-form-field>    
+                </mat-form-field> 
+                <div matLine *ngIf="fee.note">{{fee.note}}</div>   
                 <div matLine *ngIf="fee.minimum">*minimum fee of {{fee.minimum | currency}}</div>
                 <div matLine *ngIf="fee.units === 'Acres'">*rounded to nearest 1/10 acre</div>                  
             </mat-list-item> 
