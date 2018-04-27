@@ -22,6 +22,7 @@ mat-checkbox,
   margin-top: 1em;
 }
 
+
 form {
   width: 100%
 }
@@ -53,4 +54,14 @@ mat-card {
 
 .mat-card-subtitle {
   font-size: 20px;
+}
+
+.feeCheckLabel {
+  justify-content: space-between;
+  display: flex;
+}
+
+.links {
+  justify-content: center;
+  display: flex;
 }

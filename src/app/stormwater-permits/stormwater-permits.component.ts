@@ -17,53 +17,59 @@ export class StormwaterPermitsComponent implements OnInit {
       units: 'Construction Cost',
       multiplier: 0.24,
       total: 0,
-      minimum: -1,
-      url: 'https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/StormwaterReplacementFund.html'
+      url: 'https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/StormwaterReplacementFund.html',
+      selected: false
     },
-    {
-      name: 'Land Disturbing Permit Fees',
-      units: 'Acres',
-      multiplier: 286,
-      total: 0,
-      minimum: -1     
-    },    
     {
       name: 'Land Disturbing Plan Review Fees',
       units: 'Acres',
       multiplier: 142,
       total: 0,
-      minimum: -1     
-    }, 
+      selected: false
+    },     
+    {
+      name: 'Land Disturbing Permit Fees',
+      units: 'Acres',
+      multiplier: 286,
+      total: 0,
+      selected: false
+    },    
     {
       name: 'Stormwater Control Permit',
       units: 'Acres',
       multiplier: 197,
       minimum: 194,
-      total: 194
-    },   
-    {
-      name: 'Flood Study Required?',
-      checkbox: true,
-      falseValue: 197,
-      trueValue: 1191,
-      total: 197
-    },    
-    {
-      name: 'Watercourse Buffer Permit Required?',
-      checkbox: true,
-      trueValue: 176,
-      falseValue: 0,
       total: 0
-    },     
-    {
-      name: 'Watershed Permit Required?',
-      checkbox: true,
-      trueValue: 176,
-      falseValue: 0,
-      total: 0
-    }     
-          
+    },  
   ];
+
+  checkBoxes:Array<any> = [   
+  {
+    name: 'Flood Permit Required?',
+    falseValue: 0,
+    trueValue: 197,
+    total: 0
+  },      
+  {
+    name: 'Flood Study Required?',
+    falseValue: 0,
+    trueValue: 1191,
+    total: 0
+  },    
+  {
+    name: 'Watercourse Buffer Permit Required?',
+    trueValue: 176,
+    falseValue: 0,
+    total: 0
+  },     
+  {
+    name: 'Watershed Permit Required?',
+    trueValue: 176,
+    falseValue: 0,
+    total: 0
+  }   ];
+
+
   ngOnInit(): void {
     window.setTimeout(() => {
        this.dialog.open(SplashDialogComponent);
@@ -72,18 +78,28 @@ export class StormwaterPermitsComponent implements OnInit {
      this.getTotalFees();
    }
 
-   calculateTotal(fee) {
+   calculateTotal(event, fee) {
+    if (event) {
+      if (event.target.value) {
+        fee.cost = parseFloat(event.target.value);
+      } else {
+        fee.cost = null;
+      }
+    }
+
     if (fee.cost) {
       if (fee.units === 'Acres') {
         fee.total = fee.multiplier * fee.cost.toFixed(1);
+      } else if (fee.multiplier) {
+        fee.total = fee.multiplier * fee.cost;        
       }
-      if (fee.minimum) {
+      if (fee.minimum && fee.cost != "" && fee.cost > 0) {
         if (fee.total < fee.minimum) {
           fee.total = fee.minimum;
         }
       }
     } else {
-      if (fee.minimum) {
+      if (fee.minimum && fee.cost) {
         fee.total = fee.minimum;
       } else {
         fee.total = 0;
@@ -93,13 +109,31 @@ export class StormwaterPermitsComponent implements OnInit {
      this.getTotalFees();
    }
    checkboxChanged(event, fee) {
-    fee.total = (event.checked) ? fee.trueValue : fee.falseValue;
+    fee.total = (event.selected) ? fee.trueValue : fee.falseValue;
     this.getTotalFees();
+   }
+
+   listCheckBoxChanged(event, fee, help) {
+     fee.selected = event.selected;
+     if (!event.selected) {
+       fee.total = 0;
+     } else {
+      this.calculateTotal(null, fee);
+     }
+
+    //  if (event.selected) {
+    //    if (fee.cost || fee.total < fee.minimum) {
+    //      fee.total = fee.minimum;
+    //    }
+    //  }
    }
 
    getTotalFees () {
      this.total = 0;
      this.fees.forEach(fee => {
+       this.total += fee.total;
+     });
+     this.checkBoxes.forEach(fee => {
        this.total += fee.total;
      });
    }

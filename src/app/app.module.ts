@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatSelectModule, MatDialogModule, MatCardModule, MatListModule, MatToolbarModule, MatIcon, MatIconModule, MatInputModule, MatTabsModule, MatCheckboxModule} from '@angular/material';
+import { MatButtonModule, MatSelectModule, MatDialogModule, MatCardModule, MatListModule, MatToolbarModule, MatIcon, MatIconModule, MatInputModule, MatTabsModule, MatCheckboxModule, MatGridListModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { AppRoutingModule }        from './app-routing.module';
@@ -58,7 +58,7 @@ import { LandusePipe } from './landuse.pipe';
      FlexLayoutModule,
      AppRoutingModule,
      MatTabsModule,
-     MatCheckboxModule
+     MatCheckboxModule,MatGridListModule
   ],
   entryComponents: [SplashDialogComponent, HelpDialogComponent],
   providers: [],
