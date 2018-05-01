@@ -1,0 +1,114 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$corblue: (
+    50 : #e0e6e8,
+    100 : #b3c2c7,
+    200 : #8099a1,
+    300 : #4d707b,
+    400 : #26515f,
+    500 : #003243,
+    600 : #002d3d,
+    700 : #002634,
+    800 : #001f2c,
+    900 : #00131e,
+    A100 : #5bb2ff,
+    A200 : #289aff,
+    A400 : #0081f4,
+    A700 : #0074da,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$corgreen: (
+    50 : #e9f1e6,
+    100 : #c9dcc0,
+    200 : #a5c596,
+    300 : #80ae6b,
+    400 : #659c4c,
+    500 : #4a8b2c,
+    600 : #438327,
+    700 : #3a7821,
+    800 : #326e1b,
+    900 : #225b10,
+    A100 : #a9ff92,
+    A200 : #80ff5f,
+    A400 : #58ff2c,
+    A700 : #43ff13,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$coryellowgreen: (
+    50 : #f4f8e8,
+    100 : #e5ecc6,
+    200 : #d3e0a0,
+    300 : #c1d479,
+    400 : #b4ca5d,
+    500 : #a7c140,
+    600 : #9fbb3a,
+    700 : #96b332,
+    800 : #8cab2a,
+    900 : #7c9e1c,
+    A100 : #f3ffd6,
+    A200 : #e5ffa3,
+    A400 : #d6ff70,
+    A700 : #cfff57,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+
+$my-app-primary: mat-palette($corblue);
+$my-app-accent:  mat-palette($corgreen, 500, 900, A100);
+$my-app-warn:    mat-palette($coryellowgreen);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
