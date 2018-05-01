@@ -2,8 +2,11 @@ import {
   Component,
   OnInit,
   ViewChild,
-  ElementRef
+  ElementRef,
+  HostListener
 } from '@angular/core';
+import {SharedService} from '../shared.service';
+import {OpenspaceService} from '../openspace.service';
 import {
   loadModules
 } from 'esri-loader';
@@ -16,11 +19,9 @@ import {
 export class OpenspacePermitsComponent implements OnInit {
   public mapView: any;
   public search: any;
-
+  selectedZone:any;
   @ViewChild('mapViewNode') private mapViewEl: ElementRef;
-  multi: number = null;
-  single: number = null;
-  zone: any = null;
+
   zones: Array < any > = [{
       zone: 1,
       single: 1385,
@@ -44,9 +45,30 @@ export class OpenspacePermitsComponent implements OnInit {
 
 
   ];
-  constructor() {}
+  constructor(private sharedService:SharedService, public openspace:OpenspaceService) {}
+
+  getTotal() {
+    let total:Number = this.openspace.multi * this.openspace.zone.multi + this.openspace.single * this.openspace.zone.single;
+    this.sharedService.emitChange({total: total, calculator: 'openspace'});
+    return total;
+  }
+  
+  // @HostListener('window:unload', ['$event'])
+  // unloadHandler(event) {
+  //  localStorage.setItem('openspace', JSON.stringify(this.openspace));
+  // }  
 
   ngOnInit() {
+    window.setTimeout(() => {
+      if (this.openspace.zone) {
+        this.selectedZone = this.openspace.zone.zone;
+      }
+    }, 500);
+    // if (localStorage.getItem('openspace')) {
+    
+    //   this.openspace = JSON.parse(localStorage.getItem('openspace'));
+    // }
+
     return loadModules(['esri/WebMap', 'esri/views/MapView', 'esri/widgets/Search', 'esri/layers/FeatureLayer', 'esri/tasks/support/Query', "esri/geometry/geometryEngine", "esri/layers/GraphicsLayer", "esri/Graphic"])
       .then(([WebMap, MapView, Search, FeatureLayer, Query, geometryEngine, GraphicsLayer, Graphic]) => {
 
@@ -59,6 +81,7 @@ export class OpenspacePermitsComponent implements OnInit {
           map: webmap,
           container: this.mapViewEl.nativeElement
         });
+
         this.mapView.when(() => {
           
           let layer = this.mapView.map.allLayers.find(function (layer) {
@@ -133,12 +156,14 @@ export class OpenspacePermitsComponent implements OnInit {
                 let zoneNum = results.features[0].attributes.ZONE_NUMBER;
                 this.zones.forEach(zone => {
                   if (zone.zone === zoneNum) {
-                    this.zone = zone;
+                    this.openspace.zone = zone;
+                    this.selectedZone = zone.zone;
                   }
                 });
 
               } else {
-                this.zone = null;
+                this.openspace.zone = null;
+                this.selectedZone = null;
               }
             });
           }
@@ -149,8 +174,18 @@ export class OpenspacePermitsComponent implements OnInit {
           position: 'top-left',
           index: 0
         });
+        
 
       });
+  }
+
+  zoneChanged(event) {
+    let i = this.zones.filter(zone => {
+      return zone.zone === event.value;
+    });
+    if (i.length > 0) {
+      this.openspace.zone = i[0];
+    }
   }
 
 }

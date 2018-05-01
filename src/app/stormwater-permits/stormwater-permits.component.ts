@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener  } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component'
+import {SharedService} from '../shared.service';
+import {StormwaterService} from '../stormwater.service';
 @Component({
   selector: 'app-stormwater-permits',
   templateUrl: './stormwater-permits.component.html',
@@ -8,76 +10,31 @@ import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component'
 })
 export class StormwaterPermitsComponent implements OnInit {
 
-  constructor(public dialog:MatDialog) { }
+  constructor(public dialog:MatDialog, public sharedService:SharedService, public stormwaterService:StormwaterService) { 
+    
+  }
+  
   cost: number =  0;
   total: number = 0;
-  fees: Array<any> = [
-    {
-      name: 'Stormwater Device Fee',
-      units: 'Construction Cost',
-      multiplier: 0.24,
-      total: 0,
-      url: 'https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/StormwaterReplacementFund.html',
-      selected: false,
-      note: '*combined total of all stormwater devices'
-    },
-    {
-      name: 'Land Disturbing Plan Review Fees',
-      units: 'Acres',
-      multiplier: 142,
-      total: 0,
-      selected: false
-    },     
-    {
-      name: 'Land Disturbing Permit Fees',
-      units: 'Acres',
-      multiplier: 286,
-      total: 0,
-      selected: false
-    },    
-    {
-      name: 'Stormwater Control Permit',
-      units: 'Acres',
-      multiplier: 197,
-      minimum: 194,
-      total: 0
-    },  
-  ];
 
-  checkBoxes:Array<any> = [   
-  {
-    name: 'Flood Permit Required?',
-    falseValue: 0,
-    trueValue: 197,
-    total: 0
-  },      
-  {
-    name: 'Flood Study Required?',
-    falseValue: 0,
-    trueValue: 1191,
-    total: 0
-  },    
-  {
-    name: 'Watercourse Buffer Permit Required?',
-    trueValue: 176,
-    falseValue: 0,
-    total: 0
-  },     
-  {
-    name: 'Watershed Permit Required?',
-    trueValue: 176,
-    falseValue: 0,
-    total: 0
-  }   ];
 
 
   ngOnInit(): void {
-    window.setTimeout(() => {
-       this.dialog.open(SplashDialogComponent);
+    // window.setTimeout(() => {
+    //    this.dialog.open(SplashDialogComponent);
  
-     }, 500);
-     this.getTotalFees();
+    //  }, 500);
+    // if (localStorage.getItem('stormwater')) {
+    
+    //   this.stormwaterService = JSON.parse(localStorage.getItem('stormwater'));
+    // }
+    //  this.getTotalFees();
    }
+  //  @HostListener('window:unload', ['$event'])
+  //  unloadHandler(event) {
+  //   localStorage.setItem('stormwater', JSON.stringify(this.stormwaterService));
+
+  //  }
 
    calculateTotal(event, fee) {
     if (event) {
@@ -110,7 +67,7 @@ export class StormwaterPermitsComponent implements OnInit {
      this.getTotalFees();
    }
    checkboxChanged(event, fee) {
-     fee.selected = event.selected;
+    fee.selected = event.selected;
     fee.total = (event.selected) ? fee.trueValue : fee.falseValue;
     this.getTotalFees();
    }
@@ -126,16 +83,17 @@ export class StormwaterPermitsComponent implements OnInit {
 
    getTotalFees () {
      this.total = 0;
-     this.fees.forEach(fee => {
+     this.stormwaterService.fees.forEach(fee => {
       if (fee.selected) {
         this.total += fee.total;
       }
      });
-     this.checkBoxes.forEach(fee => {
+     this.stormwaterService.checkBoxes.forEach(fee => {
        if (fee.selected) {
          this.total += fee.total;
        }
      });
+     this.sharedService.emitChange({total: this.total, calculator: 'stormwater'});
    }
 
 

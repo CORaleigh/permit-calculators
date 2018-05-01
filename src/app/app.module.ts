@@ -24,6 +24,12 @@ import { StormwaterPermitsComponent } from './stormwater-permits/stormwater-perm
 import { OpenspacePermitsComponent } from './openspace-permits/openspace-permits.component';
 import { ThoroughfarePermitsComponent } from './thoroughfare-permits/thoroughfare-permits.component';
 import { LandusePipe } from './landuse.pipe';
+import { SharedService } from './shared.service';
+import { StormwaterService } from './stormwater.service';
+import { OpenspaceService } from './openspace.service';
+import { ThoroughfareService } from './thoroughfare.service';
+import { BuildingService } from './building.service';
+import { ThoroughfarePipe } from './thoroughfare.pipe';
 
 
 @NgModule({
@@ -40,7 +46,8 @@ import { LandusePipe } from './landuse.pipe';
     StormwaterPermitsComponent,
     OpenspacePermitsComponent,
     ThoroughfarePermitsComponent,
-    LandusePipe
+    LandusePipe,
+    ThoroughfarePipe
   ],
   imports: [
     HttpClientModule,
@@ -61,7 +68,7 @@ import { LandusePipe } from './landuse.pipe';
      MatCheckboxModule,MatGridListModule
   ],
   entryComponents: [SplashDialogComponent, HelpDialogComponent],
-  providers: [],
+  providers: [SharedService, StormwaterService, OpenspaceService, ThoroughfareService, BuildingService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -87,3 +87,8 @@ mat-card {
 .mat-tab-header {
     margin-bottom: 2em;
 }
+
+.feeCheckLabel {
+    justify-content: space-between;
+    display: flex;
+  }

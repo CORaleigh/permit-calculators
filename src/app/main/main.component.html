@@ -4,9 +4,18 @@
           <h3>City of Raleigh</h3>
         </mat-toolbar-row>
       </mat-toolbar>
-        <h1 class="mat-title">Permit Fee Calculators</h1>
+        <!-- <h1 class="mat-title">Permit Fee Calculators</h1>
         <div class="button-row" *ngFor="let calculator of calculators">
             <button mat-raised-button color="primary" [routerLink]="calculator.route">{{calculator.label}}</button>
-        </div>
+        </div> -->
+        <mat-form-field>
+            <mat-select placeholder="Select Calculator" (change)="go($event)" [value]="selectedCalculator" >
+              <mat-option *ngFor="let calculator of calculators" [value]="calculator.route">
+                {{ calculator.label }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        <h1 class="mat-headline">{{total | currency}}</h1>
+        <router-outlet (onTotal)="onTotal($event)"></router-outlet>
 
 

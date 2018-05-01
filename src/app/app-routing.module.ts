@@ -9,15 +9,15 @@ import { MainComponent }    from './main/main.component';
 
 
 const appRoutes: Routes = [
-{
-    path:'home',
-    component:MainComponent
-},
-  {
-    path: '',
-    redirectTo: '/home',
-    pathMatch: 'full'
-  },
+// {
+//     path:'home',
+//     component:MainComponent
+// },
+//   {
+//     path: '',
+//     redirectTo: '/home',
+//     pathMatch: 'full'
+//   },
   {
     path: 'building',
     component: BuildingPermitsComponent

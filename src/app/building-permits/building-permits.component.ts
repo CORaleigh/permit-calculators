@@ -14,10 +14,10 @@ export class BuildingPermitsComponent implements OnInit {
   }
   constructor(public dialog: MatDialog) {};
   ngOnInit(): void {
-   window.setTimeout(() => {
-      this.dialog.open(SplashDialogComponent);
+  //  window.setTimeout(() => {
+  //     this.dialog.open(SplashDialogComponent);
 
-    }, 500);
+  //   }, 500);
   }
 
 }

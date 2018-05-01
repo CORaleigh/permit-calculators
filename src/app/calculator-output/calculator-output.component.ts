@@ -8,6 +8,8 @@ import { Tier } from '../tier';
 import { CalculationService} from '../calculation.service';
 import { Fee } from '../fee';
 import { CanDeactivate } from '@angular/router';
+import {SharedService} from '../shared.service';
+
 declare let ga: Function;
 @Component({
   selector: 'calculator-output',
@@ -29,7 +31,7 @@ export class CalculatorOutputComponent implements OnInit, DoCheck {
   elecPermit: number;
   tiers: any;
   
-  constructor(private differs: KeyValueDiffers, private tiersService: TiersService, private calculationService: CalculationService) {
+  constructor(private differs: KeyValueDiffers, private tiersService: TiersService, private calculationService: CalculationService, private sharedService:SharedService) {
     this.differ = differs.find({}).create();
     this.cardDiffer = differs.find({}).create();
   }
@@ -64,7 +66,12 @@ beforeunloadHandler(event) {
 
 }
 
+getTotal() {
+  let total:Number = (this.calculations.building.value + this.calculations.building.tech) + (this.calculations.review.value + this.calculations.review.tech) + (this.calculations.electrical.value + this.calculations.electrical.tech) + (this.calculations.plumbing.value + this.calculations.plumbing.tech) + (this.calculations.mechanical.value + this.calculations.mechanical.tech) ;
+  this.sharedService.emitChange({total: total, calculator: 'building'}); 
+  return total;
 
+}
   getTiers() {
     this.tiersService.getTiers().subscribe(
       tiers => {

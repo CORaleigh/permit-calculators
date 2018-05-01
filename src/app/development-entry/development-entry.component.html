@@ -6,7 +6,7 @@
           <mat-card-title>
             <h3>Building Occupancy {{card.cardindex + 1}}</h3>
           </mat-card-title>
-          <button mat-button (click)="showHelp()">Help</button>
+          <button mat-button mat-icon-button (click)="showHelp()"><mat-icon>help_outline</mat-icon></button>
         </mat-card-header>
         <mat-card-content>
           <form>
@@ -52,8 +52,8 @@
           <button mat-icon-button (click)="getNextCard()" *ngIf="cards.length > 1 && cardIndex != cards.length - 1" matTooltip="Next Building Type">
             <mat-icon>keyboard_arrow_right</mat-icon>
           </button>
-          <button mat-button (click)="addCard()" mdTooltip="Add Building Type" *ngIf="card.building && card.construction && card.constructScope && card.squareFeet && cardIndex === cards.length - 1">ADD</button>
-          <button mat-button (click)="removeCard(cards, i)" *ngIf="cards.length > 1" mdTooltip="Remove Building Type">REMOVE</button>
+          <button mat-button mat-raised-button color="accent" (click)="addCard()" mdTooltip="Add Building Type" *ngIf="card.building && card.construction && card.constructScope && card.squareFeet && cardIndex === cards.length - 1">ADD</button>
+          <button mat-button mat-raised-button color="accent"(click)="removeCard(cards, i)" *ngIf="cards.length > 1" mdTooltip="Remove Building Type">REMOVE</button>
         </mat-card-actions>
       </mat-card>
     </ng-container>

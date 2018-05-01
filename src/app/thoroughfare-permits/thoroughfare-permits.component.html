@@ -1,30 +1,78 @@
-<mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <img alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
-    <h3>City of Raleigh</h3>
-  </mat-toolbar-row>
-  <!-- <mat-toolbar-row>
-    <span>Thoroughfare Facility Fee Calculator</span>
-  </mat-toolbar-row> -->
-</mat-toolbar>
 <mat-card>
   <mat-card-header>
     <mat-card-title>Thoroughfare Facility Fee Calculator</mat-card-title>
   </mat-card-header>
   <mat-card-content>
+  
     <mat-tab-group>
-        <mat-tab [label]="fee.landuse" *ngFor="let fee of fees">
-          
+        <mat-tab [label]="category.category" *ngFor="let category of thoroughfare.categories">
+          Check all boxes next to the landuse(s) that apply to your project         
+          <div *ngFor="let landuse of category.landuses">
+            <mat-list>
+              <mat-selection-list  >
+                <mat-list-option checkboxPosition="before" (selectionChange)="landuseSelected($event, landuse)" [selected]="landuse.selected">
+                  <div class="feeCheckLabel">
+                      <div class="feeLabel">{{landuse.landuse}}
+                        <a mat-icon-button *ngIf="landuse.url" [href]="landuse.url" target="_blank" (click)="$event.stopPropagation()">
+                          <mat-icon>help_outline</mat-icon>
+                        </a>
+                      </div>
+                      <div [ngStyle]="{'padding-top':landuse.url ? '10px' : '' }" class="cost">{{landuse.total| currency}}</div>
+                    </div>
+                </mat-list-option>
+              </mat-selection-list>
+              <mat-list-item *ngIf="landuse.selected && landuse.per">
+                  <mat-form-field matLine>
+                    <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="landuse.measureLabel"  name="value" [(ngModel)]="landuse.value" (ngModelChange)="valueChanged(landuse, null, $event)">
+                  </mat-form-field>         
+              </mat-list-item>
+
+              <div *ngIf="landuse.thresholds && landuse.selected">
+                  <mat-list-item *ngFor="let threshold of landuse.thresholds">
+                      <mat-form-field matLine>
+                          <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="threshold.label" [(ngModel)]="threshold.value" (ngModelChange)="valueChanged(landuse, threshold, $event)">
+                        </mat-form-field>                
+                  </mat-list-item>  
+              </div>
+            </mat-list>
+          </div>              
+
+
+
+            <!-- <div *ngFor="let record of category.records">
+              {{category.records|json}}
+                <mat-divider [inset]="true"></mat-divider>
+                <mat-form-field>
+                    <mat-select placeholder="Select land use" [(value)]="record.landuse" (selectionChange)="landuseChanged($event, category)">
+                      <mat-option *ngFor="let landuse of thoroughfare.landuses | thoroughfare: category.category" [value]="landuse">
+                        {{landuse.landuse}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field *ngIf="record.landuse != 'Single Family' && record.landuse">
+                      <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="record.landuse.measureLabel" name="value" [(ngModel)]="record.value">
+                    </mat-form-field>                  
+            </div>
+            <button mat-button mat-raised-button color="accent" (click)="addRecord(category)">ADD</button>  -->
+
+
+
+
+
+
+
+<!--           
             <div *ngFor="let record of fee.records;">
                 <mat-divider [inset]="true"></mat-divider>
 
                 <mat-form-field>
-                  <mat-select placeholder="Select land use" [(ngModel)]="record.landuse" (ngModelChange)="landuseChanged(fee, record.landuse)">
-                    <mat-option *ngFor="let fee1 of fee.fees | landuse:fee;let i = index;" [value]="fee1">
+                  <mat-select placeholder="Select land use" [(ngModel)]="record.landuse" [value]="record.landuse" (selectionChange)="landuseChanged(fee, record, $event)">
+                    <mat-option *ngFor="let fee1 of fee.fees | landuse:fee;" [value]="fee1">
                       {{fee1.landuse}}
                     </mat-option>
                   </mat-select>
                 </mat-form-field>
+  
                 <mat-form-field *ngIf="!record?.landuse?.thresholds && record.landuse">
                   <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="record.landuse?.measureLabel" name="value"
                     [ngModel]="record.value" (ngModelChange)="recordValueChanged(record, $event)">
@@ -32,7 +80,6 @@
                 {{record.total|currency}}
                 <div *ngIf="record?.landuse?.thresholds" id="single-fam-areas">
                   <div class="threshold-container" *ngFor="let threshold of record.landuse.thresholds">
-                    <!-- <div class="threshold-label">Units {{threshold.label}}</div> -->
                     <mat-form-field>
                       <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="threshold.label" name="value"
                         [ngModel]="threshold.value" (ngModelChange)="thresholdValueChanged(threshold, record, $event)">
@@ -42,13 +89,13 @@
                 </div>
           
               </div>      
-              <button mat-button mat-raised-button color="primary" (click)="addRecord(fee)">ADD</button>
+              <button mat-button mat-raised-button color="accent" (click)="addRecord(fee)">ADD</button> -->
     
         </mat-tab>
       </mat-tab-group>
   </mat-card-content>
   <mat-card-actions>
-      <mat-card-subtitle>Total Fee: {{total|currency}}</mat-card-subtitle>
+      <mat-card-subtitle>Total Fee: {{thoroughfare.total|currency}}</mat-card-subtitle>
 
   </mat-card-actions>
 </mat-card>
