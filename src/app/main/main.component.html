@@ -22,6 +22,7 @@
         <div class="button-row" *ngFor="let calculator of calculators">
             <button mat-raised-button color="primary" [routerLink]="calculator.route">{{calculator.label}}</button>
         </div> -->
+        <h1 class="mat-headline">Total Fees: {{total | currency}}</h1>
 
         <router-outlet (onTotal)="onTotal($event)"></router-outlet>
 

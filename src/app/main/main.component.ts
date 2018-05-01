@@ -16,17 +16,17 @@ import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component'
 export class MainComponent implements OnInit {
   calculators: Array<any> = [
     {
-    label: "Building Permits",
+    label: "Building Permit Fees",
     route: "building"
     }, {
       label: "Stormwater Fees",
       route: "stormwater"
     }
     , {
-      label: "Open Space Facility Fees",
+      label: "Open Space Fees",
       route: "openspace"
     }, {
-      label: "Thoroughfare Facility Fees",
+      label: "Thoroughfare Fees",
       route: "thoroughfare"
     }
 
