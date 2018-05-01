@@ -1,21 +1,28 @@
 <mat-toolbar color="primary">
-        <mat-toolbar-row>
-          <img alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
-          <h3>City of Raleigh</h3>
+
+        <mat-toolbar-row class="title-row">
+            <img alt="seal" src="../assets/raleigh-logo-icon.png" />
+
+          <span>RALEIGH FEE CALCULATOR</span>
         </mat-toolbar-row>
+
       </mat-toolbar>
+      <div class="dark-class calculator-row">
+          <mat-form-field>
+              <mat-select placeholder="Select Calculator" (change)="go($event)" [value]="selectedCalculator" >
+                <mat-option *ngFor="let calculator of calculators" [value]="calculator.route">
+                  {{ calculator.label }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field> 
+            
+      </div>
+
         <!-- <h1 class="mat-title">Permit Fee Calculators</h1>
         <div class="button-row" *ngFor="let calculator of calculators">
             <button mat-raised-button color="primary" [routerLink]="calculator.route">{{calculator.label}}</button>
         </div> -->
-        <mat-form-field>
-            <mat-select placeholder="Select Calculator" (change)="go($event)" [value]="selectedCalculator" >
-              <mat-option *ngFor="let calculator of calculators" [value]="calculator.route">
-                {{ calculator.label }}
-              </mat-option>
-            </mat-select>
-          </mat-form-field>
-        <h1 class="mat-headline">{{total | currency}}</h1>
+
         <router-outlet (onTotal)="onTotal($event)"></router-outlet>
 
 

@@ -6,3 +6,8 @@ body {
     margin: 0;
     background-color: #ececec;
 }
+
+.mat-form-field-infix { 
+    width: 250px !important;
+}
+

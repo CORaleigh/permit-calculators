@@ -4,7 +4,7 @@
   </mat-card-header>
   <mat-card-content>
   
-    <mat-tab-group>
+    <mat-tab-group color="accent">
         <mat-tab [label]="category.category" *ngFor="let category of thoroughfare.categories">
           Check all boxes next to the landuse(s) that apply to your project         
           <div *ngFor="let landuse of category.landuses">
@@ -22,14 +22,14 @@
                 </mat-list-option>
               </mat-selection-list>
               <mat-list-item *ngIf="landuse.selected && landuse.per">
-                  <mat-form-field matLine>
+                  <mat-form-field matLine color="accent">
                     <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="landuse.measureLabel"  name="value" [(ngModel)]="landuse.value" (ngModelChange)="valueChanged(landuse, null, $event)">
                   </mat-form-field>         
               </mat-list-item>
 
               <div *ngIf="landuse.thresholds && landuse.selected">
                   <mat-list-item *ngFor="let threshold of landuse.thresholds">
-                      <mat-form-field matLine>
+                      <mat-form-field matLine color="accent">
                           <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="threshold.label" [(ngModel)]="threshold.value" (ngModelChange)="valueChanged(landuse, threshold, $event)">
                         </mat-form-field>                
                   </mat-list-item>  

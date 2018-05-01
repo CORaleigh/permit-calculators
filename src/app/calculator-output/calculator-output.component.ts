@@ -9,65 +9,70 @@ import { CalculationService} from '../calculation.service';
 import { Fee } from '../fee';
 import { CanDeactivate } from '@angular/router';
 import {SharedService} from '../shared.service';
+import { BuildingService } from '../building.service';
 
 declare let ga: Function;
 @Component({
   selector: 'calculator-output',
-  inputs: ['cards', 'cardindex', 'calculations'],
+  inputs: ['cards', 'cardIndex', 'calculations'],
   templateUrl: './calculator-output.component.html',
   styleUrls: ['./calculator-output.component.css'],
-  providers: [TiersService, CalculationService]
+  providers: [TiersService]
 })
 
 export class CalculatorOutputComponent implements OnInit, DoCheck {
-  calculations: Calculations;
   cards: Array<DevelopmentCard>;
-  cardindex: number;
-  @Input() card: DevelopmentCard;
+  cardIndex: number;
+  calculations:Calculations;
   differ: any;
   cardDiffer: any;
   bldgPermit: number;
   reviewFee: number;
   elecPermit: number;
   tiers: any;
-  
-  constructor(private differs: KeyValueDiffers, private tiersService: TiersService, private calculationService: CalculationService, private sharedService:SharedService) {
+  @Input() card: DevelopmentCard;
+  constructor(private differs: KeyValueDiffers, private tiersService: TiersService, public calculationService: CalculationService, private sharedService:SharedService, private buildingService:BuildingService) {
     this.differ = differs.find({}).create();
     this.cardDiffer = differs.find({}).create();
   }
   ngOnInit() { 
 
-    this.calculations = new Calculations();
-    this.calculations.valuation = 0;
-    this.calculations.building = new Fee("Building", 0, 0, 0.0026);
-    this.calculations.electrical = new Fee("Electrical", 0, 1.01, 0.67);
-    this.calculations.review = new Fee("Plan Review", 0, 0.55, 0.72);
-    this.calculations.plumbing = new Fee("Plumbing", 0, 0.55, 0.22);
-    this.calculations.mechanical = new Fee("Mechanical", 0, 0.78, 0.31); 
-    this.getTiers();  
+    if (!this.calculationService.calculations) {
+      this.calculationService.calculations = new Calculations();
+      this.calculationService.calculations.valuation = 0;
+      this.calculationService.calculations.building = new Fee("Building", 0, 0, 0.0026);
+      this.calculationService.calculations.electrical = new Fee("Electrical", 0, 1.01, 0.67);
+      this.calculationService.calculations.review = new Fee("Plan Review", 0, 0.55, 0.72);
+      this.calculationService.calculations.plumbing = new Fee("Plumbing", 0, 0.55, 0.22);
+      this.calculationService.calculations.mechanical = new Fee("Mechanical", 0, 0.78, 0.31); 
+    }
+    if (!this.tiers) {
+      this.getTiers(); 
+    }
+    
   }
 @HostListener('window:beforeunload', ['$event'])
 beforeunloadHandler(event) {
-  if (this.calculations.valuation > 0) {
+  if (this.calculationService.calculations.valuation > 0) {
     this.cards.forEach(card => {
       ga('send', 'event', 'Parameters', 'Building Type', card.building.group);
       ga('send', 'event', 'Parameters', 'Construction Type', card.construction.key);
       ga('send', 'event', 'Parameters', 'Construction Scope', card.constructScope);
       ga('send', 'event', 'Parameters', 'Square Feet', card.squareFeet);
     });
-    ga('send', 'event', 'Calculations', 'Total Valuation', this.calculations.valuation);
-    ga('send', 'event', 'Calculations', 'Total Building Fee', this.calculations.building);
-    ga('send', 'event', 'Calculations', 'Total Electrical Fee', this.calculations.electrical);
-    ga('send', 'event', 'Calculations', 'Total Mechanical Fee', this.calculations.mechanical);
-    ga('send', 'event', 'Calculations', 'Total Plumbing Fee', this.calculations.plumbing);
-    ga('send', 'event', 'Calculations', 'Total Review Fee', this.calculations.review);
-    ga('send', 'event', 'Calculations', 'Total Permit Fee', this.calculations.total);    
+    ga('send', 'event', 'Calculations', 'Total Valuation', this.calculationService.calculations.valuation);
+    ga('send', 'event', 'Calculations', 'Total Building Fee', this.calculationService.calculations.building);
+    ga('send', 'event', 'Calculations', 'Total Electrical Fee', this.calculationService.calculations.electrical);
+    ga('send', 'event', 'Calculations', 'Total Mechanical Fee', this.calculationService.calculations.mechanical);
+    ga('send', 'event', 'Calculations', 'Total Plumbing Fee', this.calculationService.calculations.plumbing);
+    ga('send', 'event', 'Calculations', 'Total Review Fee', this.calculationService.calculations.review);
+    ga('send', 'event', 'Calculations', 'Total Permit Fee', this.calculationService.calculations.total);    
   }
 
 }
 
 getTotal() {
-  let total:Number = (this.calculations.building.value + this.calculations.building.tech) + (this.calculations.review.value + this.calculations.review.tech) + (this.calculations.electrical.value + this.calculations.electrical.tech) + (this.calculations.plumbing.value + this.calculations.plumbing.tech) + (this.calculations.mechanical.value + this.calculations.mechanical.tech) ;
+  let total:Number = (this.calculationService.calculations.building.value + this.calculationService.calculations.building.tech) + (this.calculationService.calculations.review.value + this.calculationService.calculations.review.tech) + (this.calculationService.calculations.electrical.value + this.calculationService.calculations.electrical.tech) + (this.calculationService.calculations.plumbing.value + this.calculationService.calculations.plumbing.tech) + (this.calculationService.calculations.mechanical.value + this.calculationService.calculations.mechanical.tech) ;
   this.sharedService.emitChange({total: total, calculator: 'building'}); 
   return total;
 
@@ -76,7 +81,7 @@ getTotal() {
     this.tiersService.getTiers().subscribe(
       tiers => {
          this.tiers = tiers; 
-         this.calculations.tiers = tiers;
+         this.calculationService.calculations.tiers = tiers;
       },
       err => {
         console.log(err);
@@ -88,48 +93,52 @@ getTotal() {
     this.cards.forEach(function (card) { 
       valuation += card.calculations.valuation;
     });
-    this.calculations.valuation = valuation;
+    
+    this.calculationService.calculations.valuation = valuation;
     this.sumBldgPermit();
   }
   sumBldgPermit() {
     let bldgPermit = 0;
     
-    this.calculationService.calcBldgPermit(this.calculations.valuation, this.calculations.tiers, this.calculations.isResidential).then(building => {
-      this.calculations.building.value = building;
-      this.calculations.building.tech = Math.round(Math.round(building) * 0.04);
-     // this.calculations = this.calcTechAdder(this.calculations);
-      this.calculationService.calcFees(this.calculations, this.cards, this.tiers).then(calculations => {
-        this.calculations = calculations;
-        this.calculations.building.value = Math.round(this.calculations.building.value);
+    this.calculationService.calcBldgPermit(this.calculationService.calculations.valuation, this.calculationService.calculations.tiers, this.calculationService.calculations.isResidential).then(building => {
+      this.calculationService.calculations.building.value = building;
+      this.calculationService.calculations.building.tech = Math.round(Math.round(building) * 0.04);
+     // this.calculationService.calculations = this.calcTechAdder(this.calculationService.calculations);
+      this.calculationService.calcFees(this.calculationService.calculations, this.cards, this.tiers).then(calculations => {
+        this.calculationService.calculations = calculations;
+        this.calculationService.calculations.building.value = Math.round(this.calculationService.calculations.building.value);
       });      
     });
   }
  
   ngDoCheck() {
-    let card = this.cards[this.cardindex];
-    let changes = this.differ.diff(card.calculations);
 
-    if (changes) {
-      changes.forEachChangedItem(r => {
-        if ((r.key === 'valuation') && r.currentValue != r.previousValue && r.currentValue > 0 && this.cardindex === card.cardindex) {
-          this.calculations.isResidential = card.calculations.isResidential;
-          this.sumValuation();            
-        }                                                                 
-      });
-    }
-    //added to determine change of R-3 construction scope from New Construction to Alteration since valuation does not change
-    if (card.building.group.indexOf('R-3') > -1) {
-      console.log('test');
-      let cardChanges = this.cardDiffer.diff(card);
-      if (cardChanges) {
-        cardChanges.forEachChangedItem(r => {
-          if ((r.key === 'constructScope') && ((r.currentValue.name  === 'Addition' && r.previousValue.name  === 'New Construction') || (r.currentValue.name  === 'New Construction' && r.previousValue.name === 'Addition'))){
-            this.calculations.isResidential = card.calculations.isResidential;
-            this.sumValuation();             
-          }
+      let card = this.cards[this.cardIndex];
+      let changes = this.differ.diff(card.calculations);
+  
+      if (changes) {
+        changes.forEachChangedItem(r => {
+          if ((r.key === 'valuation') && r.currentValue != r.previousValue && r.currentValue > 0 && this.cardIndex === card.cardindex) {
+            this.calculationService.calculations.isResidential = card.calculations.isResidential;
+            this.sumValuation();            
+          }                                                                 
         });
       }
-    }
+      //added to determine change of R-3 construction scope from New Construction to Alteration since valuation does not change
+      if (card.building.group.indexOf('R-3') > -1) {
+        console.log('test');
+        let cardChanges = this.cardDiffer.diff(card);
+        if (cardChanges) {
+          cardChanges.forEachChangedItem(r => {
+            if ((r.key === 'constructScope') && ((r.currentValue.name  === 'Addition' && r.previousValue.name  === 'New Construction') || (r.currentValue.name  === 'New Construction' && r.previousValue.name === 'Addition'))){
+              this.calculationService.calculations.isResidential = card.calculations.isResidential;
+              this.sumValuation();             
+            }
+          });
+        }
+      }
+
+
 
   }
 

@@ -11,7 +11,7 @@
             <mat-list-option checkboxPosition="before" (selectionChange)="listCheckBoxChanged($event, fee)" [selected]="fee.selected">
               <div class="feeCheckLabel">
                 <div class="feeLabel">{{fee.name}}
-                  <a mat-icon-button *ngIf="fee.url" [href]="fee.url" target="_blank" (click)="$event.stopPropagation()">
+                  <a mat-icon-button  *ngIf="fee.url" [href]="fee.url" target="_blank" (click)="$event.stopPropagation()">
                     <mat-icon>help_outline</mat-icon>
                   </a>
                 </div>
@@ -21,7 +21,7 @@
           </mat-selection-list>
 
           <mat-list-item *ngIf="fee.selected">
-            <mat-form-field *ngIf="fee.multiplier" matLine>
+            <mat-form-field *ngIf="fee.multiplier" matLine color="accent">
               <span *ngIf="fee.units === 'Construction Cost'" matPrefix>$&nbsp;</span>
               <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="fee.units" [value]="fee.cost" name="cost"
                 (input)="calculateTotal($event, fee)">

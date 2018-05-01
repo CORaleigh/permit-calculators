@@ -28,6 +28,7 @@ import { SharedService } from './shared.service';
 import { StormwaterService } from './stormwater.service';
 import { OpenspaceService } from './openspace.service';
 import { ThoroughfareService } from './thoroughfare.service';
+import { CalculationService } from './calculation.service';
 import { BuildingService } from './building.service';
 import { ThoroughfarePipe } from './thoroughfare.pipe';
 
@@ -68,7 +69,7 @@ import { ThoroughfarePipe } from './thoroughfare.pipe';
      MatCheckboxModule,MatGridListModule
   ],
   entryComponents: [SplashDialogComponent, HelpDialogComponent],
-  providers: [SharedService, StormwaterService, OpenspaceService, ThoroughfareService, BuildingService],
+  providers: [SharedService, StormwaterService, OpenspaceService, ThoroughfareService, BuildingService, CalculationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -7,8 +7,6 @@ import { Calculations } from './calculations';
 
 @Injectable()
 export class BuildingService {
-
-  constructor() { }
   selectedBuilding: any;
   selectedConstruction: any;
   scopes: Array<any>;
@@ -19,5 +17,7 @@ export class BuildingService {
   cards: Array<DevelopmentCard>;
   cardIndex: number;
   tiers: Array<Tier>;
-  calculations: Calculations;
+  calculations: Calculations;  
+  constructor() { }
+
 }

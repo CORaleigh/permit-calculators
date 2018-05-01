@@ -6,12 +6,14 @@ import { Calculations } from './calculations';
 import { TiersService } from './tiers.service';
 @Injectable()
 export class CalculationService {
+  calculations: Calculations;
   valuation: number;
   minFee: number = 106;
   tiersService:TiersService;
     constructor() { }
 
   calcValuation(card: DevelopmentCard): Promise<number>{
+    debugger;
     let meansLocationFactor = 0.8381;//0.838137101;
     let valuation = 0;
     if (card.constructScope && card.squareFeet && card.construction) {

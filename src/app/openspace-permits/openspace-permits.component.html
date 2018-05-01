@@ -12,7 +12,7 @@
     </div>
     <form>
 
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" color="accent">
         <mat-select placeholder="Open Space Zone" ([ngModel])="openspace.zone" [value]="selectedZone" name="zone" (change)="zoneChanged($event)">
           <mat-option *ngFor="let zone of zones" [value]="zone.zone">
             {{zone.zone}}
@@ -20,12 +20,12 @@
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" color="accent">
 
         <input matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="# of Single-Family Dwelling Units"
           [(ngModel)]="openspace.single" name="single">
       </mat-form-field>
-      <mat-form-field class="full-width">
+      <mat-form-field class="full-width" color="accent">
 
         <input class="full-width" matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="# of Mult-Family Dwelling Units"
           [(ngModel)]="openspace.multi" name="multi">

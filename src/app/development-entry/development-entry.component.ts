@@ -12,41 +12,34 @@ import { ConstructionType } from '../construction-type';
 import { MatDialog } from '@angular/material';
 import { HelpDialogComponent } from '../help-dialog/help-dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
-
+import { BuildingService} from '../building.service';
 @Component({
   selector: 'development-entry',
   templateUrl: './development-entry.component.html',
   styleUrls: ['./development-entry.component.css'],
-  providers: [IccbvdService, CalculationService, TiersService]
+  providers: [IccbvdService, TiersService]
 })
 export class DevelopmentEntryComponent implements OnInit {
-  selectedBuilding: any;
-  selectedConstruction: any;
-  scopes: Array<any>;
-  iccbvd: any;
-  selectedIccbvd: Iccbvd;
-  constructions: Array<string>;
-  valuation: number;
-  cards: Array<DevelopmentCard>;
-  cardIndex: number;
-  tiers: Array<Tier>;
-  calculations: Calculations;
   @Input() isResidential: boolean;
   @Output() isResidentialUpdated = new EventEmitter<boolean>();
-  constructor(private iccbvdService: IccbvdService, private calculationService: CalculationService, private tiersService: TiersService, public dialog: MatDialog) { }
+  constructor(private iccbvdService: IccbvdService, public calculationService: CalculationService, private tiersService: TiersService, public dialog: MatDialog, private buildingService: BuildingService) { }
   ngOnInit() {
-    this.cardIndex = 0;
-    let devcard = new DevelopmentCard();
-    devcard.cardindex = 0;
-    devcard.building = {group: "", values: []};    
-    devcard.construction = {key: "", value: 0};
-    devcard.calculations = new Calculations();
-    devcard.constructScope = {name:"", percent: 0};
-    this.cards = [devcard];
-    this.selectedBuilding = {values:[]};
-    this.selectedConstruction = {value: 0};
-    this.scopes = [{name: 'New Construction', percent: 1}, {name: 'Level 1 Alteration', percent: 0.25}, {name: 'Level 2 Alteration', percent: 0.5}, {name: 'Level 3 Alteration', percent: 0.75}, {name: 'Addition', percent: 1}];
-    this.getIccbvd();
+    if (!this.buildingService.cards) {
+      this.buildingService.cardIndex = 0;
+      let devcard = new DevelopmentCard();
+      devcard.cardindex = 0;
+      devcard.building = {group: "", values: []};    
+      devcard.construction = {key: "", value: 0};
+      devcard.calculations = new Calculations();
+      devcard.constructScope = {name:"", percent: 0};
+      this.buildingService.cards = [devcard];
+      this.buildingService.selectedBuilding = {values:[]};
+      this.buildingService.selectedConstruction = {value: 0};
+      this.buildingService.scopes = [{name: 'New Construction', percent: 1}, {name: 'Level 1 Alteration', percent: 0.25}, {name: 'Level 2 Alteration', percent: 0.5}, {name: 'Level 3 Alteration', percent: 0.75}, {name: 'Addition', percent: 1}];
+  
+      this.getIccbvd();
+    }
+    
   }
 showHelp() {
   this.dialog.open(HelpDialogComponent);
@@ -61,9 +54,8 @@ showHelp() {
   }
   getIccbvd() {
     this.iccbvdService.getIccBvd().subscribe(
-      iccbvd => this.iccbvd = iccbvd,
+      iccbvd => this.buildingService.iccbvd = iccbvd,
       err => {
-        console.log(err);
       }
     );
   }
@@ -100,41 +92,39 @@ showHelp() {
         });
       }     
     }
-    console.log(types);
-    console.log(this.cards[this.cardIndex].construction.key)
     return types;
   }
 
   addCard() {
+    debugger;
     let devcard = new DevelopmentCard();
     devcard.building = {group: "", values: []};
     devcard.construction = {key: "", value: 0};
-    devcard.cardindex = this.cards.length;
+    devcard.cardindex = this.buildingService.cards.length;
     devcard.calculations = new Calculations();
-    this.cards.push(devcard);
-    this.cardIndex = devcard.cardindex;
+    this.buildingService.cards.push(devcard);
+    this.buildingService.cardIndex = devcard.cardindex;
   }
   removeCard(cards: Array<DevelopmentCard>, index: number) {
-    let card = cards[this.cardIndex];
-    debugger;
-    if (this.cardIndex === 0) {
+    let card = cards[this.buildingService.cardIndex];
+    if (this.buildingService.cardIndex === 0) {
       cards.shift();
-      this.cardIndex = 0;
+      this.buildingService.cardIndex = 0;
       cards.forEach(card => {
         card.cardindex -= 1;
       });
     } else {
       cards.splice(index, 1);
-      this.cardIndex -= 1;
+      this.buildingService.cardIndex -= 1;
     }
   }  
 
   getPreviousCard() {
-    this.cardIndex -= 1;
+    this.buildingService.cardIndex -= 1;
   }
 
   getNextCard() {
-    this.cardIndex += 1;
+    this.buildingService.cardIndex += 1;
   }
 
   buildingTypeChanged(card:DevelopmentCard) {
@@ -156,6 +146,8 @@ showHelp() {
       this.calcValuation(card.construction.value, card);
     }, 100);
   }
+
+
 }
 
 
