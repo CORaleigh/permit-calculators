@@ -6,7 +6,7 @@
   
     <mat-tab-group color="accent">
         <mat-tab [label]="category.category" *ngFor="let category of thoroughfare.categories">
-          Check all boxes next to the landuse(s) that apply to your project         
+          <div class="instructions">Check all boxes next to the landuse(s) that apply to your project</div>       
           <div *ngFor="let landuse of category.landuses">
             <mat-list>
               <mat-selection-list  >

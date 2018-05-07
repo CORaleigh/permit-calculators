@@ -34,3 +34,7 @@ mat-form-field, .mat-headline {
 .calculator-row {
     padding: 10px 10px 10px 10px;
 }
+
+.mat-headline {
+    padding: 10px 0 0 0;
+}
