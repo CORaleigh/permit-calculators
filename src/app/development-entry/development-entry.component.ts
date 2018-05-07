@@ -22,7 +22,7 @@ import { BuildingService} from '../building.service';
 export class DevelopmentEntryComponent implements OnInit {
   @Input() isResidential: boolean;
   @Output() isResidentialUpdated = new EventEmitter<boolean>();
-  constructor(private iccbvdService: IccbvdService, public calculationService: CalculationService, private tiersService: TiersService, public dialog: MatDialog, private buildingService: BuildingService) { }
+  constructor(private iccbvdService: IccbvdService, public calculationService: CalculationService, private tiersService: TiersService, public dialog: MatDialog, public buildingService: BuildingService) { }
   ngOnInit() {
     if (!this.buildingService.cards) {
       this.buildingService.cardIndex = 0;
