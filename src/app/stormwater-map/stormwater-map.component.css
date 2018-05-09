@@ -8,4 +8,5 @@
 .mat-dialog-content {
     max-width: none !important;
     width: 50vw !important;
+    min-height: 320px !important;
 }
