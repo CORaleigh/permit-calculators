@@ -31,6 +31,8 @@ import { ThoroughfareService } from './thoroughfare.service';
 import { CalculationService } from './calculation.service';
 import { BuildingService } from './building.service';
 import { ThoroughfarePipe } from './thoroughfare.pipe';
+import { StormwaterMapComponent } from './stormwater-map/stormwater-map.component';
+import { OpenspaceDialogComponent } from './openspace-dialog/openspace-dialog.component';
 
 
 @NgModule({
@@ -48,7 +50,9 @@ import { ThoroughfarePipe } from './thoroughfare.pipe';
     OpenspacePermitsComponent,
     ThoroughfarePermitsComponent,
     LandusePipe,
-    ThoroughfarePipe
+    ThoroughfarePipe,
+    StormwaterMapComponent,
+    OpenspaceDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -68,7 +72,7 @@ import { ThoroughfarePipe } from './thoroughfare.pipe';
      MatTabsModule,
      MatCheckboxModule,MatGridListModule
   ],
-  entryComponents: [SplashDialogComponent, HelpDialogComponent],
+  entryComponents: [SplashDialogComponent, HelpDialogComponent, StormwaterMapComponent, OpenspaceDialogComponent],
   providers: [SharedService, StormwaterService, OpenspaceService, ThoroughfareService, BuildingService, CalculationService],
   bootstrap: [AppComponent]
 })

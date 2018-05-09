@@ -4,19 +4,19 @@ import { Injectable } from '@angular/core';
 export class StormwaterService {
 
   constructor() { }
+  total: number = 0;
   fees: Array<any> = [
     {
       name: 'Stormwater Device Fee',
-      units: 'Construction Cost',
+      units: 'Construction cost of all stormwater devices',
       multiplier: 0.24,
       total: 0,
       url: 'https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/StormwaterReplacementFund.html',
-      selected: false,
-      note: '*combined total of all stormwater devices'
+      selected: false
     },
     {
       name: 'Land Disturbing Plan Review Fees',
-      units: 'Acres',
+      units: 'Disturbed acres',
       multiplier: 142,
       total: 0,
       url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',
@@ -24,7 +24,7 @@ export class StormwaterService {
     },     
     {
       name: 'Land Disturbing Permit Fees',
-      units: 'Acres',
+      units: 'Disturbed acres',
       multiplier: 286,
       total: 0,
       url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',      
@@ -32,7 +32,7 @@ export class StormwaterService {
     },    
     {
       name: 'Stormwater Control Permit',
-      units: 'Acres',
+      units: 'Disturbed acres',
       multiplier: 197,
       minimum: 194,
       url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',      
@@ -46,7 +46,8 @@ export class StormwaterService {
     falseValue: 0,
     trueValue: 197,
     url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',    
-    total: 0
+    total: 0,
+    map: true
   },      
   {
     name: 'Flood Study Required?',

@@ -5,8 +5,11 @@ import {
   ElementRef,
   HostListener
 } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
 import {SharedService} from '../shared.service';
 import {OpenspaceService} from '../openspace.service';
+import {OpenspaceDialogComponent} from '../openspace-dialog/openspace-dialog.component';
 import {
   loadModules
 } from 'esri-loader';
@@ -45,7 +48,7 @@ export class OpenspacePermitsComponent implements OnInit {
 
 
   ];
-  constructor(private sharedService:SharedService, public openspace:OpenspaceService) {}
+  constructor(private sharedService:SharedService, public openspace:OpenspaceService, public dialog:MatDialog) {}
 
   getTotal() {
     let total:Number = this.openspace.multi * this.openspace.zone.multi + this.openspace.single * this.openspace.zone.single;
@@ -57,7 +60,9 @@ export class OpenspacePermitsComponent implements OnInit {
   // unloadHandler(event) {
   //  localStorage.setItem('openspace', JSON.stringify(this.openspace));
   // }  
-
+  showDefinitions() {
+    this.dialog.open(OpenspaceDialogComponent);
+  }
   ngOnInit() {
     window.setTimeout(() => {
       if (this.openspace.zone) {

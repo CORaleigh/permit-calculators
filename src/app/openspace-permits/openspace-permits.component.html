@@ -24,12 +24,18 @@
 
         <input matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="# of Single-Family Dwelling Units"
           [(ngModel)]="openspace.single" name="single">
+          <mat-icon matSuffix aria-label="help icon" (click)="showDefinitions()">help_outline</mat-icon> 
+
       </mat-form-field>
+
       <mat-form-field class="full-width" color="accent">
 
         <input class="full-width" matInput type="number" min="0" max="9999999" matInput maxlength="7" placeholder="# of Mult-Family Dwelling Units"
           [(ngModel)]="openspace.multi" name="multi">
+          <mat-icon matSuffix aria-label="help icon" (click)="showDefinitions()">help_outline</mat-icon> 
+
       </mat-form-field>
+   
     </form>
   </mat-card-content>
   <mat-card-actions>

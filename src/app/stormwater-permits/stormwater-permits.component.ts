@@ -3,6 +3,9 @@ import { MatDialog } from '@angular/material';
 import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component'
 import {SharedService} from '../shared.service';
 import {StormwaterService} from '../stormwater.service';
+import {StormwaterMapComponent} from '../stormwater-map/stormwater-map.component';
+
+
 @Component({
   selector: 'app-stormwater-permits',
   templateUrl: './stormwater-permits.component.html',
@@ -13,13 +16,14 @@ export class StormwaterPermitsComponent implements OnInit {
   constructor(public dialog:MatDialog, public sharedService:SharedService, public stormwaterService:StormwaterService) { 
     
   }
-  
+
   cost: number =  0;
-  total: number = 0;
+
 
 
 
   ngOnInit(): void {
+    //this.loadMap();
     // window.setTimeout(() => {
     //    this.dialog.open(SplashDialogComponent);
  
@@ -82,20 +86,26 @@ export class StormwaterPermitsComponent implements OnInit {
    }
 
    getTotalFees () {
-     this.total = 0;
+     this.stormwaterService.total = 0;
      this.stormwaterService.fees.forEach(fee => {
       if (fee.selected) {
-        this.total += fee.total;
+        this.stormwaterService.total += fee.total;
       }
      });
      this.stormwaterService.checkBoxes.forEach(fee => {
        if (fee.selected) {
-         this.total += fee.total;
+         this.stormwaterService.total += fee.total;
        }
      });
-     this.sharedService.emitChange({total: this.total, calculator: 'stormwater'});
+     this.sharedService.emitChange({total: this.stormwaterService.total, calculator: 'stormwater'});
    }
 
+    
+
+    showMap(event) {
+      event.stopPropagation()
+      this.dialog.open(StormwaterMapComponent);
+    }
 
 
 }
