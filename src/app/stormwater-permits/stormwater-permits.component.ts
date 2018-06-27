@@ -144,8 +144,8 @@ export class StormwaterPermitsComponent implements OnInit {
    calculateTotal(event, fee) {
     if (event) {
       if (event.target.value) {
-        fee.cost = parseFloat(event.target.value);
-        console.log(fee.cost);
+        fee.cost = event.target.value;
+
       } else {
         fee.cost = null;
       }
@@ -153,7 +153,7 @@ export class StormwaterPermitsComponent implements OnInit {
 
     if (fee.cost && fee.selected && fee.multiplier && !fee.subfees) {
       if (fee.units === 'Disturbed acres (rounded to nearest 1/10)') {
-        fee.total = fee.multiplier * fee.cost.toFixed(1);
+        fee.total = fee.multiplier * parseFloat((parseFloat(fee.cost).toFixed(1)));
       } else if (fee.multiplier) {
         fee.total = fee.multiplier * fee.cost;        
       }
@@ -167,7 +167,7 @@ export class StormwaterPermitsComponent implements OnInit {
         fee.total = 0
         fee.subfees.forEach(subfee => {
           if (fee.units === 'Disturbed acres (rounded to nearest 1/10)') {
-            subfee.total = subfee.multiplier * fee.cost.toFixed(1);
+            subfee.total = subfee.multiplier * parseFloat((parseFloat(fee.cost).toFixed(1)));
           } else if (subfee.multiplier) {
             subfee.total = fee.multiplier * fee.cost;        
           }       
