@@ -1,5 +1,5 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
-import { Observable }        from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { IccbvdService } from '../iccbvd.service';
 import { Iccbvd } from '../iccbvd';
 import { CalculationService } from '../calculation.service';
@@ -35,6 +35,7 @@ export class DevelopmentEntryComponent implements OnInit {
       this.buildingService.cards = [devcard];
       this.buildingService.selectedBuilding = {values:[]};
       this.buildingService.selectedConstruction = {value: 0};
+      //remained same for FY19
       this.buildingService.scopes = [{name: 'New Construction', percent: 1}, {name: 'Level 1 Alteration', percent: 0.25}, {name: 'Level 2 Alteration', percent: 0.5}, {name: 'Level 3 Alteration', percent: 0.75}, {name: 'Addition', percent: 1}];
   
       this.getIccbvd();
@@ -96,7 +97,6 @@ showHelp() {
   }
 
   addCard() {
-    debugger;
     let devcard = new DevelopmentCard();
     devcard.building = {group: "", values: []};
     devcard.construction = {key: "", value: 0};

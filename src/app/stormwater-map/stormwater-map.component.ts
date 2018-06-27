@@ -29,6 +29,7 @@ export class StormwaterMapComponent implements OnInit {
           id: "6184901db24d4ac48eaa70ea721e5eb2"
         }
       });
+      console.log(webmap)
       this.mapView = new MapView({
         map: webmap,
         container: this.mapViewEl.nativeElement
@@ -121,7 +122,7 @@ export class StormwaterMapComponent implements OnInit {
 
       this.search.on('search-complete', event => {
         //this.located.emit(event.results[0]);
-debugger;
+
         let layer = this.mapView.map.allLayers.find(function (layer) {
           return layer.title === "Floodplain";
         });

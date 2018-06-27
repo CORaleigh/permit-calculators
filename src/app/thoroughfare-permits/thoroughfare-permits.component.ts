@@ -6,7 +6,7 @@ import {ThoroughfarePipe} from '../thoroughfare.pipe';
 import {TFareCategory} from '../tFareCategory';
 import { TFareRecord } from '../tFareRecord';
 import { Landuse } from '../landuse';
-import { Threshold } from '../Threshold';
+import { Threshold } from '../threshold';
 @Component({
   selector: 'app-thoroughfare-permits',
   templateUrl: './thoroughfare-permits.component.html',
@@ -25,11 +25,14 @@ export class ThoroughfarePermitsComponent implements OnInit {
   }
 
   landuseSelected(event, landuse:Landuse) {
-    landuse.selected = event.selected;
-    if (!event.selected) {
+    landuse.selected = event.option.selected;
+    if (!event.option.selected) {
       landuse.total = null;
     } else if (!landuse.thresholds) {
       landuse.total = landuse.value * landuse.per;
+      if (landuse.measure === 'area') {
+        landuse.total = landuse.value/1000 * landuse.per;
+      }
     } else {
       this.totalThresholds(landuse);
     }
@@ -39,8 +42,12 @@ export class ThoroughfarePermitsComponent implements OnInit {
   valueChanged(landuse:Landuse, threshold:Threshold, event) {
     if (!threshold) {
       landuse.total = event * landuse.per;
+      if (landuse.measure === 'area') {
+        landuse.total = landuse.value/1000 * landuse.per;
+      }          
     } else {
       threshold.total = event * threshold.per;
+  
       this.totalThresholds(landuse);
     }
     this.getTotal();

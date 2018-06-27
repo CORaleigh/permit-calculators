@@ -1,9 +1,8 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import {Router} from "@angular/router";
 import { MatDialog } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
+import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs/Subject';
 import {SharedService} from '../shared.service';
 
 import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component';
@@ -78,6 +77,7 @@ export class MainComponent implements OnInit {
   }
 
   go(event) {
+    
     this.selectedCalculator = event.value;
     this.router.navigate([event.value]);
 

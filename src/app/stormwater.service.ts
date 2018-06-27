@@ -7,34 +7,55 @@ export class StormwaterService {
   total: number = 0;
   fees: Array<any> = [
     {
-      name: 'Stormwater Device Fee',
+      name: 'Stormwater Facility Replacement Fee',
       units: 'Construction cost of all stormwater devices',
       multiplier: 0.24,
       total: 0,
+      surety: {
+        name: 'Stormwater Control Measure (SCM) Surety',
+        multiplier: 1.25,
+        url: 'https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/StormwaterBMPSurety.html'
+      },      
       url: 'https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/StormwaterReplacementFund.html',
       selected: false
     },
     {
-      name: 'Land Disturbing Plan Review Fees',
-      units: 'Disturbed acres',
-      multiplier: 142,
+      name: 'Land Disturbing Fees',
+      units: 'Disturbed acres (rounded to nearest 1/10)',
       total: 0,
       url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',
-      selected: false
+      selected: false,
+      surety: {
+        name: 'Sediment and Erosion Control Surety',
+        multiplier: 1000,
+        url: 'https://www.raleighnc.gov/business/content/PlanDev/Articles/DevServ/SedimentErosionControlSurety.html'
+      },
+      subfees: [
+        {      
+          name: 'Land Disturbing Plan Review Fees',
+          multiplier: 145,
+          total: 0
+        },        
+        {      
+          name: 'Land Disturbing Permit Fees',
+          multiplier: 292,
+          total: 0
+        }           
+      ]
     },     
-    {
-      name: 'Land Disturbing Permit Fees',
-      units: 'Disturbed acres',
-      multiplier: 286,
-      total: 0,
-      url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',      
-      selected: false
-    },    
+    // {
+    //   name: 'Land Disturbing Permit Fees',
+    //   units: 'Disturbed acres',
+    //   multiplier: 292,
+    //   total: 0,
+    //   url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',      
+    //   selected: false
+    // },    
     {
       name: 'Stormwater Control Permit',
-      units: 'Disturbed acres',
-      multiplier: 197,
-      minimum: 194,
+      units: 'Disturbed acres (rounded to nearest 1/10)',
+      multiplier: 201,
+      minimum: 198,
       url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',      
       total: 0
     },  
@@ -44,7 +65,7 @@ export class StormwaterService {
   {
     name: 'Flood Permit Required?',
     falseValue: 0,
-    trueValue: 197,
+    trueValue: 201,
     url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',    
     total: 0,
     map: true
@@ -52,20 +73,20 @@ export class StormwaterService {
   {
     name: 'Flood Study Required?',
     falseValue: 0,
-    trueValue: 1191,
+    trueValue: 1216,
     url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',    
     total: 0
   },    
   {
     name: 'Watercourse Buffer Permit Required?',
-    trueValue: 176,
+    trueValue: 182,
     falseValue: 0,
     url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',    
     total: 0
   },     
   {
     name: 'Watershed Permit Required?',
-    trueValue: 176,
+    trueValue: 182,
     falseValue: 0,
     url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',    
     total: 0

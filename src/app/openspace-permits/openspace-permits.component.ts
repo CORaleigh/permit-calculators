@@ -27,23 +27,23 @@ export class OpenspacePermitsComponent implements OnInit {
 
   zones: Array < any > = [{
       zone: 1,
-      single: 1385,
-      multi: 1031
+      single: 1482,
+      multi: 1075
     },
     {
       zone: 2,
-      single: 1424,
-      multi: 1031
+      single: 1482,
+      multi: 1075
     },
     {
       zone: 3,
-      single: 1165,
-      multi: 847
+      single: 1247,
+      multi: 907
     },
     {
       zone: 4,
-      single: 1170,
-      multi: 859
+      single: 1252,
+      multi: 920
     }
 
 

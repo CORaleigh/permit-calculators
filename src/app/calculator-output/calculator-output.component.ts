@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, DoCheck, KeyValueDiffers, OnDestroy, HostListener} from '@angular/core';
 import { DevelopmentCard } from '../development-card';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';  
 import { Calculations } from '../calculations';
 import { TiersService } from '../tiers.service';
@@ -39,12 +39,13 @@ export class CalculatorOutputComponent implements OnInit, DoCheck {
 
     if (!this.calculationService.calculations) {
       this.calculationService.calculations = new Calculations();
+      //modified for FY19
       this.calculationService.calculations.valuation = 0;
       this.calculationService.calculations.building = new Fee("Building", 0, 0, 0.0026);
-      this.calculationService.calculations.electrical = new Fee("Electrical", 0, 1.01, 0.67);
-      this.calculationService.calculations.review = new Fee("Plan Review", 0, 0.55, 0.72);
-      this.calculationService.calculations.plumbing = new Fee("Plumbing", 0, 0.55, 0.22);
-      this.calculationService.calculations.mechanical = new Fee("Mechanical", 0, 0.78, 0.31); 
+      this.calculationService.calculations.electrical = new Fee("Electrical", 0, 1.00, 0.67);
+      this.calculationService.calculations.review = new Fee("Plan Review", 0, 0.51, 0.72);
+      this.calculationService.calculations.plumbing = new Fee("Plumbing", 0, 0.56, 0.22);
+      this.calculationService.calculations.mechanical = new Fee("Mechanical", 0, 0.77, 0.31); 
     }
     if (!this.tiers) {
       this.getTiers(); 

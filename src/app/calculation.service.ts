@@ -8,13 +8,14 @@ import { TiersService } from './tiers.service';
 export class CalculationService {
   calculations: Calculations;
   valuation: number;
-  minFee: number = 106;
+  //modified for FY19
+  minFee: number = 108;
   tiersService:TiersService;
     constructor() { }
 
   calcValuation(card: DevelopmentCard): Promise<number>{
-    debugger;
-    let meansLocationFactor = 0.8381;//0.838137101;
+    
+    let meansLocationFactor = 0.8381;
     let valuation = 0;
     if (card.constructScope && card.squareFeet && card.construction) {
       valuation = meansLocationFactor * card.constructScope.percent * card.squareFeet * card.construction.value;

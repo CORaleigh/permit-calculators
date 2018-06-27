@@ -3,57 +3,79 @@
     <mat-card-title>Stormwater Fee Calculator</mat-card-title>
   </mat-card-header>
   <mat-card-content>
-    Check all boxes that apply to your project
+
+
+
+    Check all boxes that apply to your project    
     <form>
       <div *ngFor="let fee of stormwaterService.fees">
         <mat-list>
-          <mat-selection-list>
-            <mat-list-option checkboxPosition="before" (selectionChange)="listCheckBoxChanged($event, fee)" [selected]="fee.selected">
+          <mat-selection-list (selectionChange)="listCheckBoxChanged($event, fee)">
+            <mat-list-option checkboxPosition="before"  [selected]="fee.selected">
               <div class="feeCheckLabel">
                 <div class="feeLabel">{{fee.name}}
                   <a mat-icon-button  *ngIf="fee.url" [href]="fee.url" target="_blank" (click)="$event.stopPropagation()">
                     <mat-icon>help_outline</mat-icon>
                   </a>
                 </div>
-                <div [ngStyle]="{'padding-top':fee.url ? '10px' : '' }" class="cost">{{fee.total| currency}}</div>
+                <div [ngStyle]="{'padding-top':fee.url ? '10px' : '' }" class="cost">{{fee.total| currency:'USD':'symbol':'1.0-0'}}</div>
               </div>
             </mat-list-option>
           </mat-selection-list>
 
           <mat-list-item *ngIf="fee.selected">
-            <mat-form-field *ngIf="fee.multiplier" matLine color="accent">
+            <mat-form-field matLine color="accent">
               <span *ngIf="fee.units === 'Construction Cost'" matPrefix>$&nbsp;</span>
-              <input matInput type="number" min="0" max="9999999" matInput maxlength="7" [placeholder]="fee.units" [value]="fee.cost" name="cost"
+              <input matInput type="number"  min="0" max="9999999" matInput maxlength="7" [placeholder]="fee.units" [value]="fee.cost | number" name="cost"
                 (input)="calculateTotal($event, fee)">
 
             </mat-form-field>
-            <div matLine *ngIf="fee.note">{{fee.note}}</div>
-            <div matLine *ngIf="fee.minimum">*minimum fee of {{fee.minimum | currency}}</div>
-            <div matLine *ngIf="fee.units === 'Acres'">*rounded to nearest 1/10 acre</div>
+         
+            <div class="note" matLine *ngIf="fee.note">{{fee.note}}</div>
+            <div class="note" matLine *ngIf="fee.minimum && fee.total <= fee.minimum">*minimum fee of {{fee.minimum | currency:'USD':'symbol':'1.0-0'}}</div>
           </mat-list-item>
+          <div *ngIf="fee.selected && fee.subfees">
+            <mat-list-item *ngFor="let subfee of fee.subfees">
+              <div class="feeCheckLabel subfee">
+                <div class="feeLabel">{{subfee.name}}
+ 
+                </div>
+                <div [ngStyle]="{'padding-top':fee.url ? '10px' : '' }" class="cost">{{subfee.total| currency:'USD':'symbol':'1.0-0'}}</div>
+              </div>
+            </mat-list-item>
+
+          </div>
+          <mat-list-item *ngIf="fee.surety && fee.selected && fee.cost"  class="note surety" matLine>*{{fee.surety.multiplier * fee.cost| currency:'USD':'symbol':'1.0-0'}} <a [href]="fee.surety.url" target="_blank">{{fee.surety.name}}</a> (not included in total)</mat-list-item>   
 
         </mat-list>
       </div>
-      <mat-selection-list>
-        <mat-list-option checkboxPosition="before" *ngFor="let fee of stormwaterService.checkBoxes" (selectionChange)="checkboxChanged($event, fee)" [selected]="fee.selected">
+      <div id="searchDiv">
+        <div class="mat-caption">Enter site address to see if flood or watershed permit is required</div>
+        <div id="searchView"></div>
+        <div #mapView></div>    
+      </div>
+      <div  *ngFor="let fee of stormwaterService.checkBoxes">
+      <mat-selection-list (selectionChange)="checkboxChanged($event, fee)">
+        <mat-list-option checkboxPosition="before" [selected]="fee.selected">
           <div class="feeCheckLabel">
             <div class="feeLabel">{{fee.name}}
-              <button *ngIf="fee.map" mat-icon-button (click)="showMap($event)">
+              <!-- <button *ngIf="fee.map" mat-icon-button (click)="showMap($event)">
                   <mat-icon aria-label="map icon">map</mat-icon>
-                </button>
+                </button> -->
               <a mat-icon-button *ngIf="fee.url" [href]="fee.url" target="_blank" (click)="$event.stopPropagation()">
                 <mat-icon>help_outline</mat-icon>
               </a>
             </div>
-            <div [ngStyle]="{'padding-top':fee.url ? '10px' : '' }" class="cost">{{fee.total| currency}}</div>
+            <div [ngStyle]="{'padding-top':fee.url ? '10px' : '' }" class="cost">{{fee.total| currency:'USD':'symbol':'1.0-0'}}</div>
           </div>
         </mat-list-option>
       </mat-selection-list>
+    </div>
     </form>
 
   </mat-card-content>
   <mat-card-actions>
-    <mat-card-subtitle>Total Fee: {{stormwaterService.total|currency}}</mat-card-subtitle>
+    <mat-card-subtitle>Total Fee: {{stormwaterService.total|currency:'USD':'symbol':'1.0-0'}}</mat-card-subtitle>
   </mat-card-actions>
 
 </mat-card>

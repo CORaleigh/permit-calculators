@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule, MatSelectModule, MatDialogModule, MatCardModule, MatListModule, MatToolbarModule, MatIcon, MatIconModule, MatInputModule, MatTabsModule, MatCheckboxModule, MatGridListModule} from '@angular/material';
+import { MatButtonModule, MatSelectModule, MatDialogModule, MatCardModule, MatListModule, MatToolbarModule, MatIcon, MatIconModule, MatInputModule, MatTabsModule, MatCheckboxModule, MatGridListModule, MatSnackBarModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { Router } from '@angular/router';
 import { AppRoutingModule }        from './app-routing.module';
@@ -70,7 +70,7 @@ import { OpenspaceDialogComponent } from './openspace-dialog/openspace-dialog.co
      FlexLayoutModule,
      AppRoutingModule,
      MatTabsModule,
-     MatCheckboxModule,MatGridListModule
+     MatCheckboxModule,MatGridListModule, MatSnackBarModule
   ],
   entryComponents: [SplashDialogComponent, HelpDialogComponent, StormwaterMapComponent, OpenspaceDialogComponent],
   providers: [SharedService, StormwaterService, OpenspaceService, ThoroughfareService, BuildingService, CalculationService],

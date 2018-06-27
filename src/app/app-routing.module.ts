@@ -5,7 +5,6 @@ import { BuildingPermitsComponent }  from './building-permits/building-permits.c
 import { StormwaterPermitsComponent } from './stormwater-permits/stormwater-permits.component';
 import { OpenspacePermitsComponent } from './openspace-permits/openspace-permits.component';
 import { ThoroughfarePermitsComponent } from './thoroughfare-permits/thoroughfare-permits.component';
-import { MainComponent }    from './main/main.component';
 
 
 const appRoutes: Routes = [

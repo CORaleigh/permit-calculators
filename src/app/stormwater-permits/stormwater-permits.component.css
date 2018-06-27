@@ -1,8 +1,18 @@
-
+@import url('https://js.arcgis.com/4.7/esri/css/main.css');
+#searchView {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+#searchDiv {
+  padding-left: 16px;
+}
 mat-toolbar-row {
   height: 64px;
   width: 100%;
   white-space: normal !important;
+}
+.esri-view {
+  width: 1px;
+  height: 1px;
 }
 
 img {
@@ -60,9 +70,23 @@ mat-card {
 .feeCheckLabel {
   justify-content: space-between;
   display: flex;
+  width: 100%;
 }
 
 .links {
   justify-content: center;
   display: flex;
+}
+.subfee {
+  margin-left: 2em;
+  font-size: 14px;
+}
+
+.note {
+  font-size: 12px !important;
+}
+
+.surety a {
+  margin-left: 2px;
+  margin-right: 2px;
 }
