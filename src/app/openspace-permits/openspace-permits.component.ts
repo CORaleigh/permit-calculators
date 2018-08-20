@@ -56,10 +56,10 @@ export class OpenspacePermitsComponent implements OnInit {
     return total;
   }
   
-  // @HostListener('window:unload', ['$event'])
-  // unloadHandler(event) {
-  //  localStorage.setItem('openspace', JSON.stringify(this.openspace));
-  // }  
+  @HostListener('window:unload', ['$event'])
+  unloadHandler(event) {
+   localStorage.setItem('openspace', JSON.stringify(this.openspace));
+  }  
   showDefinitions() {
     this.dialog.open(OpenspaceDialogComponent);
   }
@@ -69,10 +69,10 @@ export class OpenspacePermitsComponent implements OnInit {
         this.selectedZone = this.openspace.zone.zone;
       }
     }, 500);
-    // if (localStorage.getItem('openspace')) {
+    if (localStorage.getItem('openspace')) {
     
-    //   this.openspace = JSON.parse(localStorage.getItem('openspace'));
-    // }
+      this.openspace = JSON.parse(localStorage.getItem('openspace'));
+    }
 
     return loadModules(['esri/WebMap', 'esri/views/MapView', 'esri/widgets/Search', 'esri/layers/FeatureLayer', 'esri/tasks/support/Query', "esri/geometry/geometryEngine", "esri/layers/GraphicsLayer", "esri/Graphic"])
       .then(([WebMap, MapView, Search, FeatureLayer, Query, geometryEngine, GraphicsLayer, Graphic]) => {

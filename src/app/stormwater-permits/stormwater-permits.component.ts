@@ -152,7 +152,7 @@ export class StormwaterPermitsComponent implements OnInit {
     }
 
     if (fee.cost && fee.selected && fee.multiplier && !fee.subfees) {
-      if (fee.units === 'Disturbed acres (rounded to nearest 1/10)') {
+      if (fee.units === 'acres') {
         fee.total = fee.multiplier * parseFloat((parseFloat(fee.cost).toFixed(1)));
       } else if (fee.multiplier) {
         fee.total = fee.multiplier * fee.cost;        
@@ -166,7 +166,7 @@ export class StormwaterPermitsComponent implements OnInit {
     } else if (fee.cost && fee.selected && fee.subfees) {
         fee.total = 0
         fee.subfees.forEach(subfee => {
-          if (fee.units === 'Disturbed acres (rounded to nearest 1/10)') {
+          if (fee.units === 'acres') {
             subfee.total = subfee.multiplier * parseFloat((parseFloat(fee.cost).toFixed(1)));
           } else if (subfee.multiplier) {
             subfee.total = fee.multiplier * fee.cost;        

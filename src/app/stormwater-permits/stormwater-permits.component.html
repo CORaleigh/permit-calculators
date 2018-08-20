@@ -25,8 +25,8 @@
 
           <mat-list-item *ngIf="fee.selected">
             <mat-form-field matLine color="accent">
-              <span *ngIf="fee.units === 'Construction Cost'" matPrefix>$&nbsp;</span>
-              <input matInput type="number"  min="0" max="9999999" matInput maxlength="7" [placeholder]="fee.units" [value]="fee.cost" name="cost"
+              <span *ngIf="fee.units === 'dollars'" matPrefix>$&nbsp;</span>
+              <input matInput type="number"  min="0" max="9999999" matInput maxlength="7" [placeholder]="fee.label" [value]="fee.cost" name="cost"
                 (input)="calculateTotal($event, fee)">
 
             </mat-form-field>

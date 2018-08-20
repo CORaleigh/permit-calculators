@@ -30,13 +30,13 @@ export class ThoroughfareService {
       new Landuse("Commercial", "Mini warehousing", "area", "Gross Floor Area (sq. ft.)", false, null, null, 424)
     ]),
     new TFareCategory("Public & Institutional", [
-      new Landuse("Public & Institutional", "Churches/Synagogues", "unit", "Square Feet", false, null, null, 1166),
+      new Landuse("Public & Institutional", "Churches/Synagogues", "area", "Square Feet", false, null, null, 1166),
       new Landuse("Public & Institutional", "Elementary, Middle and High Schools", "area", "Gross Floor Area (sq. ft.)", false, null, null, 425),
-      new Landuse("Public & Institutional", "College/University", "unit", "Gross Floor Area (sq. ft.)", false, null, null, 4651),
+      new Landuse("Public & Institutional", "College/University", "area", "Gross Floor Area (sq. ft.)", false, null, null, 4651),
       new Landuse("Public & Institutional", "Daycare facilities", "area", "Gross Floor Area (sq. ft.)", false, null, null, 3217),
       new Landuse("Public & Institutional", "Hospitals/medical care facilities", "area", "Gross Floor Area (sq. ft.)", false, null, null, 3690),
       new Landuse("Public & Institutional", "Nursing Home/Group Quarters", "area", "Gross Floor Area (sq. ft.)", false, null, null, 1038),
-      new Landuse("Public & Institutional", "Cemetery", "area", "Acres", false, null, null, 801),
+      new Landuse("Public & Institutional", "Cemetery", "unit", "Acres", false, null, null, 801),
       new Landuse("Public & Institutional", "Passenger Transportation facility", "area", "Gross Floor Area (sq. ft.)", false, null, null, 840),
       new Landuse("Public & Institutional", "Emergency Service facility", "area", "Gross Floor Area (sq. ft.)", false, null, null, 840)
     ]),     

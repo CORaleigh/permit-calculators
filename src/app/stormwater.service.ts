@@ -8,7 +8,8 @@ export class StormwaterService {
   fees: Array<any> = [
     {
       name: 'Stormwater Facility Replacement Fee',
-      units: 'Construction cost of all stormwater devices',
+      label: 'Construction cost of all stormwater devices',
+      units: 'dollars',
       multiplier: 0.24,
       total: 0,
       surety: {
@@ -21,7 +22,8 @@ export class StormwaterService {
     },
     {
       name: 'Land Disturbing Fees',
-      units: 'Disturbed acres (rounded to nearest 1/10)',
+      label: 'Disturbed acres (rounded to nearest 1/10)',
+      units: 'acres',
       total: 0,
       url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',
       selected: false,
@@ -53,7 +55,8 @@ export class StormwaterService {
     // },    
     {
       name: 'Stormwater Control Permit',
-      units: 'Disturbed acres (rounded to nearest 1/10)',
+      label: 'Property or project acres (rounded to nearest 1/10)',
+      units: 'acres',
       multiplier: 201,
       minimum: 198,
       url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',      
