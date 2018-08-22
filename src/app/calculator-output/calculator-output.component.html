@@ -76,7 +76,7 @@
           <mat-list-item class="total">
               <h3 mat-line>Total Permit</h3>
               <p mat-line *ngIf="calculationService.calculations.valuation > 0">
-                  <strong>{{getTotal() | currency:'USD':'symbol':'1.0-0'}}</strong>
+                  <strong>{{calculationService.getTotal() | currency:'USD':'symbol':'1.0-0'}}</strong>
               </p>
               <p mat-line *ngIf="calculationService.calculations.valuation === 0">
                   --

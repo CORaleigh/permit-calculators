@@ -9,20 +9,23 @@
       </mat-toolbar>
       <div class="dark-class calculator-row">
           <mat-form-field>
-              <mat-select placeholder="Select Calculator" (selectionChange)="go($event)" [value]="selectedCalculator" >
-                <mat-option *ngFor="let calculator of calculators" [value]="calculator.route">
+              <mat-select placeholder="Select Calculator" (selectionChange)="go($event)" [value]="sharedService.selectedCalculator" >
+                <mat-option *ngFor="let calculator of sharedService.calculators" [value]="calculator.route">
                   {{ calculator.label }}
                 </mat-option>
               </mat-select>
             </mat-form-field> 
-            
+            <div class="summary" *ngIf="sharedService.selectedCalculator">
+                <button mat-raised-button color="primary" (click)="goToSummary()">SUMMARY</button>
+
+            </div>
       </div>
 
         <!-- <h1 class="mat-title">Permit Fee Calculators</h1>
         <div class="button-row" *ngFor="let calculator of calculators">
             <button mat-raised-button color="primary" [routerLink]="calculator.route">{{calculator.label}}</button>
         </div> -->
-        <h1 class="mat-headline">Total Fees: {{total | currency:'USD':'symbol':'1.0-0'}}</h1>
+            <h1 class="mat-headline">Total Fees: {{total | currency:'USD':'symbol':'1.0-0'}}</h1>
 
         <router-outlet (onTotal)="onTotal($event)"></router-outlet>
 

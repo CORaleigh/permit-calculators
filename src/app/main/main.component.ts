@@ -1,11 +1,12 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import {Router} from "@angular/router";
-import { MatDialog } from '@angular/material';
+import { MatDialog, MatIconRegistry } from '@angular/material';
 import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {SharedService} from '../shared.service';
 
 import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component';
+import { DomSanitizer } from '@angular/platform-browser';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -13,31 +14,19 @@ import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component'
 })
 
 export class MainComponent implements OnInit {
-  calculators: Array<any> = [
-    {
-    label: "Building Permit Fees",
-    route: "building"
-    }, {
-      label: "Stormwater Fees",
-      route: "stormwater"
-    }
-    , {
-      label: "Open Space Fees",
-      route: "openspace"
-    }, {
-      label: "Thoroughfare Fees",
-      route: "thoroughfare"
-    }
 
-  ];
   total:Number = 0;
   fees:Array<any> = [];
-  selectedCalculator:string = null;
+
+
+
+ 
   constructor(private router: Router, public dialog:MatDialog, private sharedService: SharedService) { 
-    if (localStorage.getItem('total')) {
-      this
-    }
-    sharedService.changeEmitted$.subscribe(
+                
+    // if (localStorage.getItem('total')) {
+    //   this
+    // }
+    this.sharedService.changeEmitted$.subscribe(
       fee => {
         let matches = this.fees.filter(f => {
           return fee.calculator === f.calculator;
@@ -66,21 +55,26 @@ export class MainComponent implements OnInit {
   ngOnInit() {
     window.setTimeout(() => {
       this.dialog.open(SplashDialogComponent);
-      this.selectedCalculator = this.router.url.replace('/', '');
+      this.sharedService.selectedCalculator = this.router.url.replace('/', '');
       // if (localStorage.getItem('feeTotal')) {
       //   this.fees = JSON.parse(localStorage.getItem('feeTotal'));
       //   this.getTotal();
       // }
 
     }, 500);
-
   }
+
 
   go(event) {
     
-    this.selectedCalculator = event.value;
+    this.sharedService.selectedCalculator = event.value;
     this.router.navigate([event.value]);
 
+  }
+
+  goToSummary() {
+    this.router.navigate(['summary']);
+    this.sharedService.selectedCalculator = null;
   }
 
   onTotal(event) {

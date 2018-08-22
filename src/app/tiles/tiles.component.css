@@ -1,0 +1,22 @@
+
+
+mat-grid-tile-footer {
+    text-align: center
+}
+
+
+mat-icon {
+    color: white;
+    height: 100px;
+    width: 100px;
+}
+
+.gridList {
+    height: 300px;
+    margin-left: 1em;
+    margin-right: 1em;
+}
+
+mat-grid-tile {
+    cursor: pointer;
+}

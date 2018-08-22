@@ -1,0 +1,164 @@
+<mat-tab-group color="accent">
+    <mat-tab label="Building">
+        <mat-list>
+            <mat-list-item *ngIf="!calculationService.calculations">
+              No data has been entered
+            </mat-list-item>
+            <mat-list-item *ngIf="calculationService.calculations">
+                <h3 mat-line>Valuation</h3>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    {{calculationService.calculations.valuation | currency:'USD':'symbol':'1.0-0'}}
+                </p>
+                <p mat-line *ngIf="calculationService.calculations.valuation === 0">
+                    --
+                </p>                
+            </mat-list-item>
+            <mat-list-item *ngIf="calculationService.calculations">
+                <h3 mat-line>Building Permit</h3>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    {{calculationService.calculations.building.value + calculationService.calculations.building.tech | currency:'USD':'symbol':'1.0-0'}}
+                </p>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    <small><em>({{calculationService.calculations.building.value | currency:'USD':'symbol':'1.0-0'}} + {{calculationService.calculations.building.tech | currency:'USD':'symbol':'1.0-0'}} Technology Fee)</em></small>
+                </p>                     
+                <p mat-line *ngIf="calculationService.calculations.valuation === 0">
+                    --
+                </p>                   
+            </mat-list-item>
+            <mat-list-item *ngIf="calculationService.calculations">
+                <h3 mat-line>Electrical Permit</h3>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    {{calculationService.calculations.electrical.value + calculationService.calculations.electrical.tech | currency:'USD':'symbol':'1.0-0'}}
+                </p>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    <small><em>({{calculationService.calculations.electrical.value | currency:'USD':'symbol':'1.0-0'}} + {{calculationService.calculations.electrical.tech | currency:'USD':'symbol':'1.0-0'}} Technology Fee)</em></small>
+                </p>                        
+                <p mat-line *ngIf="calculationService.calculations.valuation === 0">
+                    --
+                </p>                   
+            </mat-list-item>
+            <mat-list-item *ngIf="calculationService.calculations">
+                <h3 mat-line>Mechanical Permit</h3>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    {{calculationService.calculations.mechanical.value + calculationService.calculations.mechanical.tech | currency:'USD':'symbol':'1.0-0'}}
+                </p>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    <small><em>({{calculationService.calculations.mechanical.value | currency:'USD':'symbol':'1.0-0'}} + {{calculationService.calculations.mechanical.tech | currency:'USD':'symbol':'1.0-0'}} Technology Fee)</em></small>
+                </p>                
+                <p mat-line *ngIf="calculationService.calculations.valuation === 0">
+                    --
+                </p>                   
+            </mat-list-item>            
+            <mat-list-item *ngIf="calculationService.calculations">
+                <h3 mat-line>Plumbing Permit</h3>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    {{calculationService.calculations.plumbing.value + calculationService.calculations.plumbing.tech | currency:'USD':'symbol':'1.0-0'}}
+                </p>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    <small><em>({{calculationService.calculations.plumbing.value | currency:'USD':'symbol':'1.0-0'}} + {{calculationService.calculations.plumbing.tech | currency:'USD':'symbol':'1.0-0'}} Technology Fee)</em></small>
+                </p>                     
+                <p mat-line *ngIf="calculationService.calculations.valuation === 0">
+                    --
+                </p>                   
+            </mat-list-item>
+            <mat-list-item *ngIf="calculationService.calculations">
+                <h3 mat-line>Plan Review Fee</h3>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    {{calculationService.calculations.review.value + calculationService.calculations.review.tech | currency:'USD':'symbol':'1.0-0'}}
+                </p>
+                <p mat-line *ngIf="calculationService.calculations.valuation > 0">
+                    <small><em>({{calculationService.calculations.review.value | currency:'USD':'symbol':'1.0-0'}} + {{calculationService.calculations.review.tech | currency:'USD':'symbol':'1.0-0'}} Technology Fee)</em></small>
+                </p>                     
+                <p mat-line *ngIf="calculationService.calculations.valuation === 0">
+                    --
+                </p>                   
+            </mat-list-item>            
+          
+          </mat-list>
+          <mat-list-item *ngIf="calculationService.calculations">
+              <h2 matLine>Total: {{calculationService.getTotal()  | currency:'USD':'symbol':'1.0-0'}}</h2> 
+          </mat-list-item>              
+    </mat-tab>
+    <mat-tab label="Stormwater">
+        <mat-list>
+            <mat-list-item *ngIf="!showStormwater()">
+                No data has been entered        
+            </mat-list-item>          
+            <div  *ngFor="let fee of stormwater.fees">
+                <mat-list-item *ngIf="fee.total  > 0">
+                    <h3 mat-line>{{fee.name}}</h3>
+                    <p mat-line>
+                        {{fee.total | currency:'USD':'symbol':'1.0-0'}}
+                    </p>            
+                </mat-list-item>
+            </div>
+
+              <div *ngFor="let cb of stormwater.checkBoxes">
+                <mat-list-item *ngIf="cb.total  > 0">                
+                  <h3 mat-line>{{cb.name}}</h3>
+                  <p mat-line>
+                      {{cb.total | currency:'USD':'symbol':'1.0-0'}}
+                  </p>         
+                </mat-list-item>
+              </div>
+            </mat-list>
+            <mat-list-item *ngIf="stormwater.total">
+                <h2 matLine>Total: {{stormwater.total | currency:'USD':'symbol':'1.0-0'}}</h2> 
+            </mat-list-item>    
+    </mat-tab>    
+    <mat-tab label="Open Space">
+        <mat-list>
+            <mat-list-item *ngIf="(!openspace.single && !openspace.multi) || !openspace.zone">
+                No data has been entered
+            </mat-list-item>          
+            <mat-list-item *ngIf="openspace.single">
+                <h3 mat-line>Single Family</h3>
+                <p mat-line *ngIf="openspace.single  > 0">
+                    {{openspace.single | currency:'USD':'symbol':'1.0-0'}}
+                </p>              
+            </mat-list-item>
+            <mat-list-item *ngIf="openspace.multi">
+              <h3 mat-line>Multi-Family</h3>
+              <p mat-line>
+                  {{openspace.multi | currency:'USD':'symbol':'1.0-0'}}
+              </p>              
+            </mat-list-item>
+            
+          </mat-list>
+          <mat-list-item *ngIf="openspace.zone && (openspace.multi || openspace.single)">
+              <h2 matLine>Total: {{openspace.getTotal() | currency:'USD':'symbol':'1.0-0'}}</h2> 
+          </mat-list-item>              
+    </mat-tab>  
+    <mat-tab label="Thoroughfare">
+        <div *ngFor="let category of thoroughfare.categories; let i = index">
+            <h2 mat-line>{{category.category}}</h2>
+            <mat-list *ngIf="checkThoroughfareCategories(i)">
+              <div *ngFor="let landuse of category.landuses">
+                <mat-list-item *ngIf="landuse.total">
+                    <h3 mat-line>{{landuse.landuse}}</h3>
+                    <p mat-line>
+                        {{landuse.total | currency:'USD':'symbol':'1.0-0'}}
+                    </p>
+                </mat-list-item>    
+              </div>    
+            </mat-list>
+            <mat-list *ngIf="!checkThoroughfareCategories(i)">
+                <mat-list-item>
+                  No landuses selected
+                </mat-list-item>
+            </mat-list>
+        </div>  
+        <mat-list-item *ngIf="thoroughfare.total">
+            <h2 matLine>Total: {{thoroughfare.total | currency:'USD':'symbol':'1.0-0'}}</h2> 
+        </mat-list-item>      
+    </mat-tab>  
+</mat-tab-group>
+
+
+
+
+
+
+
+
+

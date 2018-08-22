@@ -33,6 +33,8 @@ import { BuildingService } from './building.service';
 import { ThoroughfarePipe } from './thoroughfare.pipe';
 import { StormwaterMapComponent } from './stormwater-map/stormwater-map.component';
 import { OpenspaceDialogComponent } from './openspace-dialog/openspace-dialog.component';
+import { SummaryComponent } from './summary/summary.component';
+import { TilesComponent } from './tiles/tiles.component';
 
 
 @NgModule({
@@ -52,7 +54,9 @@ import { OpenspaceDialogComponent } from './openspace-dialog/openspace-dialog.co
     LandusePipe,
     ThoroughfarePipe,
     StormwaterMapComponent,
-    OpenspaceDialogComponent
+    OpenspaceDialogComponent,
+    SummaryComponent,
+    TilesComponent
   ],
   imports: [
     HttpClientModule,

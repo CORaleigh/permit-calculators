@@ -4,6 +4,7 @@ import { Tier } from './tier';
 import { Fee } from './fee';
 import { Calculations } from './calculations';
 import { TiersService } from './tiers.service';
+import { SharedService } from './shared.service';
 @Injectable()
 export class CalculationService {
   calculations: Calculations;
@@ -11,8 +12,13 @@ export class CalculationService {
   //modified for FY19
   minFee: number = 108;
   tiersService:TiersService;
-    constructor() { }
-
+    constructor(public sharedService:SharedService) { }
+    getTotal() {
+      let total:Number = (this.calculations.building.value + this.calculations.building.tech) + (this.calculations.review.value + this.calculations.review.tech) + (this.calculations.electrical.value + this.calculations.electrical.tech) + (this.calculations.plumbing.value + this.calculations.plumbing.tech) + (this.calculations.mechanical.value + this.calculations.mechanical.tech) ;
+      this.sharedService.emitChange({total: total, calculator: 'building'}); 
+      return total;
+    
+    }
   calcValuation(card: DevelopmentCard): Promise<number>{
     
     let meansLocationFactor = 0.8381;

@@ -1,0 +1,27 @@
+    <mat-grid-list class="gridList" rowHeight="fit" gutterSize="10px" [cols]="breakpoint"  (window:resize)="onResize($event)">
+      <mat-grid-tile class="dark-class" (click)="go('buildings')">
+        <mat-icon svgIcon="house"></mat-icon>
+        <mat-grid-tile-footer>
+          <h3 mat-line class="mat-subheading-2">BUILDINGS PERMIT FEES</h3>
+        </mat-grid-tile-footer>            
+      </mat-grid-tile>    
+  
+        <mat-grid-tile class="dark-class" (click)="go('stormwater')">
+          <mat-icon svgIcon="water"></mat-icon>
+          <mat-grid-tile-footer>
+            <h3 mat-line class="mat-subheading-2">STORMWATER FEES</h3>
+          </mat-grid-tile-footer>            
+        </mat-grid-tile>    
+        <mat-grid-tile class="dark-class" (click)="go('openspace')">
+            <mat-icon svgIcon="parks"></mat-icon>
+            <mat-grid-tile-footer>
+              <h3 mat-line class="mat-subheading-2">OPEN SPACE FEES</h3>
+            </mat-grid-tile-footer>            
+          </mat-grid-tile>         
+          <mat-grid-tile class="dark-class" (click)="go('thoroughfare')">
+              <mat-icon svgIcon="transportation"></mat-icon>
+              <mat-grid-tile-footer>
+                <h3 mat-line class="mat-subheading-2">THOROUGHFARE FEES</h3>
+              </mat-grid-tile-footer>            
+            </mat-grid-tile>                        
+      </mat-grid-list>

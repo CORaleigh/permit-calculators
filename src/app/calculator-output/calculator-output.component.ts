@@ -72,12 +72,12 @@ beforeunloadHandler(event) {
 
 }
 
-getTotal() {
-  let total:Number = (this.calculationService.calculations.building.value + this.calculationService.calculations.building.tech) + (this.calculationService.calculations.review.value + this.calculationService.calculations.review.tech) + (this.calculationService.calculations.electrical.value + this.calculationService.calculations.electrical.tech) + (this.calculationService.calculations.plumbing.value + this.calculationService.calculations.plumbing.tech) + (this.calculationService.calculations.mechanical.value + this.calculationService.calculations.mechanical.tech) ;
-  this.sharedService.emitChange({total: total, calculator: 'building'}); 
-  return total;
+// getTotal() {
+//   let total:Number = (this.calculationService.calculations.building.value + this.calculationService.calculations.building.tech) + (this.calculationService.calculations.review.value + this.calculationService.calculations.review.tech) + (this.calculationService.calculations.electrical.value + this.calculationService.calculations.electrical.tech) + (this.calculationService.calculations.plumbing.value + this.calculationService.calculations.plumbing.tech) + (this.calculationService.calculations.mechanical.value + this.calculationService.calculations.mechanical.tech) ;
+//   this.sharedService.emitChange({total: total, calculator: 'building'}); 
+//   return total;
 
-}
+// }
   getTiers() {
     this.tiersService.getTiers().subscribe(
       tiers => {

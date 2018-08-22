@@ -50,11 +50,7 @@ export class OpenspacePermitsComponent implements OnInit {
   ];
   constructor(private sharedService:SharedService, public openspace:OpenspaceService, public dialog:MatDialog) {}
 
-  getTotal() {
-    let total:Number = this.openspace.multi * this.openspace.zone.multi + this.openspace.single * this.openspace.zone.single;
-    this.sharedService.emitChange({total: total, calculator: 'openspace'});
-    return total;
-  }
+
   
   @HostListener('window:unload', ['$event'])
   unloadHandler(event) {

@@ -11,4 +11,24 @@ export class SharedService {
   emitChange(change: any) {
       this.emitChangeSource.next(change);
   }
+  selectedCalculator:string = null;
+
+  calculators: Array<any> = [
+    {
+    label: "Building Permit Fees",
+    route: "building"
+    }, {
+      label: "Stormwater Fees",
+      route: "stormwater"
+    }
+    , {
+      label: "Open Space Fees",
+      route: "openspace"
+    }, {
+      label: "Thoroughfare Fees",
+      route: "thoroughfare"
+    }
+  ];
+
+  
 }
