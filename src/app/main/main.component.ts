@@ -22,7 +22,7 @@ export class MainComponent implements OnInit {
   @ViewChild('logo') private logo: ElementRef;
 
  
-  constructor(breakpointObserver: BreakpointObserver, private router: Router, public dialog:MatDialog, private sharedService: SharedService) { 
+  constructor(breakpointObserver: BreakpointObserver, private router: Router, public dialog:MatDialog, public sharedService: SharedService) { 
                 
     breakpointObserver.observe([
       Breakpoints.HandsetPortrait

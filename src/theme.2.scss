@@ -1,0 +1,150 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+
+
+/* For use in src/lib/core/theming/_palette.scss */
+$corblue: (
+    50 : #e5e8ef,
+    100 : #bec5d7,
+    200 : #929ebd,
+    300 : #6677a3,
+    400 : #46598f,
+    500 : #253c7b,
+    600 : #213673,
+    700 : #1b2e68,
+    800 : #16275e,
+    900 : #0d1a4b,
+    A100 : #8398ff,
+    A200 : #506dff,
+    A400 : #1d43ff,
+    A700 : #032dff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$corblue2: (
+    50 : #ebf0fa,
+    100 : #cddaf2,
+    200 : #abc2ea,
+    300 : #89a9e2,
+    400 : #7096db,
+    500 : #5784d5,
+    600 : #4f7cd0,
+    700 : #4671ca,
+    800 : #3c67c4,
+    900 : #2c54ba,
+    A100 : #fcfcff,
+    A200 : #c9d7ff,
+    A400 : #96b1ff,
+    A700 : #7c9fff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$coryellowgreen: (
+    50 : #f4f8e8,
+    100 : #e5ecc6,
+    200 : #d3e0a0,
+    300 : #c1d479,
+    400 : #b4ca5d,
+    500 : #a7c140,
+    600 : #9fbb3a,
+    700 : #96b332,
+    800 : #8cab2a,
+    900 : #7c9e1c,
+    A100 : #f3ffd6,
+    A200 : #e5ffa3,
+    A400 : #d6ff70,
+    A700 : #cfff57,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$my-app-primary: mat-palette($corblue);
+$my-app-accent:  mat-palette($corblue2, 500, 900, A100);
+$my-app-warn:    mat-palette($coryellowgreen);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+$my-dark-theme: mat-dark-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@mixin my-dark-theme($theme) {
+    $accent: map-get($theme, accent);
+
+    .dark-class {
+        background-color: mat-color($accent);
+        @include angular-material-theme($my-dark-theme);
+
+   }
+   .dark-class .mat-form-field-ripple{
+        background-color: white;
+        
+        @include angular-material-theme($my-dark-theme);
+    }
+    
+    .dark-class .mat-form-field.mat-focused.mat-primary .mat-form-field-ripple{
+        background-color: white;
+        
+        @include angular-material-theme($my-dark-theme);
+    }
+    .dark-class .mat-form-field.mat-focused.mat-primary .mat-select-arrow{
+        color: white;
+        
+        @include angular-material-theme($my-dark-theme);
+    }
+
+    .dark-class .mat-focused.mat-primary {
+        color: white;
+        
+        @include angular-material-theme($my-dark-theme);       
+    }
+    .dark-class .mat-select-arrow {
+        color: white;
+        @include angular-material-theme($my-dark-theme);
+    }
+}
+@include my-dark-theme($my-dark-theme);
+@include angular-material-theme($my-app-theme);
