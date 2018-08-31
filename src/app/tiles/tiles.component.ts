@@ -15,26 +15,26 @@ export class TilesComponent implements OnInit {
   constructor(private matIconRegistry: MatIconRegistry, private domSanitizer: DomSanitizer, private router: Router, private sharedService: SharedService) { 
     this.matIconRegistry.addSvgIcon(
       "house",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/house.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/house.svg")
     );      
     this.matIconRegistry.addSvgIcon(
       "water",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/water.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/water.svg")
     );      
     this.matIconRegistry.addSvgIcon(
       "parks",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/parks.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/parks.svg")
     );      
     this.matIconRegistry.addSvgIcon(
       "transportation",
-      this.domSanitizer.bypassSecurityTrustResourceUrl("../assets/transportation.svg")
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/transportation.svg")
     );        
   }
 
   ngOnInit() {
-    if (window.innerWidth < 400) {
+    if (window.innerWidth < 500) {
       this.breakpoint  = 1;
-    } else if (window.innerWidth >= 400 && window.innerWidth < 800) {
+    } else if (window.innerWidth >= 500 && window.innerWidth < 800) {
       this.breakpoint  = 2;
     } else if (window.innerWidth >= 800 && window.innerWidth < 1200) {
       this.breakpoint  = 3;
@@ -44,9 +44,9 @@ export class TilesComponent implements OnInit {
   }
 
   onResize(event) {
-    if (event.target.innerWidth < 400) {
+    if (event.target.innerWidth < 500) {
       this.breakpoint  = 1;
-    } else if (event.target.innerWidth >= 400 && event.target.innerWidth <= 800) {
+    } else if (event.target.innerWidth >= 500 && event.target.innerWidth <= 800) {
       this.breakpoint  = 2;
     } else if (event.target.innerWidth >= 800 && event.target.innerWidth <= 1200) {
       this.breakpoint  = 3;

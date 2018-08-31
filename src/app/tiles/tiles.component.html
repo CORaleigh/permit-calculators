@@ -1,4 +1,4 @@
-    <mat-grid-list class="gridList" rowHeight="fit" gutterSize="10px" [cols]="breakpoint"  (window:resize)="onResize($event)">
+    <mat-grid-list [ngClass]="{'gridList1': breakpoint === 1,'gridList2': breakpoint === 2,'gridList3': breakpoint === 3,'gridList4': breakpoint === 4}" class="gridList" rowHeight="fit" gutterSize="10px" [cols]="breakpoint"  (window:resize)="onResize($event)">
       <mat-grid-tile class="dark-class-secondary" (click)="go('building')">
         <mat-icon svgIcon="house"></mat-icon>
         <mat-grid-tile-footer>

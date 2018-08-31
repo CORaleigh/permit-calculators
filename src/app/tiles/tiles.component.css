@@ -11,13 +11,38 @@ mat-icon {
     width: 100px;
 }
 
-.gridList {
-    height: 300px;
+
+
+mat-grid-tile {
+    cursor: pointer;
+}
+
+
+
+.gridList1 {
+    height: 1200px;
     margin-left: 1em;
     margin-right: 1em;
     margin-top: 2em;
 }
 
-mat-grid-tile {
-    cursor: pointer;
+.gridList2 {
+    height: 600px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 2em;
+}
+
+.gridList3 {
+    height: 600px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 2em;
+}
+
+.gridList4 {
+    height: 300px;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 2em;
 }
