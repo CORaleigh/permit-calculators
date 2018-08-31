@@ -56,8 +56,9 @@ export class OpenspacePermitsComponent implements OnInit {
   unloadHandler(event) {
    localStorage.setItem('openspace', JSON.stringify(this.openspace));
   }  
-  showDefinitions() {
-    this.dialog.open(OpenspaceDialogComponent);
+  showDefinitions(type) {
+    
+    this.dialog.open(OpenspaceDialogComponent, {data:{type:type}});
   }
   ngOnInit() {
     window.setTimeout(() => {

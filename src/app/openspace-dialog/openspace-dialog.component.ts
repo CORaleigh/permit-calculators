@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { Component, OnInit, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({
   selector: 'app-openspace-dialog',
@@ -8,8 +8,8 @@ import { MatDialog } from '@angular/material';
 })
 export class OpenspaceDialogComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public dialogRef: MatDialogRef<OpenspaceDialogComponent>,
+  @Inject(MAT_DIALOG_DATA) public data: any) {}
   ngOnInit() {
   }
 

@@ -27,7 +27,6 @@ export class MainComponent implements OnInit {
     breakpointObserver.observe([
       Breakpoints.HandsetPortrait
     ]).subscribe(result => {
-      debugger
       this.phone = result.matches;
     });
     this.sharedService.changeEmitted$.subscribe(

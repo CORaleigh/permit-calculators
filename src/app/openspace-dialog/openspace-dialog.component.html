@@ -1,8 +1,12 @@
 <h2 mat-dialog-title>Definitions</h2>
-<mat-dialog-content>
+{{data.type}}
+<mat-dialog-content *ngIf="data.type === 'single'">
 <h2 class="mat-title">Single-Family Dwelling Unit</h2>
 <div class="mat-body-2">Detached Dwelling</div>
 <div class="mat-caption">A structure containing one dwelling unit on its own lot.</div>
+</mat-dialog-content>
+
+<mat-dialog-content *ngIf="data.type === 'multi'">
 <h2 class="mat-title">Multi-family Dwelling Unit</h2>
 <div class="mat-body-1">Housing in which more than one dwelling unit is located in the same structure. Multifamily development includes duplexes, townhomes, apartments and residential condominiums.</div>
 <div class="mat-body-2">Duplex (Triplex or Quad)</div>
@@ -14,11 +18,11 @@
 <div class="mat-caption">Any multi-family residence containing three or more rented dwelling units.</div>    
 <div class="mat-body-2">Condominiums</div>
 <div class="mat-caption">Multi-family residence units or other building spaces in which the owner of the dwelling unit or space owns only the air space of the dwelling unit and not the structure or land on which the structure sits. Condominiums are often multi-story buildings.</div>    
-
-
-
-
 </mat-dialog-content>
+
+
+
+
 <mat-dialog-actions>
   <!--<button mat-button mat-dialog-close>No</button>-->
   <!-- Can optionally provide a result for the closing dialog. -->
