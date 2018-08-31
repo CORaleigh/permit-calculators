@@ -61,9 +61,9 @@ export class MainComponent implements OnInit {
     this.dialog.open(SplashDialogComponent);
       
     this.sharedService.selectedCalculator = this.router.url.replace('/', '');      
-      this.title = 'Fee Calculator [BETA]';
+      this.title = 'Development Fee Calculator [BETA]';
     };
-    if (window.location.pathname === '/summary') {
+    if (window.location.pathname.indexOf('/summary') > -1) {
       
       this.router.navigate(['']);
     }    
