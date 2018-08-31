@@ -1,9 +1,10 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import {Router} from "@angular/router";
 import { MatDialog, MatIconRegistry } from '@angular/material';
 import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {SharedService} from '../shared.service';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 
 import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -14,18 +15,21 @@ import { DomSanitizer } from '@angular/platform-browser';
 })
 
 export class MainComponent implements OnInit {
-
-  total:Number = 0;
+  title:string = '';
+  total:number = 0;
   fees:Array<any> = [];
-
-
+  phone: boolean = false;
+  @ViewChild('logo') private logo: ElementRef;
 
  
-  constructor(private router: Router, public dialog:MatDialog, private sharedService: SharedService) { 
+  constructor(breakpointObserver: BreakpointObserver, private router: Router, public dialog:MatDialog, private sharedService: SharedService) { 
                 
-    // if (localStorage.getItem('total')) {
-    //   this
-    // }
+    breakpointObserver.observe([
+      Breakpoints.HandsetPortrait
+    ]).subscribe(result => {
+      debugger
+      this.phone = result.matches;
+    });
     this.sharedService.changeEmitted$.subscribe(
       fee => {
         let matches = this.fees.filter(f => {
@@ -45,6 +49,7 @@ export class MainComponent implements OnInit {
     this.fees.forEach(fee => {
       this.total += fee.total;
     });
+    this.sharedService.total = this.total;
   }
 
   // @HostListener('window:unload', ['$event'])
@@ -53,30 +58,37 @@ export class MainComponent implements OnInit {
   // }  
 
   ngOnInit() {
-    window.setTimeout(() => {
-      this.dialog.open(SplashDialogComponent);
-      this.sharedService.selectedCalculator = this.router.url.replace('/', '');
-      // if (localStorage.getItem('feeTotal')) {
-      //   this.fees = JSON.parse(localStorage.getItem('feeTotal'));
-      //   this.getTotal();
-      // }
+   this.logo.nativeElement.onload = () => {
+    this.dialog.open(SplashDialogComponent);
+      
+    this.sharedService.selectedCalculator = this.router.url.replace('/', '');      
+      this.title = 'Fee Calculator [BETA]';
+    };
+    if (window.location.pathname === '/summary') {
+      
+      this.router.navigate(['']);
+    }    
 
-    }, 500);
   }
 
 
   go(event) {
-    
     this.sharedService.selectedCalculator = event.value;
     this.router.navigate([event.value]);
-
+    this.sharedService.summary = false;
+    this.sharedService.lastRoute = event.value;
   }
 
   goToSummary() {
     this.router.navigate(['summary']);
     this.sharedService.selectedCalculator = null;
+    this.sharedService.summary = true;
   }
-
+  goBack() {
+    this.router.navigate([this.sharedService.lastRoute]);
+    this.sharedService.selectedCalculator = this.sharedService.lastRoute;
+    this.sharedService.summary = false;
+  }
   onTotal(event) {
     this.getTotal();
   }

@@ -1,11 +1,14 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" [ngClass]="{'phone': phone}">
 
         <mat-toolbar-row class="title-row">
-            <img alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
+            <img #logo alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
 
-          <span>RALEIGH FEE CALCULATOR</span>
+          <span *ngIf="!phone" class="title">{{title}}</span>
         </mat-toolbar-row>
+        <mat-toolbar-row  *ngIf="phone">
 
+          <span class="title">{{title}}</span>
+        </mat-toolbar-row>
       </mat-toolbar>
       <div class="dark-class calculator-row">
           <mat-form-field>
@@ -15,9 +18,9 @@
                 </mat-option>
               </mat-select>
             </mat-form-field> 
-            <div class="summary" *ngIf="sharedService.selectedCalculator">
-                <button mat-raised-button color="primary" (click)="goToSummary()">SUMMARY</button>
-
+            <div class="summary">
+                <button mat-stroked-button (click)="goToSummary()"  *ngIf="!sharedService.summary && sharedService.selectedCalculator">SUMMARY</button>
+                <button mat-stroked-button  (click)="goBack()"  *ngIf="sharedService.summary && sharedService.lastRoute">BACK</button>
             </div>
       </div>
 
@@ -25,7 +28,7 @@
         <div class="button-row" *ngFor="let calculator of calculators">
             <button mat-raised-button color="primary" [routerLink]="calculator.route">{{calculator.label}}</button>
         </div> -->
-            <h1 class="mat-headline">Total Fees: {{total | currency:'USD':'symbol':'1.0-0'}}</h1>
+            <h1 class="mat-headline" *ngIf="sharedService.selectedCalculator">Total Fees: {{total | currency:'USD':'symbol':'1.0-0'}}</h1>
 
         <router-outlet (onTotal)="onTotal($event)"></router-outlet>
 

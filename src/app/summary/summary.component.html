@@ -1,4 +1,45 @@
-<mat-tab-group color="accent">
+<mat-card>
+    <mat-card-header>
+      <mat-card-title>Fee Summary</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+<mat-list>
+
+    <mat-list-item>
+        <h3 mat-line>Building Permit Fees</h3>
+        <p mat-line>
+            {{calculationService.getTotal() | currency:'USD':'symbol':'1.0-0'}}
+        </p>
+    </mat-list-item>
+    <mat-list-item>
+        <h3 mat-line>Stormwater Fees</h3>
+        <p mat-line>
+            {{stormwater.total | currency:'USD':'symbol':'1.0-0'}}
+        </p>
+    </mat-list-item>
+    <mat-list-item>
+        <h3 mat-line>Open Space Fees</h3>
+        <p mat-line>
+            {{openspace.getTotal() | currency:'USD':'symbol':'1.0-0'}}
+        </p>
+    </mat-list-item>
+    <mat-list-item>
+        <h3 mat-line>Thoroughfare Fees</h3>
+        <p mat-line>
+            {{thoroughfare.total | currency:'USD':'symbol':'1.0-0'}}
+        </p>
+    </mat-list-item>         
+    <mat-list-item class="total">
+            <h3 mat-line>Total Fees</h3>
+            <p mat-line>
+                {{sharedService.total | currency:'USD':'symbol':'1.0-0'}}
+            </p>
+        </mat-list-item>            
+</mat-list>
+    </mat-card-content>
+</mat-card>
+
+<!-- <mat-tab-group color="accent">
     <mat-tab label="Building">
         <mat-list>
             <mat-list-item *ngIf="!calculationService.calculations">
@@ -161,4 +202,4 @@
 
 
 
-
+ -->

@@ -12,7 +12,9 @@ export class SharedService {
       this.emitChangeSource.next(change);
   }
   selectedCalculator:string = null;
-
+  total: number = 0;
+  lastRoute: string;
+  summary:boolean;  
   calculators: Array<any> = [
     {
     label: "Building Permit Fees",
@@ -22,10 +24,10 @@ export class SharedService {
       route: "stormwater"
     }
     , {
-      label: "Open Space Fees",
+      label: "Open Space Facility Fees",
       route: "openspace"
     }, {
-      label: "Thoroughfare Fees",
+      label: "Thoroughfare Facility Fees",
       route: "thoroughfare"
     }
   ];

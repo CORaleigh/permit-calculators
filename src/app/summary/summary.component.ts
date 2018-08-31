@@ -13,7 +13,7 @@ import { CalculationService } from '../calculation.service';
 })
 export class SummaryComponent implements OnInit {
 
-  constructor(public thoroughfare:ThoroughfareService, public stormwater: StormwaterService, public calculationService: CalculationService, public openspace: OpenspaceService) { 
+  constructor(public thoroughfare:ThoroughfareService, public stormwater: StormwaterService, public calculationService: CalculationService, public openspace: OpenspaceService, public sharedService: SharedService) { 
 
   }
   fees:Array<any> = [];

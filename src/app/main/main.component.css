@@ -1,4 +1,3 @@
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 .button-row {
     display: flex;
@@ -8,13 +7,9 @@
     margin-top: 1em;
   }
 
-  .title-row{
-    height: 100px !important;
-    width: 100% !important;
-    white-space: normal !important;
-}
+
 img {
-   max-width: 100px;
+   max-width: 150px;
    margin-right: 10px;
 
 }
@@ -46,3 +41,31 @@ mat-form-field, .mat-headline {
     flex-flow: column;
     align-items: center;
 }
+
+
+.dark-class .mat-stroked-button {
+    color:white;
+}
+
+.mat-toolbar {
+    font-family: Montserrat, sans-serif;
+    font-size: 28px !important;
+}
+
+.mat-toolbar.phone{
+    font-family: Montserrat, sans-serif;
+    font-size: 16px !important;
+ }
+
+ .mat-toolbar  .title-row{
+    height: 100px !important;
+    width: 100% !important;
+    white-space: normal !important;
+ }
+
+ .mat-toolbar.phone, .title-row{
+    height: 100px !important;
+    width: 100% !important;
+    white-space: normal !important;
+    
+ }

@@ -14,7 +14,13 @@ export class CalculationService {
   tiersService:TiersService;
     constructor(public sharedService:SharedService) { }
     getTotal() {
-      let total:Number = (this.calculations.building.value + this.calculations.building.tech) + (this.calculations.review.value + this.calculations.review.tech) + (this.calculations.electrical.value + this.calculations.electrical.tech) + (this.calculations.plumbing.value + this.calculations.plumbing.tech) + (this.calculations.mechanical.value + this.calculations.mechanical.tech) ;
+      let total:Number = 0;
+      if (this.calculations) {
+        if (this.calculations.building.tech) {
+          total = (this.calculations.building.value + this.calculations.building.tech) + (this.calculations.review.value + this.calculations.review.tech) + (this.calculations.electrical.value + this.calculations.electrical.tech) + (this.calculations.plumbing.value + this.calculations.plumbing.tech) + (this.calculations.mechanical.value + this.calculations.mechanical.tech) ;
+
+        }
+      }
       this.sharedService.emitChange({total: total, calculator: 'building'}); 
       return total;
     

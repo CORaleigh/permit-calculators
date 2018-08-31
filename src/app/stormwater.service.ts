@@ -5,6 +5,8 @@ export class StormwaterService {
 
   constructor() { }
   total: number = 0;
+  lastRoute: string;
+  summary:boolean;
   fees: Array<any> = [
     {
       name: 'Stormwater Facility Replacement Fee',

@@ -58,6 +58,8 @@ export class TilesComponent implements OnInit {
   go(route) {
     
     this.sharedService.selectedCalculator = route;
+    this.sharedService.lastRoute = route;
+    this.sharedService.summary = false;
     this.router.navigate([route]);
 
   }

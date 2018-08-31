@@ -1,4 +1,104 @@
-h2.mat-line {
-    padding: 0 16px !important;
-    margin-bottom: 0px !important;
+
+mat-toolbar-row {
+    height: 64px;
+    width: 100%;
+    white-space: normal !important;
+}
+img {
+   max-width: 50px;
+   margin-right: 20px;
+
+}
+
+#single-fam-areas {
+    margin-left: 3em;
+}
+
+/* mat-card, .mat-title {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.mat-card-header {
+    display:flex;
+    justify-content:center;
+}
+
+  .mat-headline {
+    text-align: center;
+}
+
+.mat-form-field-wrapper {
+    width: 100% !important;
+} */
+
+.mat-button {
+    margin-top:1em;
+}
+
+mat-form-field {
+    min-width: 220px;
+    margin-top: 1em;
+    margin-right: 2em;
+}
+
+mat-card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.mat-card-header, .mat-card-actions {
+    display:flex;
+    justify-content:center;
+}
+
+  .mat-headline {
+    text-align: center;
+}
+
+.mat-form-field-wrapper {
+    width: 100% !important;
+}
+.mat-card-title {
+    font-size: 24px;
+}
+
+.mat-card-subtitle {
+    font-size: 20px;
+}
+
+ .threshold-label {
+    text-align: right;
+    max-width: 100px;
+    margin-right: 2em;
+} 
+
+.threshold-container {
+    display:flex;
+    
+} 
+
+.mat-tab-header {
+    margin-bottom: 2em;
+}
+
+.feeCheckLabel {
+    justify-content: space-between;
+    display: flex;
+  }
+
+  .instructions {
+      padding-top: 1em;
+  }
+
+
+
+  .mat-list .mat-list-item:last-child .mat-line, .mat-nav-list .mat-list-item .mat-line, .mat-selection-list .mat-list-item .mat-line {
+    font-weight: 600;
 }
