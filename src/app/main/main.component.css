@@ -85,8 +85,8 @@ mat-form-field, .mat-headline {
     background: #003243;
     position: relative;
     z-index: 1000;
-    background-image: url('http://redesign.raleighnc.gov/content/static/styles/images/Raleigh_skyline_header.jpg');
-    background-position: 10% 10%;
+    background-image: url('./Raleigh_skyline_header.jpg');
+    background-position: 20% 20%;
     background-size: 100%;
     background-repeat: no-repeat;
 }
