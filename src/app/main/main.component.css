@@ -85,7 +85,7 @@ mat-form-field, .mat-headline {
     background: #003243;
     position: relative;
     z-index: 1000;
-    background-image: url('./Raleigh_skyline_header.jpg');
+    background-image: url('../../assets/Raleigh_skyline_header.jpg');
     background-position: 20% 20%;
     background-size: 100%;
     background-repeat: no-repeat;
