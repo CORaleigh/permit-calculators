@@ -1,6 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 html,
 body {
     margin: 0;
@@ -11,3 +10,23 @@ body {
     width: 250px !important;
 }
 
+.icon-book:after, a[href*='/extra/Books/']:not(.imglink):after {
+    content: "";
+    margin-left: 0.25em;
+    font-size: 1em;
+
+}
+.mat-card:not([class*=mat-elevation-z]){
+-webkit-box-shadow: -10px 5px 30px #ccc !important;
+    box-shadow: -10px 5px 30px #ccc !important;
+}
+
+.mat-card-title {
+    margin: 0;
+    padding: 0 0 10px;
+    color: #4A8B2C;
+    line-height: 1;
+    border-bottom: 1px solid #4A8B2C;
+    font-weight: 700;
+    text-align: left;
+}

@@ -21,28 +21,30 @@ mat-grid-tile {
 
 .gridList1 {
     height: 1200px;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 2em;
 }
 
 .gridList2 {
     height: 600px;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 2em;
 }
 
 .gridList3 {
     height: 600px;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 2em;
 }
 
 .gridList4 {
     height: 300px;
-    margin-left: 1em;
-    margin-right: 1em;
+    margin-left: 10%;
+    margin-right: 10%;
     margin-top: 2em;
+    width: 80%;
 }
+

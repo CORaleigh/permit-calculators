@@ -1,15 +1,32 @@
-<mat-toolbar color="primary" [ngClass]="{'phone': phone}">
+<div class="wrapper">
 
-        <mat-toolbar-row class="title-row">
+  <div id="navigation">
+   <div id="Header">
+     <div id="CitySeal" onclick="window.location='/'">
+         <img src="./assets/City-Seal-BW-1.png" alt="Official City of Raleigh Seal" class="logo">
+
+     </div> 
+     <div id="title">
+      <h3 >Development Fee Calculator [BETA]</h3>   
+     </div>
+ </div> 
+
+ </div>
+ 
+ </div>
+<!-- <mat-toolbar color="primary" [ngClass]="{'phone': phone}"> -->
+
+        <!-- <mat-toolbar-row class="title-row">
             <img #logo alt="seal" src="https://www.raleighnc.gov/content/static/images/City-Seal-BW.png" />
 
           <span *ngIf="!phone" class="title">{{title}}</span>
-        </mat-toolbar-row>
-        <mat-toolbar-row  *ngIf="phone">
+        </mat-toolbar-row> -->
+
+        <!-- <mat-toolbar-row  *ngIf="phone">
 
           <span class="title">{{title}}</span>
-        </mat-toolbar-row>
-      </mat-toolbar>
+        </mat-toolbar-row> -->
+      <!-- </mat-toolbar> -->
       <div class="dark-class calculator-row">
           <mat-form-field>
               <mat-select placeholder="Select Calculator" (selectionChange)="go($event)" [value]="sharedService.selectedCalculator" >
@@ -31,5 +48,18 @@
             <h1 class="mat-headline" *ngIf="sharedService.selectedCalculator">Total Fees: {{total | currency:'USD':'symbol':'1.0-0'}}</h1>
 
         <router-outlet (onTotal)="onTotal($event)"></router-outlet>
+<div id="Footer">
+<!-- from DivWindowRenderer -->
+<div class="fixedwidth">
+<ul class="left fourth">
+  <li><img alt="Official City of Raleigh Seal" class="logo" src="assets/City-Seal-BW-1.png"></li>
+</ul>
 
+<ul class="legal">
+
+</ul>
+</div>
+
+<!-- end DivWindowRenderer -->
+</div>
 

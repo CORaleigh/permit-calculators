@@ -69,3 +69,54 @@ mat-form-field, .mat-headline {
     white-space: normal !important;
     
  }
+ #navigation::before {
+    display: none;
+
+}
+
+#Header {
+    height: 150px;
+    display: flex;
+    flex-flow: column;
+}
+
+#navigation {
+    font-size: 0.9em;
+    background: #003243;
+    position: relative;
+    z-index: 1000;
+    background-image: url('http://redesign.raleighnc.gov/content/static/styles/images/Raleigh_skyline_header.jpg');
+    background-position: 10% 10%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+#Footer {
+    margin-top: 20px;
+    height: 135px;
+}
+
+body {
+    margin-bottom: -135px;
+    min-height: 100%;
+}
+
+#title h3 {
+    text-align: left;
+    font-size: 2em;
+    line-height: 1.3;
+    color: #A7C140;    
+    margin-left: 5px;
+    top: 80px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+}
+
+@media screen and (max-width: 600px){
+#title h3{
+    float: none;
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}}

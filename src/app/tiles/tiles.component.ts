@@ -35,9 +35,9 @@ export class TilesComponent implements OnInit {
     if (window.innerWidth < 500) {
       this.breakpoint  = 1;
     } else if (window.innerWidth >= 500 && window.innerWidth < 800) {
-      this.breakpoint  = 2;
+      this.breakpoint  = 1;
     } else if (window.innerWidth >= 800 && window.innerWidth < 1200) {
-      this.breakpoint  = 3;
+      this.breakpoint  = 2;
     } else {
       this.breakpoint = 4;
     }
@@ -47,9 +47,9 @@ export class TilesComponent implements OnInit {
     if (event.target.innerWidth < 500) {
       this.breakpoint  = 1;
     } else if (event.target.innerWidth >= 500 && event.target.innerWidth <= 800) {
-      this.breakpoint  = 2;
+      this.breakpoint  = 1;
     } else if (event.target.innerWidth >= 800 && event.target.innerWidth <= 1200) {
-      this.breakpoint  = 3;
+      this.breakpoint  = 2;
     } else {
       this.breakpoint = 4;
     }    
