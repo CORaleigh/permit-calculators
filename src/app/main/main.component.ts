@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterContentInit } from '@angular/core';
 import {Router} from "@angular/router";
 import { MatDialog, MatIconRegistry } from '@angular/material';
 import { Observable, Subject } from 'rxjs';
@@ -57,13 +57,12 @@ export class MainComponent implements OnInit {
   // }  
 
   ngOnInit() {
-   this.logo.nativeElement.onload = () => {
+    
     this.dialog.open(SplashDialogComponent);
-      
-    this.sharedService.selectedCalculator = this.router.url.replace('/', '');      
-      this.title = 'Fee Calculator [BETA]';
-    };
-    console.log(window.location.pathname );
+        
+    this.sharedService.selectedCalculator = window.location.pathname.replace('/', '');   
+    this.title = 'Fee Calculator [BETA]';
+
     if (window.location.pathname === '/summary') {
       
       this.router.navigate(['']);
@@ -71,6 +70,7 @@ export class MainComponent implements OnInit {
 
   }
 
+ 
 
   go(event) {
     this.sharedService.selectedCalculator = event.value;
