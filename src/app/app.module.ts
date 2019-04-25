@@ -35,6 +35,7 @@ import { StormwaterMapComponent } from './stormwater-map/stormwater-map.componen
 import { OpenspaceDialogComponent } from './openspace-dialog/openspace-dialog.component';
 import { SummaryComponent } from './summary/summary.component';
 import { TilesComponent } from './tiles/tiles.component';
+import { RightofwayPermitsComponent } from './rightofway-permits/rightofway-permits.component';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { TilesComponent } from './tiles/tiles.component';
     StormwaterMapComponent,
     OpenspaceDialogComponent,
     SummaryComponent,
-    TilesComponent
+    TilesComponent,
+    RightofwayPermitsComponent
   ],
   imports: [
     HttpClientModule,
