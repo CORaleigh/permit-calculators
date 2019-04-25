@@ -1,0 +1,135 @@
+[
+    {
+        "class": "Full Streets - Major",
+         "review": 712.00,
+         "base": 53.00,
+         "primary": 0.26,
+         "secondary": 0.18
+    },
+    {
+        "class": "Full Streets - Minor",
+         "review": 712.00,
+         "base": 35.00,
+         "primary": 0.18,
+         "secondary": 0.12
+    },
+    {
+        "class": "Street Lane - Major",
+         "review": 712.00,
+         "base": 32.00,
+         "primary": 0.16,
+         "secondary": 0.11
+    },
+    {
+        "class": "Parking Lane  - Major",
+         "review": 712.00,
+         "base": 16.00,
+         "primary": 0.08,
+         "secondary": 0.05
+    },
+    {
+        "class": "Street Lane - Minor",
+         "review": 712.00,
+         "base": 21.00,
+         "primary": 0.11,
+         "secondary": 0.07
+    },
+    {
+        "class": "Parking Lane  - Minor",
+         "review": 712.00,
+         "base": 11.00,
+         "primary": 0.06,
+         "secondary": 0.04
+    },
+    {
+        "class": "Sidewalk - Major - Full Closure",
+         "review": 32.00,
+         "base": 53.00,
+         "primary": 0.16,
+         "secondary": 0.11
+    },
+    {
+        "class": "Sidewalk - Major - AUX",
+         "review": 712.00,
+         "base": 21.00,
+         "primary": 0.11,
+         "secondary": 0.07
+    },
+    {
+        "class": "Sidewalk - Major - Partial Closure",
+         "review": 712.00,
+         "base": 18.00,
+         "primary": 0.09,
+         "secondary": 0.06
+    },
+    {
+        "class": "Sidewalk - Major - Maintenance",
+         "review": 712.00,
+         "base": 11.00,
+         "primary": 0.06,
+         "secondary": 0.04
+    },
+    {
+        "class": "Sidewalk - Minor - Full Closure",
+         "review": 712.00,
+         "base": 21.00,
+         "primary": 0.11,
+         "secondary": 0.07
+    },
+    {
+        "class": "Sidewalk - Minor - AUX",
+         "review": 712.00,
+         "base": 18.00,
+         "primary": 0.09,
+         "secondary": 0.06
+    },
+    {
+        "class": "Sidewalk - Minor - Partial Closure ",
+         "review": 712.00,
+         "base": 13.00,
+         "primary": 0.07,
+         "secondary": 0.05
+    },
+    {
+        "class": "Sidewalk - Minor - Maintenance",
+         "review": 712.00,
+         "base": 11.00,
+         "primary": 0.06,
+         "secondary": 0.04
+    },
+    {
+        "class": "Misc - Major - Dumpster/Pod",
+         "review": 712.00,
+         "base": 20.00,
+         "primary": null,
+         "secondary": null
+    },
+    {
+        "class": "Misc - Major - Non-Specific",
+         "review": 712.00,
+         "base": 20.00,
+         "primary": 0.10,
+         "secondary": 0.07 
+    },
+    {
+        "class": "Misc - House Move",
+         "review": 142.00,
+         "base": null,
+         "primary": null,
+         "secondary": null
+    },
+    {
+        "class": "Misc - Minor - Dumpster/Pod",
+         "review": 712.00,
+         "base": 15.00,
+         "primary": null,
+         "secondary": null
+    },
+    {
+        "class": "Misc - Minor - Non-Specific",
+         "review": 712.00,
+         "base": 15.00,
+         "primary": 0.08,
+         "secondary": 0.05
+    }
+    ]
