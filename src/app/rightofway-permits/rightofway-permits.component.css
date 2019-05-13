@@ -1,0 +1,70 @@
+mat-card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.mat-card-header, .mat-card-actions {
+    display:flex;
+    justify-content:center;
+}
+
+  .mat-headline {
+    text-align: center;
+}
+
+.mat-form-field-wrapper {
+    width: 100% !important;
+}
+.mat-card-title {
+    font-size: 24px;
+}
+
+.mat-card-subtitle {
+    font-size: 20px;
+}
+
+
+
+.numberField {
+    max-width: 60px;
+    margin-right: 1em;
+}
+
+#occupancyList {
+    flex-flow: row;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 0.25em;
+  }
+  
+  .col {
+    flex: 1;
+    margin-right: 20px;
+  }
+  
+  .col:last-child {
+    margin-right: 0;
+  }
+
+  .bold {
+    font-weight: bold;
+}
+
+.numberField {
+    max-width: 100px;
+}
+.mat-form-field {
+    margin-right: 2em;
+}
+
+form {
+    margin-bottom: 1em;
+    margin-top: 2em;    
+}

@@ -1,3 +1,69 @@
-<p>
-  rightofway-permits works!
-</p>
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>Right-of-Way Obstruction Calculator</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <app-rightofway-map></app-rightofway-map>
+      <div class="row">
+          <div class="col">
+              <div class="row bold">
+                  Total Project
+              </div>
+              <div class="row">
+                  {{service.totalProject | currency}}
+              </div>                                                                                                                         
+          </div>         
+          <div class="col">
+              <div class="row bold">
+                  Project Review
+              </div>
+              <div class="row">
+                  {{service.projectReview | currency}}
+              </div>                                                                                                                         
+          </div>     
+          <div class="col">
+              <div class="row bold">
+                  Total Due
+              </div>
+              <div class="row">
+                  {{service.totalProject + service.projectReview | currency}}
+              </div>                                                                                                                         
+          </div>                                 
+      </div>        
+      <mat-divider></mat-divider>
+
+        <div id="occupancyList" *ngFor="let occupancy of service.selections; let i = index"> 
+          <div>
+            <form> 
+                <mat-form-field color="accent">
+                    <mat-select [disabled]="occupancy.options.length === 0" placeholder="Occupancy Classification" [(ngModel)]="occupancy.value"
+                      name="Classification" (selectionChange)="occupancySelected($event, occupancy, i)">
+                      <mat-option *ngFor="let value of occupancy.options | rightofway: occupancy.downtown" [value]="value">
+                        {{value.class}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>              
+                <mat-form-field class="numberField" color="accent" *ngIf="occupancy.value.primary">
+                    <input matInput type="number"  min="0" max="9999999" matInput maxlength="7" placeholder="Linear Feet" [(ngModel)]="occupancy.lf" name="linearfeet" (input)="linearFeetChanged($event, occupancy)"/>
+                  </mat-form-field>
+       
+                  <mat-form-field color="accent" class="numberField" *ngIf="occupancy.value.primary">
+                      <input matInput type="number"  min="0" max="9999999" matInput maxlength="7" placeholder="Days" [(ngModel)]="occupancy.days" name="days" (input)="daysChanged($event, occupancy)"/>
+                    </mat-form-field>    
+                        <mat-checkbox class="example-margin"[ngModelOptions]="{standalone: true}" [(ngModel)]="occupancy.downtown">Downtown Zone</mat-checkbox>
+
+                  <button mat-icon-button><mat-icon *ngIf="occupancy.value.class" (click)="deleteOccupancy(occupancy, i)">delete</mat-icon></button>                     
+            </form>     
+          </div>
+          <mat-divider></mat-divider>
+
+          <!-- <span>Primary ($/Day) {{occupancy.primaryCost | currency}}</span>   
+          <br/>
+          <span>Secondary ($/Day) {{occupancy.secondaryCost | currency}}</span>  
+          <br/>
+          <span>Total($/Day) {{occupancy.totalCost | currency}}</span>                                   
+          <br/>
+          <span>Project($) {{occupancy.projectCost | currency}}</span>            -->
+        </div>
+  </mat-card-content>
+</mat-card>

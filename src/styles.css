@@ -30,3 +30,7 @@ body {
     font-weight: 700;
     text-align: left;
 }
+
+.esri-legend {
+    max-width: 200px !important; 
+}

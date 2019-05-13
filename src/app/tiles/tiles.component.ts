@@ -29,6 +29,10 @@ export class TilesComponent implements OnInit {
       "transportation",
       this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/transportation.svg")
     );        
+    this.matIconRegistry.addSvgIcon(
+      "rightofway",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/barrier.svg")
+    );        
   }
 
   ngOnInit() {

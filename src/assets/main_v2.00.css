@@ -575,7 +575,7 @@ ul li {
   padding: 0 3px;
 }
 
-table {
+/* table {
   margin: 1.25em 0 1.5em 0;
   width: 100%;
   border-collapse: collapse;
@@ -614,7 +614,7 @@ table.stripe tr:nth-child(even) td {
 
 table.devserv tr:nth-child(even) td {
   background: #d6e4ec;
-}
+} */
 
 .quiet, label {
   color: #666;

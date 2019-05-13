@@ -36,6 +36,8 @@ import { OpenspaceDialogComponent } from './openspace-dialog/openspace-dialog.co
 import { SummaryComponent } from './summary/summary.component';
 import { TilesComponent } from './tiles/tiles.component';
 import { RightofwayPermitsComponent } from './rightofway-permits/rightofway-permits.component';
+import { RightofwayMapComponent } from './rightofway-map/rightofway-map.component';
+import { RightofwayPipe } from './rightofway.pipe';
 
 
 @NgModule({
@@ -58,7 +60,9 @@ import { RightofwayPermitsComponent } from './rightofway-permits/rightofway-perm
     OpenspaceDialogComponent,
     SummaryComponent,
     TilesComponent,
-    RightofwayPermitsComponent
+    RightofwayPermitsComponent,
+    RightofwayMapComponent,
+    RightofwayPipe
   ],
   imports: [
     HttpClientModule,
