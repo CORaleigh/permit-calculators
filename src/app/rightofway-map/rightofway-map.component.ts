@@ -10,7 +10,7 @@ import { RightofwayService } from '../rightofway.service';
 })
 export class RightofwayMapComponent implements OnInit {
 
-  constructor(private service:RightofwayService) { }
+  constructor(public service:RightofwayService) { }
   @ViewChild('mapViewNode') private mapViewEl: ElementRef;
 
   async initializeMap() {

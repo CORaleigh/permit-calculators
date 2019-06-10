@@ -25,6 +25,7 @@
     "@angular/platform-browser-dynamic": "^7.2.15",
     "@angular/router": "^7.2.15",
     "@types/arcgis-js-api": "^4.11.0",
+    "angular-cli-ghpages": "^0.5.3",
     "core-js": "^2.6.5",
     "esri-loader": "^2.9.2",
     "flex-layout": "^1.0.1",

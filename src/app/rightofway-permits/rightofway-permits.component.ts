@@ -12,7 +12,7 @@ import {RightofwayPipe} from '../rightofway.pipe';
 })
 export class RightofwayPermitsComponent implements OnInit {
 
-  constructor(private service:RightofwayService, private shared:SharedService) { }
+  constructor(public service:RightofwayService, private shared:SharedService) { }
   data: Rightofway[] = [];
 
   ngOnInit() {
