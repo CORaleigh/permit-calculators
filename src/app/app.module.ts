@@ -38,6 +38,7 @@ import { TilesComponent } from './tiles/tiles.component';
 import { RightofwayPermitsComponent } from './rightofway-permits/rightofway-permits.component';
 import { RightofwayMapComponent } from './rightofway-map/rightofway-map.component';
 import { RightofwayPipe } from './rightofway.pipe';
+import { RightofwayDialogComponent } from './rightofway-dialog/rightofway-dialog.component';
 
 
 @NgModule({
@@ -62,7 +63,8 @@ import { RightofwayPipe } from './rightofway.pipe';
     TilesComponent,
     RightofwayPermitsComponent,
     RightofwayMapComponent,
-    RightofwayPipe
+    RightofwayPipe,
+    RightofwayDialogComponent
   ],
   imports: [
     HttpClientModule,
@@ -82,7 +84,7 @@ import { RightofwayPipe } from './rightofway.pipe';
      MatTabsModule,
      MatCheckboxModule,MatGridListModule, MatSnackBarModule
   ],
-  entryComponents: [SplashDialogComponent, HelpDialogComponent, StormwaterMapComponent, OpenspaceDialogComponent],
+  entryComponents: [SplashDialogComponent, HelpDialogComponent, StormwaterMapComponent, OpenspaceDialogComponent, RightofwayDialogComponent],
   providers: [SharedService, StormwaterService, OpenspaceService, ThoroughfareService, BuildingService, CalculationService],
   bootstrap: [AppComponent]
 })

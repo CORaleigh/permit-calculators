@@ -4,6 +4,8 @@ import { Rightofway } from '../rightofway';
 import { config } from 'rxjs';
 import { SharedService } from '../shared.service';
 import {RightofwayPipe} from '../rightofway.pipe';
+import { MatDialog } from '@angular/material';
+import { RightofwayDialogComponent } from '../rightofway-dialog/rightofway-dialog.component';
 
 @Component({
   selector: 'app-rightofway-permits',
@@ -12,9 +14,9 @@ import {RightofwayPipe} from '../rightofway.pipe';
 })
 export class RightofwayPermitsComponent implements OnInit {
 
-  constructor(public service:RightofwayService, private shared:SharedService) { }
+  constructor(public service:RightofwayService, private shared:SharedService, public dialog:MatDialog) { }
   data: Rightofway[] = [];
-
+  
   ngOnInit() {
     this.getConfig();
     this.service.downtown.subscribe(downtown => {
@@ -22,6 +24,10 @@ export class RightofwayPermitsComponent implements OnInit {
         this.service.selections[this.service.selections.length - 1].downtown = downtown;
       }
     });
+  }
+
+  showDefinitions() { 
+    this.dialog.open(RightofwayDialogComponent);
   }
 
   occupancySelected(value, occupancy:Selection, index:number) {
@@ -61,12 +67,20 @@ export class RightofwayPermitsComponent implements OnInit {
   }
 
   calculate(occupancy:Selection) {
-    if (occupancy.lf < 151) {
-      occupancy.primaryCost = occupancy.value.base;
-    } else {
-      occupancy.primaryCost = occupancy.value.base + (occupancy.lf - 150) * occupancy.value.primary;
+    if (occupancy.lf) {      
+      if (occupancy.lf < 151) {
+        occupancy.primaryCost = occupancy.value.base;
+      } else {
+        occupancy.primaryCost = occupancy.value.base + (occupancy.lf - 150) * occupancy.value.primary;
+      }
+      occupancy.secondaryCost = occupancy.value.secondary * occupancy.lf;
+
     }
-    occupancy.secondaryCost = occupancy.value.secondary * occupancy.lf;
+
+    if (occupancy.dumpsters) {
+      occupancy.primaryCost = occupancy.value.base * occupancy.dumpsters;
+      occupancy.secondaryCost = occupancy.value.base * occupancy.dumpsters;
+    }
 
 
     this.totalProjects();
@@ -107,6 +121,7 @@ class Selection {
   options: Rightofway[];
   value: Rightofway;
   lf: number = null;
+  dumpsters: number = null;
   days: number = null;
   primaryCost:number = 0;
   secondaryCost:number = 0;

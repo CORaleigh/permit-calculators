@@ -1,0 +1,42 @@
+
+<mat-dialog-content>
+  <h2 mat-dialog-title>Right-of-Way Occupancy Fee Definitions</h2>    
+  <h2 class="mat-title"></h2>
+  <div class="mat-body-1">Primary Occupancy</div>
+  <div class="mat-caption">The requested occupancy for single occupancy requests or the highest per day fee rate for multiple occupancy requests</div>
+  <div class="mat-body-1">Secondary Occupancy</div>
+  <div class="mat-caption">Any occupancy other than the primary occupancy in multiple occupacy requests</div>
+  <div class="mat-body-1">Major Street</div>
+  <div class="mat-caption">Any street labeled as a Major Street or divided street (turn lane or median) per the Raleigh Street Plan and any streets within the DX zoning</div>
+  <div class="mat-body-1">Minor Street</div>
+  <div class="mat-caption">Any street not fitting the Major Street category</div>
+  <div class="mat-body-1">Full Street</div>
+  <div class="mat-caption">The occupying of a public street (curb to curb or edge-of-pavement to edge-of-pavement) such that no access is provided to the existing street for general vehicular traffic											</div>
+  <div class="mat-body-1">Street Lane</div>
+  <div class="mat-caption">The occupying of a public street travel lane such that limited access is provided to the existing street for general vehicular traffic											</div>
+  <div class="mat-body-1">Parking Lane</div>
+  <div class="mat-caption">The occupying of an public on-street parking lane (either metered or not) that restricts use of said lane for general vehicular traffic</div>
+  <div class="mat-body-1">Sidewalk - Full</div>
+  <div class="mat-caption">The occupying of a public sidewalk such that no access is provided to the existing sidewalk for general pedestrian traffic											</div>
+  <div class="mat-body-1">Sidewalk - AUX</div>
+  <div class="mat-caption">The occupying of a public sidewalk such that no access is provided to the existing sidewalk for general pedestrian traffic, but supplementary or alternative means such as cargo containers, scaffolding, and temporarily constructed boardwalks/paths are provided to faciliate continued pedestrian movement through or adjacent to the occupied sidewalk</div>
+  <div class="mat-body-1">Sidewalk - Partial</div>
+  <div class="mat-caption">The occupying of a public sidewalk such that limited, ADA- and PROWAG-compliant access is provided to the existing sidewalk utilizing means such as barricades and traffic cones</div>  
+  <div class="mat-body-1">Misc - Dumpster/Pod</div>
+  <div class="mat-caption">Placement of a dumpster or pod within the public right-of-way.  When placement occurs within metered on-street parking, a daily parking space rental fee paid to ParkLink is applicable.  											</div>    
+  <div class="mat-body-1">Review Fee </div>
+  <div class="mat-caption">Shall be the highest applicable review fee per request</div>  
+  <div class="mat-body-1">Permit Fee</div>
+  <div class="mat-caption">Primary Occupancy - Calculated as the base rate (for up to 150 LF) plus the primary per linear foot rate multiplied by the linear footage above 150 LF</div>      
+  <div class="mat-caption">Seconday Occupancy - Calculated as the secondary linear footage rate multiplied by the total linear footage of the occupancy(ies)</div>       
+  </mat-dialog-content>
+  
+ 
+  
+  
+  
+  <mat-dialog-actions>
+    <!--<button mat-button mat-dialog-close>No</button>-->
+    <!-- Can optionally provide a result for the closing dialog. -->
+    <button mat-button mat-raised-button color="accent" [mat-dialog-close]="true">OK</button>
+  </mat-dialog-actions>
