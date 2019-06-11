@@ -28,7 +28,13 @@
         <p mat-line>
             {{thoroughfare.total | currency:'USD':'symbol':'1.0-0'}}
         </p>
-    </mat-list-item>         
+    </mat-list-item>     
+    <mat-list-item>
+            <h3 mat-line>Right-of-Way Obstruction Fees</h3>
+            <p mat-line>
+                {{rightofway.total | currency:'USD':'symbol':'1.0-0'}}
+            </p>
+        </mat-list-item>           
     <mat-list-item class="total">
             <h3 mat-line>Total Fees</h3>
             <p mat-line>

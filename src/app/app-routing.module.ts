@@ -5,6 +5,7 @@ import { BuildingPermitsComponent }  from './building-permits/building-permits.c
 import { StormwaterPermitsComponent } from './stormwater-permits/stormwater-permits.component';
 import { OpenspacePermitsComponent } from './openspace-permits/openspace-permits.component';
 import { ThoroughfarePermitsComponent } from './thoroughfare-permits/thoroughfare-permits.component';
+import { RightofwayPermitsComponent } from './rightofway-permits/rightofway-permits.component';
 import { SummaryComponent } from './summary/summary.component';
 import { TilesComponent } from './tiles/tiles.component';
 
@@ -35,6 +36,10 @@ const appRoutes: Routes = [
     path: 'thoroughfare',
     component: ThoroughfarePermitsComponent
   },
+  {
+    path: 'rightofway',
+    component: RightofwayPermitsComponent
+  },  
   {
     path: 'summary',
     component: SummaryComponent

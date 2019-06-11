@@ -5,6 +5,8 @@ import { StormwaterService } from '../stormwater.service';
 import { BuildingService } from '../building.service';
 import { OpenspaceService } from '../openspace.service';
 import { CalculationService } from '../calculation.service';
+import { Rightofway } from '../rightofway';
+import { RightofwayService } from '../rightofway.service';
 
 @Component({
   selector: 'app-summary',
@@ -13,7 +15,7 @@ import { CalculationService } from '../calculation.service';
 })
 export class SummaryComponent implements OnInit {
 
-  constructor(public thoroughfare:ThoroughfareService, public stormwater: StormwaterService, public calculationService: CalculationService, public openspace: OpenspaceService, public sharedService: SharedService) { 
+  constructor(public thoroughfare:ThoroughfareService, public stormwater: StormwaterService, public calculationService: CalculationService, public openspace: OpenspaceService, public rightofway:RightofwayService,  public sharedService: SharedService) { 
 
   }
   fees:Array<any> = [];

@@ -4,10 +4,18 @@
     "outDir": "../out-tsc/app",
     "baseUrl": "./",
     "module": "es2015",
-    "types": []
+    "types": ["arcgis-js-api"]
   },
   "exclude": [
     "test.ts",
     "**/*.spec.ts"
-  ]
+  ],
+  "paths": {
+    "@app/*": [
+      "app/*"
+    ],
+    "core-js/es7/reflect": [
+      "node_modules/core-js/proposals/reflect-metadata"
+    ]
+  }  
 }
