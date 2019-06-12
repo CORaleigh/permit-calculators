@@ -74,14 +74,21 @@ export class RightofwayPermitsComponent implements OnInit {
         occupancy.primaryCost = occupancy.value.base + (occupancy.lf - 150) * occupancy.value.primary;
       }
       occupancy.secondaryCost = occupancy.value.secondary * occupancy.lf;
-
+    } else {
+      this.service.maxPrimary = 0;
+      occupancy.primaryCost = 0;
+      occupancy.secondaryCost = 0;
+    }
+    if (!occupancy.days) {
+      this.service.maxPrimary = 0;
+      occupancy.primaryCost = 0;
+      occupancy.secondaryCost = 0;
     }
 
     if (occupancy.dumpsters) {
-      occupancy.primaryCost = occupancy.value.base * occupancy.dumpsters;
+      occupancy.primaryCost = occupancy.value.base;
       occupancy.secondaryCost = occupancy.value.base * occupancy.dumpsters;
     }
-
 
     this.totalProjects();
   }
@@ -95,6 +102,7 @@ export class RightofwayPermitsComponent implements OnInit {
 
   deleteOccupancy(occupancy, index) {
     this.service.selections.splice(index, 1);
+    this.service.maxPrimary = 0;
     this.totalProjects();
   }
 

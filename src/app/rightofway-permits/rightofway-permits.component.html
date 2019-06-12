@@ -1,6 +1,6 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Right-of-Way Obstruction Calculator</mat-card-title>
+    <mat-card-title>Right-of-Way Occupancy Calculator</mat-card-title>
   </mat-card-header>
   <mat-card-content>
     <app-rightofway-map></app-rightofway-map>
@@ -48,28 +48,38 @@
                 <mat-form-field class="numberField" color="accent" *ngIf="occupancy.value.primary">
                     <input matInput type="number"  min="0" max="9999999" matInput maxlength="7" placeholder="Linear Feet" [(ngModel)]="occupancy.lf" name="linearfeet" (input)="linearFeetChanged($event, occupancy)"/>
                   </mat-form-field>
+                  <span *ngIf="occupancy.value.class">
+                      <mat-form-field class="numberField" color="accent"   *ngIf="occupancy.value.class.indexOf('Dumpster') > -1">
+                          <input matInput type="number"  min="0" max="100" matInput maxlength="3" placeholder="# of Dumpstears/Pods" [(ngModel)]="occupancy.dumpsters" name="dumpsters" (input)="linearFeetChanged($event, occupancy)"/>
+                        </mat-form-field>       
+                  </span>
 
-                  <mat-form-field class="numberField" color="accent" *ngIf="occupancy.value.class">
-                    <input matInput type="number"  min="0" max="100" matInput maxlength="3" placeholder="# of Dumpstears/Pods" [(ngModel)]="occupancy.dumpsters" name="dumpsters" (input)="linearFeetChanged($event, occupancy)"  *ngIf="occupancy.value.class.indexOf('Dumpster') > -1"/>
-                  </mat-form-field>       
-                    <mat-form-field color="accent" class="numberField" *ngIf="occupancy.value.primary || occupancy.value.class">
-                        <input matInput type="number"  min="0" max="9999999" matInput maxlength="7" placeholder="Days" [(ngModel)]="occupancy.days" name="days" (input)="daysChanged($event, occupancy)" *ngIf="occupancy.value.primary || occupancy.value.class.indexOf('Dumpster') > -1"/>
-                      </mat-form-field>    
+                    <mat-form-field color="accent" class="numberField" *ngIf="occupancy.value.primary">
+                        <input matInput type="number"  min="0" max="9999999" matInput maxlength="7" placeholder="Days" [(ngModel)]="occupancy.days" name="days" (input)="daysChanged($event, occupancy)"/>
+                     
+                      </mat-form-field>
+                      <span *ngIf="occupancy.value.class">
+                          <mat-form-field color="accent" class="numberField" *ngIf="occupancy.value.class.indexOf('Dumpster') > -1">
+                              <input matInput type="number"  min="0" max="9999999" matInput maxlength="7" placeholder="Days" [(ngModel)]="occupancy.days" name="days" (input)="daysChanged($event, occupancy)"/>
+                           
+                            </mat-form-field>    
+                      </span>
+                      
                         <mat-checkbox class="example-margin"[ngModelOptions]="{standalone: true}" [(ngModel)]="occupancy.downtown">Downtown Zone</mat-checkbox>
 
                   <button mat-icon-button><mat-icon *ngIf="occupancy.value.class" (click)="deleteOccupancy(occupancy, i)">delete</mat-icon></button>                     
             </form>     
           </div>
           <mat-divider></mat-divider>
-
+<!-- 
           <span>Primary ($/Day) {{occupancy.primaryCost | currency}}</span>   
           <br/>
           <span>Secondary ($/Day) {{occupancy.secondaryCost | currency}}</span>  
           <br/>
           <span>Total($/Day) {{occupancy.totalCost | currency}}</span>                                   
           <br/>
-          <span>Project($) {{occupancy.projectCost | currency}}</span>           
+          <span>Project($) {{occupancy.projectCost | currency}}</span>            -->
         </div>
-        {{service.maxPrimary}}
+
   </mat-card-content>
 </mat-card>
