@@ -30,7 +30,7 @@ export class SharedService {
       label: "Thoroughfare Facility Fees",
       route: "thoroughfare"
     }, {
-      label: "Right-of-Way Obstruction Fees",
+      label: "Right-of-Way Occupancy Fees",
       route: "rightofway"
     }
   ];
