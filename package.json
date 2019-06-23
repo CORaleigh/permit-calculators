@@ -26,12 +26,14 @@
     "@angular/router": "^7.2.15",
     "@types/arcgis-js-api": "^4.11.0",
     "angular-cli-ghpages": "^0.5.3",
+    "classlist.js": "^1.1.20150312",
     "core-js": "^2.6.5",
     "esri-loader": "^2.9.2",
     "flex-layout": "^1.0.1",
     "hammerjs": "^2.0.8",
     "rxjs": "^6.5.2",
     "rxjs-compat": "^6.5.2",
+    "web-animations-js": "^2.3.1",
     "zone.js": "^0.9.1"
   },
   "devDependencies": {
