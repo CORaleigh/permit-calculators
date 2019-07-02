@@ -27,7 +27,7 @@ export class StormwaterService {
       label: 'Disturbed acres (rounded to nearest 1/10)',
       units: 'acres',
       total: 0,
-      url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',
+      url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',
       selected: false,
       surety: {
         name: 'Sediment and Erosion Control Surety',
@@ -61,7 +61,7 @@ export class StormwaterService {
       units: 'acres',
       multiplier: 204,
       minimum: 201,
-      url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',      
+      url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',      
       total: 0
     },  
   ];
@@ -71,7 +71,7 @@ export class StormwaterService {
     name: 'Flood Permit Required?',
     falseValue: 0,
     trueValue: 204,
-    url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',    
+    url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',    
     total: 0,
     map: true
   },      
@@ -79,21 +79,21 @@ export class StormwaterService {
     name: 'Flood Study Required?',
     falseValue: 0,
     trueValue: 1235,
-    url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',    
+    url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',    
     total: 0
   },    
   {
     name: 'Watercourse Buffer Permit Required?',
     trueValue: 185,
     falseValue: 0,
-    url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',    
+    url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',    
     total: 0
   },     
   {
     name: 'Watershed Permit Required?',
     trueValue: 185,
     falseValue: 0,
-    url: 'https://www.raleighnc.gov/content/extra/Books/PlanDev/DevelopmentFeeSchedule/14/',    
+    url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',    
     total: 0
   }   ];
 }

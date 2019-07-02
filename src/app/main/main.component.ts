@@ -57,8 +57,9 @@ export class MainComponent implements OnInit {
   // }  
 
   ngOnInit() {
-    
-    this.dialog.open(SplashDialogComponent);
+    setTimeout(() => {
+      this.dialog.open(SplashDialogComponent);
+    })
         
     this.sharedService.selectedCalculator = window.location.pathname.replace('/permit-calculators/', '').replace('/', '');   
     this.title = 'Fee Calculator [BETA]';
