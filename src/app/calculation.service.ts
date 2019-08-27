@@ -109,7 +109,7 @@ export class CalculationService {
           }      
     }   
     if (isResidential) {
-      bldgPermit = valuation * 0.0026;
+      bldgPermit = valuation * 0.0030;
     }
     if (bldgPermit < this.minFee) {
       bldgPermit = this.minFee;

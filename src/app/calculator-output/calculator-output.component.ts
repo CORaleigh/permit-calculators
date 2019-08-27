@@ -41,11 +41,11 @@ export class CalculatorOutputComponent implements OnInit, DoCheck {
       this.calculationService.calculations = new Calculations();
       //modified for FY19
       this.calculationService.calculations.valuation = 0;
-      this.calculationService.calculations.building = new Fee("Building", 0, 0, 0.0026);
-      this.calculationService.calculations.electrical = new Fee("Electrical", 0, 1.00, 0.67);
-      this.calculationService.calculations.review = new Fee("Plan Review", 0, 0.51, 0.72);
-      this.calculationService.calculations.plumbing = new Fee("Plumbing", 0, 0.56, 0.22);
-      this.calculationService.calculations.mechanical = new Fee("Mechanical", 0, 0.77, 0.31); 
+      this.calculationService.calculations.building = new Fee("Building", 0, 0, 0.0030);
+      this.calculationService.calculations.electrical = new Fee("Electrical", 0, 1.00, 0.60);
+      this.calculationService.calculations.review = new Fee("Plan Review", 0, 0.51, 0.63);
+      this.calculationService.calculations.plumbing = new Fee("Plumbing", 0, 0.56, 0.32);
+      this.calculationService.calculations.mechanical = new Fee("Mechanical", 0, 0.77, 0.26); 
     }
     if (!this.tiers) {
       this.getTiers(); 
