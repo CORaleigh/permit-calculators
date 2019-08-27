@@ -130,7 +130,8 @@ showHelp() {
   buildingTypeChanged(card:DevelopmentCard) {
     let key = card.construction.key;
     this.isResidential = false;
-    if (card.building.group === "R-3 Residential, one- and two-family") {
+    debugger
+    if (card.building.group.indexOf("R-3") > -1) {
       card.calculations.isResidential = true;
       this.isResidential = true;
     } else {
