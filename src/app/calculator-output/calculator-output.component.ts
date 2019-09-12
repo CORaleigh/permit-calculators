@@ -39,7 +39,7 @@ export class CalculatorOutputComponent implements OnInit, DoCheck {
 
     if (!this.calculationService.calculations) {
       this.calculationService.calculations = new Calculations();
-      //modified for FY19
+      //modified for FY20
       this.calculationService.calculations.valuation = 0;
       this.calculationService.calculations.building = new Fee("Building", 0, 0, 0.0030);
       this.calculationService.calculations.electrical = new Fee("Electrical", 0, 1.00, 0.60);
