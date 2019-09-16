@@ -39,6 +39,7 @@ import { RightofwayPermitsComponent } from './rightofway-permits/rightofway-perm
 import { RightofwayMapComponent } from './rightofway-map/rightofway-map.component';
 import { RightofwayPipe } from './rightofway.pipe';
 import { RightofwayDialogComponent } from './rightofway-dialog/rightofway-dialog.component';
+import { PublicutilityPermitsComponent } from './publicutility-permits/publicutility-permits.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import { RightofwayDialogComponent } from './rightofway-dialog/rightofway-dialog
     RightofwayPermitsComponent,
     RightofwayMapComponent,
     RightofwayPipe,
-    RightofwayDialogComponent
+    RightofwayDialogComponent,
+    PublicutilityPermitsComponent
   ],
   imports: [
     HttpClientModule,

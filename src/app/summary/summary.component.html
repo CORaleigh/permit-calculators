@@ -34,7 +34,13 @@
             <p mat-line>
                 {{rightofway.total | currency:'USD':'symbol':'1.0-0'}}
             </p>
-        </mat-list-item>           
+        </mat-list-item>    
+        <mat-list-item>
+                <h3 mat-line>Public Utility Fees</h3>
+                <p mat-line>
+                    {{publicutility.total | currency:'USD':'symbol':'1.0-0'}}
+                </p>
+            </mat-list-item>                 
     <mat-list-item class="total">
             <h3 mat-line>Total Fees</h3>
             <p mat-line>

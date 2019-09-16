@@ -29,5 +29,11 @@
                 <mat-grid-tile-footer>
                   <span mat-line class="mat-subheading-2">RIGHT-OF-WAY OCCUPANCY FEES</span>
                 </mat-grid-tile-footer>            
-              </mat-grid-tile>                               
+              </mat-grid-tile>        
+              <mat-grid-tile class="dark-class-secondary" (click)="go('publicutility')">
+                  <mat-icon svgIcon="publicutility"></mat-icon>
+                  <mat-grid-tile-footer>
+                    <span mat-line class="mat-subheading-2">PUBLIC UTILITY FEES</span>
+                  </mat-grid-tile-footer>            
+                </mat-grid-tile>                                         
       </mat-grid-list>

@@ -32,6 +32,9 @@ export class SharedService {
     }, {
       label: "Right-of-Way Occupancy Fees",
       route: "rightofway"
+    }, {
+      label: "Public Utility Fees",
+      route: "publicutility"
     }
   ];
 
