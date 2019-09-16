@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component';
 @Component({
   selector: 'app-building-permits',

@@ -4,7 +4,7 @@ import { Rightofway } from '../rightofway';
 import { config } from 'rxjs';
 import { SharedService } from '../shared.service';
 import {RightofwayPipe} from '../rightofway.pipe';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { RightofwayDialogComponent } from '../rightofway-dialog/rightofway-dialog.component';
 
 @Component({

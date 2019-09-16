@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef  } from '@angular/core';
-import { MatDialog, MatSelectionList, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSelectionList } from '@angular/material/list';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component'
 import {SharedService} from '../shared.service';
 import {StormwaterService} from '../stormwater.service';
@@ -15,7 +17,7 @@ import {
   styleUrls: ['./stormwater-permits.component.css']
 })
 export class StormwaterPermitsComponent implements OnInit {
-  @ViewChild('mapView') private mapViewEl: ElementRef;
+  @ViewChild('mapView', null) private mapViewEl: ElementRef;
   constructor(public dialog:MatDialog, public sharedService:SharedService, public stormwaterService:StormwaterService, public snackbar:MatSnackBar) { 
     
   }
@@ -53,7 +55,8 @@ export class StormwaterPermitsComponent implements OnInit {
       mapView.when(() => {     
         let searchWidget = new EsriSearch({
           container: "searchView",
-          view: mapView
+          view: mapView,
+
         });
         let layer = webmap.allLayers.find(function (layer) {
           return layer.title === "Property";
@@ -74,6 +77,7 @@ export class StormwaterPermitsComponent implements OnInit {
             minSuggestCharacters: 2,
             popupEnabled: false,
             resultGraphicEnabled: true,
+            includeDefaultSources: false, 
             resultSymbol: {
               type: "simple-fill",
               outline: {
@@ -86,6 +90,7 @@ export class StormwaterPermitsComponent implements OnInit {
         ];
         
         searchWidget.sources = sources;
+
         searchWidget.on('search-complete', event => {
           let floodCheck = this.stormwaterService.checkBoxes.find(item => {return item.name === 'Flood Permit Required?'});  
           let waterCheck = this.stormwaterService.checkBoxes.find(item => {return item.name === 'Watershed Permit Required?'}); 

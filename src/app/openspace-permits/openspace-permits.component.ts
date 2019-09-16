@@ -5,7 +5,7 @@ import {
   ElementRef,
   HostListener
 } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import {SharedService} from '../shared.service';
 import {OpenspaceService} from '../openspace.service';
@@ -23,7 +23,7 @@ export class OpenspacePermitsComponent implements OnInit {
   public mapView: any;
   public search: any;
   selectedZone:any;
-  @ViewChild('mapViewNode') private mapViewEl: ElementRef;
+  @ViewChild('mapViewNode', null) private mapViewEl: ElementRef;
 
   zones: Array < any > = [{
       zone: 1,

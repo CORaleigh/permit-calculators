@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterContentInit } from '@angular/core';
 import {Router} from "@angular/router";
-import { MatDialog, MatIconRegistry } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatIconRegistry } from '@angular/material/icon';
 import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import {SharedService} from '../shared.service';
@@ -19,7 +20,7 @@ export class MainComponent implements OnInit {
   total:number = 0;
   fees:Array<any> = [];
   phone: boolean = false;
-  @ViewChild('logo') private logo: ElementRef;
+  @ViewChild('logo', null) private logo: ElementRef;
 
  
   constructor(breakpointObserver: BreakpointObserver, private router: Router, public dialog:MatDialog, public sharedService: SharedService) { 
