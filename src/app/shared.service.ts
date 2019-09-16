@@ -1,7 +1,5 @@
 import { Observable, Subject } from 'rxjs';
-import { Injectable } from '@angular/core';
 
-@Injectable()
 export class SharedService {
   // Observable string sources
   private emitChangeSource = new Subject<any>();
