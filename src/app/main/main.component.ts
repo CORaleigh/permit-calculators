@@ -30,7 +30,7 @@ export class MainComponent implements OnInit {
     ]).subscribe(result => {
       this.phone = result.matches;
     });
-    this.sharedService.changeEmitted$.subscribe(
+    this.sharedService.changeEmitted.subscribe(
       fee => {
         let matches = this.fees.filter(f => {
           return fee.calculator === f.calculator;
@@ -45,6 +45,7 @@ export class MainComponent implements OnInit {
   }
 
   getTotal() {
+    
     this.total = 0;
     this.fees.forEach(fee => {
       this.total += fee.total;

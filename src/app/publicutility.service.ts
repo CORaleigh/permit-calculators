@@ -8,7 +8,7 @@ export class PublicutilityService {
   constructor() { }
   total: number = 0;
   fees: any[] = [
-    {title: 'Plan Review', fees: [
+    {title: 'Plan Review Fees', fees: [
       {
         title: 'Public Water Review',
         fee: 0,
@@ -35,7 +35,7 @@ export class PublicutilityService {
         unitCost: 300.00
       }
     ]},
-    {title: 'Inspections', fees: [
+    {title: 'Inspections Fees', fees: [
       {
         title: 'CCTV Inspection',
         fee: 0,
@@ -63,7 +63,7 @@ export class PublicutilityService {
       }
     ]}    
 ,
-{title: 'Stubs', fees: [
+{title: 'Stub Fees', fees: [
   {
     title: 'Water Stubs',
     fee: 0,

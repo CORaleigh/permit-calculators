@@ -25,3 +25,13 @@ mat-card {
 .mat-card-subtitle {
     font-size: 20px;
 }
+
+
+.mat-title {
+    margin-bottom: 0 !important;
+}
+
+.inputs {
+    margin-bottom: 3em;
+
+}
