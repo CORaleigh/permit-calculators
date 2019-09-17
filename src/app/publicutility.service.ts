@@ -224,7 +224,7 @@ export class PublicutilityService {
     }      
   ]
 },
-{size: '12" and greater',
+{size: '>=12"',
 utilities: [
   {
     type: 'water',

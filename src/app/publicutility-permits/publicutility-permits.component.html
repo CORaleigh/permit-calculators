@@ -157,10 +157,13 @@
 
 
             <div *ngFor="let size of publicutility.meterSizes">
-              {{size.size}}
 
               <div fxLayout="column" fxLayout.gt-xs="row">
-                <div fxFlex="50%" *ngFor="let util of size.utilities">
+                <div fxFlex="10%">
+                    <h3>{{size.size}}</h3>
+
+                </div>
+                <div fxFlex="45%" *ngFor="let util of size.utilities">
                   <section class="example-section">
                     <mat-form-field matLine color="accent">
                       <input matInput type="number" min="0" max="10000" matInput maxlength="5"
