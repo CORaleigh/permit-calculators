@@ -12,7 +12,7 @@ import {
 export class StormwaterMapComponent implements OnInit {
 
   constructor(public stormwaterService:StormwaterService, public sharedService:SharedService) { }
-  @ViewChild('mapViewNode') private mapViewEl: ElementRef;
+  @ViewChild('mapViewNode', null) private mapViewEl: ElementRef;
 
   public mapView: any;
   public search: any;

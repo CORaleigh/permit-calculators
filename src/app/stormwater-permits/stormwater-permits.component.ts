@@ -17,7 +17,7 @@ import {
   styleUrls: ['./stormwater-permits.component.css']
 })
 export class StormwaterPermitsComponent implements OnInit {
-  @ViewChild('mapView') private mapViewEl: ElementRef;
+  @ViewChild('mapView', null) private mapViewEl: ElementRef;
   constructor(public dialog:MatDialog, public sharedService:SharedService, public stormwaterService:StormwaterService, public snackbar:MatSnackBar) { 
     
   }

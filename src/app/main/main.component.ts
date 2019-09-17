@@ -20,7 +20,7 @@ export class MainComponent implements OnInit {
   total:number = 0;
   fees:Array<any> = [];
   phone: boolean = false;
-  @ViewChild('logo') private logo: ElementRef;
+  @ViewChild('logo', null) private logo: ElementRef;
 
  
   constructor(breakpointObserver: BreakpointObserver, private router: Router, public dialog:MatDialog, public sharedService: SharedService) { 

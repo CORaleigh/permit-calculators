@@ -11,7 +11,7 @@ import { RightofwayService } from '../rightofway.service';
 export class RightofwayMapComponent implements OnInit {
 
   constructor(public service:RightofwayService) { }
-  @ViewChild('mapViewNode') private mapViewEl: ElementRef;
+  @ViewChild('mapViewNode', null) private mapViewEl: ElementRef;
 
   async initializeMap() {
     try {
