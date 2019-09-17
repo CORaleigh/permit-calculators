@@ -1,5 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef  } from '@angular/core';
-import { MatDialog, MatSelectionList, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSelectionList } from '@angular/material/list';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component'
 import {SharedService} from '../shared.service';
 import {StormwaterService} from '../stormwater.service';

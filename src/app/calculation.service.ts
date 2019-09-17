@@ -63,6 +63,7 @@ export class CalculationService {
     if (building > 0) {
       fee.value = building * fee.commercial;
       if (isResidential) {
+        debugger
         fee.value = building * fee.residential;
         if (fee.name === "Plan Review") {
           this.calcReviewFee(fee, cards, tiers);

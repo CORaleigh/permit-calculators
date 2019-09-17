@@ -5,7 +5,7 @@ import {
   ElementRef,
   HostListener
 } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import {SharedService} from '../shared.service';
 import {OpenspaceService} from '../openspace.service';
