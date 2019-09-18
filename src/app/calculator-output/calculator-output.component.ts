@@ -127,7 +127,7 @@ beforeunloadHandler(event) {
       }
       //added to determine change of R-3 construction scope from New Construction to Alteration since valuation does not change
       if (card.building.group.indexOf('R-3') > -1) {
-        console.log('test');
+
         let cardChanges = this.cardDiffer.diff(card);
         if (cardChanges) {
           cardChanges.forEachChangedItem(r => {
