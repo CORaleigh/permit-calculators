@@ -61,7 +61,7 @@ export class PublicutilityPermitsComponent implements OnInit {
       this.updateFee(this.publicutility.linearFeet.publicSewer + this.publicutility.linearFeet.privateSewer8 + this.publicutility.linearFeet.privateSewerCo + this.publicutility.linearFeet.privateSewerMh, 'Sewer Inspection', 1);
     }
     this.updateFee((this.publicutility.linearFeet.privateSewer8 + this.publicutility.linearFeet.privateSewerCo + this.publicutility.linearFeet.privateSewerMh > 0) ? 1 : 0, 'Private Sewer Review', 0);
-    this.updateFee(this.publicutility.linearFeet.privateSewer8 + this.publicutility.linearFeet.privateSewerCo + this.publicutility.linearFeet.privateSewerMh, 'CCTV Inspection', 1);
+    this.updateFee(this.publicutility.linearFeet.publicSewer + this.publicutility.linearFeet.privateSewer8 + this.publicutility.linearFeet.privateSewerMh, 'CCTV Inspection', 1);
   }
   publicReuseChanged(e) {
     if (!this.inRaleigh) {
