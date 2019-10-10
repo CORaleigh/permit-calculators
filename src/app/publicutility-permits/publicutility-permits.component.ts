@@ -8,6 +8,7 @@ import { SharedService } from '../shared.service';
 })
 export class PublicutilityPermitsComponent implements OnInit {
   constructor(public publicutility: PublicutilityService, public sharedService: SharedService) { }
+  connection = 'Water Only';
   inRaleigh: boolean = true;
   pumpStation: boolean = false;
   infrastructureTotal: number = 0;
@@ -89,8 +90,56 @@ export class PublicutilityPermitsComponent implements OnInit {
     this.updateFee(this.publicutility.stubQuantities.sewer, 'Sewer Stubs', 2);
     this.updateFee(this.publicutility.stubQuantities.reuse, 'Reuse Stubs', 2);
   }
-  sizeChanged(e, util) {
-    util.fee = util.units * util.unitCost;
+
+  connectionChanged(e) {
+    if (this.connection === 'Water Only') {
+      this.publicutility.meterSizes.forEach(size => {
+        size.utilities.forEach(u => {
+          if (u.type === 'sewer') {
+            u.fee = 0;
+          }
+        });
+      });
+    } else {
+      this.publicutility.meterSizes.forEach(size => {
+        size.utilities.forEach(u => {
+          if (size.selected) {
+            u.fee = size.units * u.unitCost;
+          }
+        });
+      });
+    }
+    this.updateCapitalTotal();
+
+  }  
+  sizeSelected(e) {
+    e.value.selected = !e.value.selected;
+    let selectedSizes = [];
+    e.value.forEach(value => {
+      selectedSizes.push(value.size);
+    });
+    this.publicutility.meterSizes.forEach(size => {
+      size.selected = selectedSizes.includes(size.size);
+      size.utilities.forEach(u => {
+        if (selectedSizes.includes(size.size) && (u.type === 'water' || (u.type === 'sewer' && this.connection === 'Water and Sewer'))) {
+          u.fee = size.units * u.unitCost;
+        } else {
+          u.fee = 0;
+        }
+      });
+    });
+    this.updateCapitalTotal();
+
+  }
+
+  sizeChanged(e, size, units) {
+    size.utilities.forEach(u => {
+      if (u.type === 'water' || (u.type === 'sewer' && this.connection === 'Water and Sewer')) {
+        u.fee = size.units * u.unitCost;
+      } else {
+        u.fee = 0;
+      }
+    });
     this.updateCapitalTotal();
   }
   updateCapitalTotal() {

@@ -155,26 +155,48 @@
         <mat-card>
           <mat-card-content>
 
+            <div>
+            <mat-form-field>
+              <mat-label>Utility connections requested</mat-label>
+              <mat-select  [(ngModel)]="connection" (selectionChange)="connectionChanged($event)">
+                <mat-option *ngFor="let utility of publicutility.utilities" [value]="utility">{{utility}}</mat-option>
+              </mat-select>
+            </mat-form-field>    
+          </div>   
+          <div>
+
+            <mat-form-field>
+              <mat-label>Meter sizes requested</mat-label>
+              <mat-select multiple (selectionChange)="sizeSelected($event)">
+                <mat-option *ngFor="let size of publicutility.meterSizes" [value]="size" >{{size.size}}</mat-option>
+              </mat-select>
+            </mat-form-field> 
+          </div>   
 
             <div *ngFor="let size of publicutility.meterSizes">
-
-              <div fxLayout="column" fxLayout.gt-xs="row">
-                <div fxFlex="10%">
-                    <h3>{{size.size}}</h3>
-
-                </div>
-                <div fxFlex="45%" *ngFor="let util of size.utilities">
-                  <section class="example-section">
+                <section class="example-section" *ngIf="size.selected">
                     <mat-form-field matLine color="accent">
                       <input matInput type="number" min="0" max="10000" matInput maxlength="5"
-                        placeholder="# of {{util.type}} meters" [(ngModel)]="util.units"
-                        (change)="sizeChanged($event, util)">
+                        placeholder="# of {{size.size}} meters" [(ngModel)]="size.units"
+                        (change)="sizeChanged($event, size, units)">
+                    </mat-form-field>
+                  </section>
+              <!-- <div fxLayout="column" fxLayout.gt-xs="row">
+                <div fxFlex="10%">
+                    <h3>{{size.size}}</h3>
+                </div>
+                <div fxFlex="45%" *ngFor="let util of size.utilities">
+                  <section class="example-section" *ngIf="util.type === 'water'">
+                    <mat-form-field matLine color="accent">
+                      <input matInput type="number" min="0" max="10000" matInput maxlength="5"
+                        placeholder="# of meters" [(ngModel)]="util.units"
+                        (change)="sizeChanged($event, size, util)">
                     </mat-form-field>
                   </section>
                 </div>
 
 
-              </div>
+              </div> -->
 
             </div>
           </mat-card-content>

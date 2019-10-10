@@ -7,6 +7,7 @@ export class PublicutilityService {
 
   constructor() { }
   total: number = 0;
+  utilities: any[] = ['Water Only', 'Water and Sewer'];
   fees: any[] = [
     {title: 'Plan Review Fees', fees: [
       {
@@ -97,6 +98,8 @@ export class PublicutilityService {
 
   meterSizes: any[] = [
     {size: '5/8"',
+      units: null,
+      selected: false,
       utilities: [
         {
           type: 'water',
@@ -113,6 +116,8 @@ export class PublicutilityService {
       ]
     },
     {size: '1"',
+      units: null,
+      selected: false,
       utilities: [
         {
           type: 'water',
@@ -129,6 +134,8 @@ export class PublicutilityService {
       ]
     },
     {size: '1-1/2"',
+      units: null,
+      selected: false,
       utilities: [
         {
           type: 'water',
@@ -145,6 +152,8 @@ export class PublicutilityService {
       ]
     },
     {size: '2"',
+      units: null,
+      selected: false,
       utilities: [
         {
           type: 'water',
@@ -161,6 +170,8 @@ export class PublicutilityService {
       ]
     },
     {size: '4"',
+      units: null,
+      selected: false,
       utilities: [
         {
           type: 'water',
@@ -177,6 +188,8 @@ export class PublicutilityService {
       ]
     },
     {size: '6"',
+      units: null,
+      selected: false,
       utilities: [
         {
           type: 'water',
@@ -193,6 +206,8 @@ export class PublicutilityService {
       ]
     },
     {size: '8"',
+      units: null,
+      selected: false,
     utilities: [
       {
         type: 'water',
