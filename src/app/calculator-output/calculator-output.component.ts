@@ -104,7 +104,6 @@ beforeunloadHandler(event) {
     this.calculationService.calcBldgPermit(this.calculationService.calculations.valuation, this.calculationService.calculations.tiers, this.calculationService.calculations.isResidential).then(building => {
       this.calculationService.calculations.building.value = building;
       this.calculationService.calculations.building.tech = Math.round(Math.round(building) * 0.04);
-     // this.calculationService.calculations = this.calcTechAdder(this.calculationService.calculations);
       this.calculationService.calcFees(this.calculationService.calculations, this.cards, this.tiers).then(calculations => {
         this.calculationService.calculations = calculations;
         this.calculationService.calculations.building.value = Math.round(this.calculationService.calculations.building.value);
@@ -143,10 +142,4 @@ beforeunloadHandler(event) {
 
   }
 
-
-  // calcTechAdder(calculations: Calculations) : Calculations {
-  //   calculations.techFee = calculations.building * 0.04;
-  //   calculations.building += calculations.techFee;
-  //   return calculations;
-  // }
 }
