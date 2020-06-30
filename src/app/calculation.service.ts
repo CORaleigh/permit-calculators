@@ -10,7 +10,7 @@ export class CalculationService {
   calculations: Calculations;
   valuation: number;
   //modified for FY20
-  minFee: number = 114;
+  minFee: number = 117;
   tiersService:TiersService;
     constructor(public sharedService:SharedService) { }
     getTotal() {

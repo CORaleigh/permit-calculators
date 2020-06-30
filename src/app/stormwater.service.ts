@@ -37,12 +37,12 @@ export class StormwaterService {
       subfees: [
         {      
           name: 'Land Disturbing Plan Review Fees',
-          multiplier: 147,
+          multiplier: 151,//147 previous
           total: 0
         },        
         {      
           name: 'Land Disturbing Permit Fees',
-          multiplier: 297,
+          multiplier: 304,//297 previous
           total: 0
         }           
       ]
@@ -59,7 +59,7 @@ export class StormwaterService {
       name: 'Stormwater Control Permit',
       label: 'Property or project acres (rounded to nearest 1/10)',
       units: 'acres',
-      multiplier: 204,
+      multiplier: 209,//204 previous
       minimum: 201,
       url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',      
       total: 0
@@ -70,7 +70,7 @@ export class StormwaterService {
   {
     name: 'Flood Permit Required?',
     falseValue: 0,
-    trueValue: 204,
+    trueValue: 209,//204 previous
     url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',    
     total: 0,
     map: true
@@ -78,20 +78,20 @@ export class StormwaterService {
   {
     name: 'Flood Study Required?',
     falseValue: 0,
-    trueValue: 1235,
+    trueValue: 1266,//1235 previous
     url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',    
     total: 0
   },    
   {
     name: 'Watercourse Buffer Permit Required?',
-    trueValue: 185,
+    trueValue: 190,//185 previous
     falseValue: 0,
     url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',    
     total: 0
   },     
   {
     name: 'Watershed Permit Required?',
-    trueValue: 185,
+    trueValue: 190,//185 previous
     falseValue: 0,
     url: 'https://www.raleighnc.gov/DevelopmentFeeSchedule',    
     total: 0
