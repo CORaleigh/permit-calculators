@@ -1,9 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import {SharedService} from '../shared.service';
 import {ThoroughfareService} from '../thoroughfare.service';
-import {ThoroughfarePipe} from '../thoroughfare.pipe';
-import {TFareCategory} from '../tFareCategory';
-import { TFareRecord } from '../tFareRecord';
 import { Landuse } from '../landuse';
 import { Threshold } from '../threshold';
 @Component({

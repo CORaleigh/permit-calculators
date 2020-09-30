@@ -10,7 +10,7 @@ export class CalculationService {
   calculations: Calculations;
   valuation: number;
   //modified for FY20
-  minFee: number = 114;
+  minFee: number = 117;
   tiersService:TiersService;
     constructor(public sharedService:SharedService) { }
     getTotal() {
@@ -40,8 +40,8 @@ export class CalculationService {
       let valuation = 0;
       fee.value = 0;
       cards.forEach(card => {
-        
-        if (card.constructScope.name === 'New Construction') {
+        //modified for FY20, scope New Construction or Addition
+        if (card.constructScope.name === 'New Construction' || card.constructScope.name === 'Addition') {
           valuation += card.calculations.valuation;
         }
       });
@@ -62,7 +62,9 @@ export class CalculationService {
     fee.value = 0;
     if (building > 0) {
       fee.value = building * fee.commercial;
+      debugger
       if (isResidential) {
+        
         fee.value = building * fee.residential;
         if (fee.name === "Plan Review") {
           this.calcReviewFee(fee, cards, tiers);
