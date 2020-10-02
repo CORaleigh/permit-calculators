@@ -42,7 +42,7 @@ const appRoutes: Routes = [
     component: RightofwayPermitsComponent
   },  
   {
-    path: 'publicutility',
+    path: 'raleighwater',
     component: PublicutilityPermitsComponent
   },    
   {

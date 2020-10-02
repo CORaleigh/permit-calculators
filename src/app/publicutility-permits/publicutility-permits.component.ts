@@ -55,13 +55,13 @@ export class PublicutilityPermitsComponent implements OnInit {
     if (!this.inRaleigh) {
       this.updateFee(this.publicutility.linearFeet.publicSewer + this.publicutility.linearFeet.privateSewer8 + this.publicutility.linearFeet.privateSewerCo + this.publicutility.linearFeet.privateSewerMh, 'Sewer Inspection', 1);
     }
-    this.updateFee((this.publicutility.linearFeet.publicSewer > 0) ? 1 : 0, 'Public Sewer Review', 0)
+    this.updateFee((this.publicutility.linearFeet.publicSewer > 0) ? 1 : 0, 'Sewer Review', 0)
   }
   privateSewerChanged(e) {
     if (!this.inRaleigh) {
       this.updateFee(this.publicutility.linearFeet.publicSewer + this.publicutility.linearFeet.privateSewer8 + this.publicutility.linearFeet.privateSewerCo + this.publicutility.linearFeet.privateSewerMh, 'Sewer Inspection', 1);
     }
-    this.updateFee((this.publicutility.linearFeet.privateSewer8 + this.publicutility.linearFeet.privateSewerCo + this.publicutility.linearFeet.privateSewerMh > 0) ? 1 : 0, 'Private Sewer Review', 0);
+    this.updateFee((this.publicutility.linearFeet.privateSewer8 + this.publicutility.linearFeet.privateSewerCo + this.publicutility.linearFeet.privateSewerMh > 0) ? 1 : 0, 'Sewer Review', 0);
     this.updateFee(this.publicutility.linearFeet.publicSewer + this.publicutility.linearFeet.privateSewer8 + this.publicutility.linearFeet.privateSewerMh, 'CCTV Inspection', 1);
   }
   publicReuseChanged(e) {

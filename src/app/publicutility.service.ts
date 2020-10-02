@@ -16,15 +16,15 @@ export class PublicutilityService {
         unitCost: 200.00
       },
       {
-        title: 'Public Sewer Review',
+        title: 'Sewer Review',
         fee: 0,
         unitCost: 200.00
       },
-      {
-        title: 'Private Sewer Review',
-        fee: 0,
-        unitCost: 200.00
-      },
+      // {
+      //   title: 'Private Sewer Review',
+      //   fee: 0,
+      //   unitCost: 200.00
+      // },
       {
         title: 'Public Reuse Review',
         fee: 0,
@@ -40,7 +40,7 @@ export class PublicutilityService {
       {
         title: 'CCTV Inspection',
         fee: 0,
-        unitCost: 1.00
+        unitCost: 1.02
       },
       {
         title: 'Pump Station Inspection',
@@ -50,17 +50,17 @@ export class PublicutilityService {
       {
         title: 'Water Inspection',
         fee: 0,
-        unitCost: 1.55
+        unitCost: 1.53
       },
       {
         title: 'Sewer Inspection',
         fee: 0,
-        unitCost: 1.55
+        unitCost: 1.53
       },
       {
         title: 'Reuse Inspection',
         fee: 0,
-        unitCost: 1.55
+        unitCost: 1.53
       }
     ]}    
 ,
@@ -68,17 +68,17 @@ export class PublicutilityService {
   {
     title: 'Water Stubs',
     fee: 0,
-    unitCost: 93.00
+    unitCost: 95.00
   },
   {
     title: 'Sewer Stubs',
     fee: 0,
-    unitCost: 93.00
+    unitCost: 95.00
   },
   {
     title: 'Reuse Stubs',
     fee: 0,
-    unitCost: 93.00
+    unitCost: 95.00
   }  
 ]}                                  
   ];

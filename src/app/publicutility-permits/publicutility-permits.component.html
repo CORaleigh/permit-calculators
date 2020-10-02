@@ -1,10 +1,10 @@
 <mat-card>
   <mat-card-header>
-    <mat-card-title>Public Utility Facility Fee Calculator</mat-card-title>
+    <mat-card-title>Raleigh Water Facility Fee Calculators</mat-card-title>
   </mat-card-header>
   <mat-card-content class="mat-typography">
     <mat-tab-group color="accent">
-      <mat-tab label="Infrastructure Approval">
+      <mat-tab label="Infrastructure Fees">
         <mat-card>
           <mat-card-content>
             <div class="inputs">
@@ -46,7 +46,7 @@
       
                     <mat-form-field matLine color="accent">
                       <input matInput type="number" min="0" max="9999999" matInput maxlength="7"
-                        placeholder="Private Sewer w/ Cleanouts" name="privSewer2" [(ngModel)]="publicutility.linearFeet.privateSewerCo"
+                        placeholder="6'' Private Sewer w/ Cleanouts" name="privSewer2" [(ngModel)]="publicutility.linearFeet.privateSewerCo"
                         (input)="privateSewerChanged($event)">
                       <span matSuffix>linear feet &nbsp;</span>
       
@@ -56,7 +56,7 @@
       
                     <mat-form-field matLine color="accent">
                       <input matInput type="number" min="0" max="9999999" matInput maxlength="7"
-                        placeholder="Private Sewer w/ Manholes" name="privSewer3" [(ngModel)]="publicutility.linearFeet.privateSewerMh"
+                        placeholder="6'' Private Sewer w/ Manholes" name="privSewer3" [(ngModel)]="publicutility.linearFeet.privateSewerMh"
                         (input)="privateSewerChanged($event)">
                       <span matSuffix>linear feet &nbsp;</span>
       
