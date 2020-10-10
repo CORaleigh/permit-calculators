@@ -23,7 +23,7 @@ export class OpenspacePermitsComponent implements OnInit {
   public mapView: any;
   public search: any;
   selectedZone:any;
-  @ViewChild('mapViewNode', null) private mapViewEl: ElementRef;
+  @ViewChild('mapViewNode') private mapViewEl: ElementRef;
 
   zones: Array < any > = [{
       zone: 1,

@@ -11,7 +11,7 @@ import { RightofwayService } from '../rightofway.service';
 export class RightofwayMapComponent implements OnInit {
 
   constructor(public service:RightofwayService) { }
-  @ViewChild('mapViewNode', null) private mapViewEl: ElementRef;
+  @ViewChild('mapViewNode') private mapViewEl: ElementRef;
 
   async initializeMap() {
     try {
@@ -68,7 +68,7 @@ export class RightofwayMapComponent implements OnInit {
         group: 'top-left',
         mode: 'floating'
       });      
-      mapView.ui.add(measureExpand, 'top-left');
+      //mapView.ui.add(measureExpand, 'top-left');
 
       measureExpand.watch('expanded', expanded => {
         if (!expanded) {
