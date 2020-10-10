@@ -33,6 +33,10 @@ export class TilesComponent implements OnInit {
       "rightofway",
       this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/barrier.svg")
     );        
+    this.matIconRegistry.addSvgIcon(
+      "publicutility",
+      this.domSanitizer.bypassSecurityTrustResourceUrl("./assets/publicutility.svg")
+    );         
   }
 
   ngOnInit() {

@@ -29,7 +29,7 @@
       <!-- </mat-toolbar> -->
       <div class="dark-class calculator-row">
           <mat-form-field>
-              <mat-select placeholder="Select Calculator" (selectionChange)="go($event)" [value]="sharedService.selectedCalculator" >
+              <mat-select  placeholder="Select Calculator" (selectionChange)="go($event)" [value]="sharedService.selectedCalculator" >
                 <mat-option *ngFor="let calculator of sharedService.calculators" [value]="calculator.route">
                   {{ calculator.label }}
                 </mat-option>

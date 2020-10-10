@@ -55,7 +55,8 @@ export class StormwaterPermitsComponent implements OnInit {
       mapView.when(() => {     
         let searchWidget = new EsriSearch({
           container: "searchView",
-          view: mapView
+          view: mapView,
+
         });
         let layer = webmap.allLayers.find(function (layer) {
           return layer.title === "Property";
@@ -76,6 +77,7 @@ export class StormwaterPermitsComponent implements OnInit {
             minSuggestCharacters: 2,
             popupEnabled: false,
             resultGraphicEnabled: true,
+            includeDefaultSources: false, 
             resultSymbol: {
               type: "simple-fill",
               outline: {
@@ -88,6 +90,7 @@ export class StormwaterPermitsComponent implements OnInit {
         ];
         
         searchWidget.sources = sources;
+
         searchWidget.on('search-complete', event => {
           let floodCheck = this.stormwaterService.checkBoxes.find(item => {return item.name === 'Flood Permit Required?'});  
           let waterCheck = this.stormwaterService.checkBoxes.find(item => {return item.name === 'Watershed Permit Required?'}); 

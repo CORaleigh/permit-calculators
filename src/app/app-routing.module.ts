@@ -8,6 +8,7 @@ import { ThoroughfarePermitsComponent } from './thoroughfare-permits/thoroughfar
 import { RightofwayPermitsComponent } from './rightofway-permits/rightofway-permits.component';
 import { SummaryComponent } from './summary/summary.component';
 import { TilesComponent } from './tiles/tiles.component';
+import { PublicutilityPermitsComponent } from './publicutility-permits/publicutility-permits.component';
 
 
 const appRoutes: Routes = [
@@ -40,6 +41,10 @@ const appRoutes: Routes = [
     path: 'rightofway',
     component: RightofwayPermitsComponent
   },  
+  {
+    path: 'raleighwater',
+    component: PublicutilityPermitsComponent
+  },    
   {
     path: 'summary',
     component: SummaryComponent
