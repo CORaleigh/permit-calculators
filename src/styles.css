@@ -35,3 +35,6 @@ body {
     max-width: 200px !important; 
 }
 
+.mat-select-panel {
+    max-height: 290px !important;
+}
