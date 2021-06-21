@@ -9,8 +9,7 @@ import { SharedService } from './shared.service';
 export class CalculationService {
   calculations: Calculations;
   valuation: number;
-  //modified for FY20
-  minFee: number = 117;
+  minFee: number = 119;
   tiersService:TiersService;
     constructor(public sharedService:SharedService) { }
     getTotal() {
