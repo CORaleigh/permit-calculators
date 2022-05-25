@@ -53,18 +53,14 @@ export class StormwaterPermitsComponent implements OnInit {
 
       });
       mapView.when(() => {     
-        let searchWidget = new EsriSearch({
-          container: "searchView",
-          view: mapView,
 
-        });
         let layer = webmap.allLayers.find(function (layer) {
           return layer.title === "Property";
         });      
 
         let sources = [
           {
-            featureLayer: layer,
+            layer: layer,
             searchFields: ['SITE_ADDRESS', 'PIN_NUM'],
             displayField: "SITE_ADDRESS",
             exactMatch: false,
@@ -77,7 +73,6 @@ export class StormwaterPermitsComponent implements OnInit {
             minSuggestCharacters: 2,
             popupEnabled: false,
             resultGraphicEnabled: true,
-            includeDefaultSources: false, 
             resultSymbol: {
               type: "simple-fill",
               outline: {
@@ -89,14 +84,21 @@ export class StormwaterPermitsComponent implements OnInit {
           }
         ];
         
-        searchWidget.sources = sources;
+        let searchWidget = new EsriSearch({
+          container: "searchView",
+          view: mapView,
+          includeDefaultSources: false, 
+          sources: sources
+
+        });        
+
 
         searchWidget.on('search-complete', event => {
           let floodCheck = this.stormwaterService.checkBoxes.find(item => {return item.name === 'Flood Permit Required?'});  
           let waterCheck = this.stormwaterService.checkBoxes.find(item => {return item.name === 'Watershed Permit Required?'}); 
           let flood = false;
           let watershed = false; 
-          this.checkLocation(event.results[0].results[0].feature.geometry, webmap, new Query(), 'Floodplain', ['ZONE_IMAPS']).then(selected => {
+          this.checkLocation(event.results[0].results[0].feature.geometry, webmap, new Query(), 'Floodplain', ['*']).then(selected => {
             this.checkboxChanged({option: {selected: selected}}, floodCheck);  
             flood = selected;          
             this.checkLocation(event.results[0].results[0].feature.geometry, webmap, new Query(), 'Swift Creek Watershed Protection Overlay District', ['OLAY_DECODE']).then(selected => {

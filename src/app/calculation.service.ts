@@ -25,11 +25,11 @@ export class CalculationService {
     
     }
   calcValuation(card: DevelopmentCard): Promise<number>{
-    
     let meansLocationFactor = 0.8381;
     let valuation = 0;
     if (card.constructScope && card.squareFeet && card.construction) {
-      valuation = meansLocationFactor * card.constructScope.percent * card.squareFeet * card.construction.value;
+
+      valuation = parseFloat((meansLocationFactor * card.construction.value).toFixed(2)) *  card.constructScope.percent * card.squareFeet;
     }
     return Promise.resolve(valuation);
   }

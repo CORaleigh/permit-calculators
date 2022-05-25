@@ -47,9 +47,17 @@ export class RightofwayPermitsComponent implements OnInit {
     this.service.totalPerDay = 0;
     this.service.totalProject = 0;    
     this.service.projectReview = 0;
-    this.service.selections.forEach((selection:Selection) => {
-      if (selection.primaryCost >= this.service.maxPrimary) {
+    this.service.maxPrimary = 0;
+    this.service.selections.forEach((selection: Selection) => {
+      selection.isPrimary = false;
+      if (selection.primaryCost > this.service.maxPrimary) {
         this.service.maxPrimary = selection.primaryCost;
+        selection.isPrimary = true;
+      }
+    });
+    this.service.selections.forEach((selection:Selection) => {
+      if (selection.isPrimary) {
+        //this.service.maxPrimary = selection.primaryCost;
         selection.totalCost = selection.primaryCost;
       } else {
         selection.totalCost = selection.secondaryCost;
@@ -136,5 +144,5 @@ class Selection {
   totalCost: number = 0;
   projectCost:number = 0;
   downtown:boolean = false;
-  
+  isPrimary: boolean = false;
 }

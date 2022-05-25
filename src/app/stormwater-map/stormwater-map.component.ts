@@ -36,7 +36,7 @@ export class StormwaterMapComponent implements OnInit {
       });
       
       this.mapView.when(() => {
-        
+        debugger
         let layer = this.mapView.map.allLayers.find(function (layer) {
           return layer.title === "Property";
         });
@@ -81,6 +81,7 @@ export class StormwaterMapComponent implements OnInit {
           {
             featureLayer: layer,
             searchFields: ['SITE_ADDRESS', 'PIN_NUM'],
+            includeDefaultSources: false,
             displayField: "SITE_ADDRESS",
             exactMatch: false,
             outFields: ['SITE_ADDRESS'],
@@ -131,8 +132,9 @@ export class StormwaterMapComponent implements OnInit {
           let query = new Query();
           query.geometry = event.results[0].results[0].feature.geometry;
           query.returnGeometry = false;
-          query.outFields = ['ZONE_IMAPS'];
+          query.outFields = ['ZONESUB_LID_VALUE'];
           layer.queryFeatures(query).then(results => {
+            debugger
             // prints the array of result graphics to the console
             let item = this.stormwaterService.checkBoxes.find(item => {return item.name === 'Flood Permit Required?'});              
             if (results.features.length > 0) {

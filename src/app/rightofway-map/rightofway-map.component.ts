@@ -57,7 +57,7 @@ export class RightofwayMapComponent implements OnInit {
         });      
       mapView.ui.add(expand, 'top-left');
       let measure:esri.DistanceMeasurement2D = new DistanceMeasurement2D({view:mapView, unitOptions:['us-feet']});
-      measure.viewModel.mode = 'geodesic';
+     // measure.viewModel.mode = 'geodesic';
       measure.viewModel.unit = 'us-feet';
       const measureExpand:esri.Expand = new Expand({
         view: mapView,
@@ -72,7 +72,7 @@ export class RightofwayMapComponent implements OnInit {
 
       measureExpand.watch('expanded', expanded => {
         if (!expanded) {
-          measure.viewModel.clearMeasurement();
+          measure.viewModel.clear();
         }
       });
       measure.watch('viewModel.state', state => {
@@ -93,7 +93,7 @@ export class RightofwayMapComponent implements OnInit {
         search.on('search-complete', event => {
           let handle = mapView.watch('updating', updating => {
             if (!updating) {
-              mapView.hitTest(mapView.toScreen(event.results[0].results[0].feature.geometry)).then(response => {
+              mapView.hitTest(mapView.toScreen(event.results[0].results[0].feature.geometry as esri.Point)).then(response => {
                 if (response.results.length) {
                   let matches = response.results.filter(result => {
                     return result.graphic.layer.title === 'Downtown Zone';

@@ -28,7 +28,7 @@
               <div class="row">
                   {{service.totalProject + service.projectReview | currency}}
               </div>                                                                                                                         
-          </div>                                 
+          </div>                                          
       </div>     
       <button mat-button color="primary" (click)="showDefinitions()"><mat-icon>help_outline</mat-icon>View Definitions</button>
 
@@ -66,13 +66,13 @@
                       </span>
                       
                         <mat-checkbox class="example-margin"[ngModelOptions]="{standalone: true}" [(ngModel)]="occupancy.downtown">Downtown Zone</mat-checkbox>
-
-                  <button mat-icon-button><mat-icon *ngIf="occupancy.value.class" (click)="deleteOccupancy(occupancy, i)">delete</mat-icon></button>                     
+                  <button mat-icon-button><mat-icon *ngIf="occupancy.value.class" (click)="deleteOccupancy(occupancy, i)">delete</mat-icon></button>  
+                   
             </form>     
           </div>
           <mat-divider></mat-divider>
-<!-- 
-          <span>Primary ($/Day) {{occupancy.primaryCost | currency}}</span>   
+
+          <!-- <span>Primary ($/Day) {{occupancy.primaryCost | currency}}</span>   
           <br/>
           <span>Secondary ($/Day) {{occupancy.secondaryCost | currency}}</span>  
           <br/>
