@@ -40,7 +40,7 @@ export class PublicutilityService {
       {
         title: 'CCTV Inspection',
         fee: 0,
-        unitCost: 1.02
+        unitCost: 1.10
       },
       {
         title: 'Pump Station Inspection',
@@ -50,17 +50,17 @@ export class PublicutilityService {
       {
         title: 'Water Inspection',
         fee: 0,
-        unitCost: 1.53
+        unitCost: 1.59
       },
       {
         title: 'Sewer Inspection',
         fee: 0,
-        unitCost: 1.53
+        unitCost: 1.59
       },
       {
         title: 'Reuse Inspection',
         fee: 0,
-        unitCost: 1.53
+        unitCost: 1.59
       }
     ]}    
 ,
@@ -68,17 +68,17 @@ export class PublicutilityService {
   {
     title: 'Water Stubs',
     fee: 0,
-    unitCost: 95.00
+    unitCost: 102.66
   },
   {
     title: 'Sewer Stubs',
     fee: 0,
-    unitCost: 95.00
+    unitCost: 102.66
   },
   {
     title: 'Reuse Stubs',
     fee: 0,
-    unitCost: 95.00
+    unitCost: 102.66
   }  
 ]}                                  
   ];
@@ -104,13 +104,13 @@ export class PublicutilityService {
         {
           type: 'water',
           units: null,
-          unitCost: 1373.00,
+          unitCost: 1447.00,
           fee: 0
         },
         {
           type: 'sewer',
           units: null,
-          unitCost: 2522.00,
+          unitCost: 2223.00,
           fee: 0
         }  
       ]
@@ -122,13 +122,13 @@ export class PublicutilityService {
         {
           type: 'water',
           units: null,
-          unitCost: 3433.00,
+          unitCost: 3618.00,
           fee: 0
         },
         {
           type: 'sewer',
           units: null,
-          unitCost: 6305.00,
+          unitCost: 5558.00,
           fee: 0
         }  
       ]
@@ -140,13 +140,13 @@ export class PublicutilityService {
         {
           type: 'water',
           units: null,
-          unitCost: 6865.00,
+          unitCost: 7235.00,
           fee: 0
         },
         {
           type: 'sewer',
           units: null,
-          unitCost: 12610.00,
+          unitCost: 11115.00,
           fee: 0
         }  
       ]
@@ -158,13 +158,13 @@ export class PublicutilityService {
         {
           type: 'water',
           units: null,
-          unitCost: 10984.00,
+          unitCost: 11576.00,
           fee: 0
         },
         {
           type: 'sewer',
           units: null,
-          unitCost: 20176.00,
+          unitCost: 17784.00,
           fee: 0
         }  
       ]
@@ -176,13 +176,13 @@ export class PublicutilityService {
         {
           type: 'water',
           units: null,
-          unitCost: 34325.00,
+          unitCost: 36175.00,
           fee: 0
         },
         {
           type: 'sewer',
           units: null,
-          unitCost: 63050.00,
+          unitCost: 55575.00,
           fee: 0
         }  
       ]
@@ -194,13 +194,13 @@ export class PublicutilityService {
         {
           type: 'water',
           units: null,
-          unitCost: 68650.00,
+          unitCost: 72350.00,
           fee: 0
         },
         {
           type: 'sewer',
           units: null,
-          unitCost: 126100.00,
+          unitCost: 111150.00,
           fee: 0
         }      
       ]
@@ -212,13 +212,13 @@ export class PublicutilityService {
       {
         type: 'water',
         units: null,
-        unitCost: 109840.00,
+        unitCost: 115760.00,
         fee: 0
       },
       {
         type: 'sewer',
         units: null,
-        unitCost: 201760.00,
+        unitCost: 177840.00,
         fee: 0
       }    
     ]
@@ -228,13 +228,13 @@ export class PublicutilityService {
     {
       type: 'water',
       units: null,
-      unitCost: 288330.00,
+      unitCost: 303870.00,
       fee: 0
     },
     {
       type: 'sewer',
       units: null,
-      unitCost: 529620.00,
+      unitCost: 466830.00,
       fee: 0
     }      
   ]
@@ -244,13 +244,13 @@ utilities: [
   {
     type: 'water',
     units: null,
-    unitCost: 363845.00,
+    unitCost: 383455.00,
     fee: 0
   },
   {
     type: 'sewer',
     units: null,
-    unitCost: 668330.00,
+    unitCost: 589095.00,
     fee: 0
   }        
 ]
@@ -272,7 +272,7 @@ utilities: [
   }    
 
   calculateInspection(lf:number) {
-    return lf * 1.55;
+    return lf * 1.59;
   }    
 
   calculateStubs(quantity:number) {
