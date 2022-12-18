@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { OpenspaceDialogComponent } from './openspace-dialog.component';
 
@@ -6,7 +6,7 @@ describe('OpenspaceDialogComponent', () => {
   let component: OpenspaceDialogComponent;
   let fixture: ComponentFixture<OpenspaceDialogComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ OpenspaceDialogComponent ]
     })

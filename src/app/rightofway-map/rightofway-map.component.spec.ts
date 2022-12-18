@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RightofwayMapComponent } from './rightofway-map.component';
 
@@ -6,7 +6,7 @@ describe('RightofwayMapComponent', () => {
   let component: RightofwayMapComponent;
   let fixture: ComponentFixture<RightofwayMapComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RightofwayMapComponent ]
     })

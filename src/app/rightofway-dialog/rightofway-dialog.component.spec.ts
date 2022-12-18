@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RightofwayDialogComponent } from './rightofway-dialog.component';
 
@@ -6,7 +6,7 @@ describe('RightofwayDialogComponent', () => {
   let component: RightofwayDialogComponent;
   let fixture: ComponentFixture<RightofwayDialogComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RightofwayDialogComponent ]
     })

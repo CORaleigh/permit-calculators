@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { RightofwayPermitsComponent } from './rightofway-permits.component';
 
@@ -6,7 +6,7 @@ describe('RightofwayPermitsComponent', () => {
   let component: RightofwayPermitsComponent;
   let fixture: ComponentFixture<RightofwayPermitsComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ RightofwayPermitsComponent ]
     })
