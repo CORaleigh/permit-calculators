@@ -56,8 +56,7 @@ const appRoutes: Routes = [
     RouterModule.forRoot(
       appRoutes,
       {
-    enableTracing: true,
-    relativeLinkResolution: 'legacy'
+    enableTracing: true
 }
     )
   ],
