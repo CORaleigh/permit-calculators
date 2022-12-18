@@ -98,7 +98,6 @@ export class RightofwayMapComponent implements OnInit {
                   let matches = response.results.filter(result => {
                     return result.graphic.layer.title === 'Downtown Zone';
                   });
-                  debugger
                   this.service.downtown.next(matches.length > 0);
                 } else {
                   this.service.downtown.next(false);

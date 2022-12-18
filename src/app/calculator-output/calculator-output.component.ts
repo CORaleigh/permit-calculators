@@ -115,7 +115,6 @@ beforeunloadHandler(event) {
 
       let card = this.cards[this.cardIndex];
       let changes = this.differ.diff(card.calculations);
-  
       if (changes) {
         changes.forEachChangedItem(r => {
           if ((r.key === 'valuation') && r.currentValue != r.previousValue && r.currentValue > 0 && this.cardIndex === card.cardindex) {
@@ -124,6 +123,7 @@ beforeunloadHandler(event) {
           }                                                                 
         });
       }
+      
       //added to determine change of R-3 construction scope from New Construction to Alteration since valuation does not change
       if (card.building.group.indexOf('R-3') > -1) {
 
@@ -136,6 +136,19 @@ beforeunloadHandler(event) {
             }
           });
         }
+      }
+      if (card.building.group.indexOf('U Utility, miscellaneous') > -1) {
+        let cardChanges = this.cardDiffer.diff(card.calculations);
+        if (cardChanges) {
+
+          cardChanges.forEachChangedItem(r => {
+            if ((r.key === 'isResidential') && (r.currentValue !== r.previousValue)){
+              this.calculationService.calculations.isResidential = card.calculations.isResidential;
+              this.sumValuation();             
+            }
+          });
+        }        
+ 
       }
 
 

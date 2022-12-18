@@ -61,7 +61,6 @@ export class CalculationService {
     fee.value = 0;
     if (building > 0) {
       fee.value = building * fee.commercial;
-      debugger
       if (isResidential) {
         
         fee.value = building * fee.residential;
@@ -103,6 +102,9 @@ export class CalculationService {
               if (i === 0) {
                 bldgPermit = (valuation/1000) * tier['costper'];
               } else {
+                const max = tiers[i - 1]['max'];
+                const per = tier['costper'];
+                const cumulative = tiers[i - 1]['cumulative'];
                 bldgPermit = (((valuation - tiers[i - 1]['max'])/1000) * tier['costper']) + tiers[i - 1]['cumulative'];
               }
               break;

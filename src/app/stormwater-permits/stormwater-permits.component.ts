@@ -136,7 +136,6 @@ export class StormwaterPermitsComponent implements OnInit {
 
   showSnackBar(flood, watershed) {
     let message = "";
-    console.log(flood, watershed);
     if (flood && watershed) {
       message = "This property falls within both a floodplain and watershed";
     } else if (flood && !watershed) {
@@ -199,7 +198,6 @@ export class StormwaterPermitsComponent implements OnInit {
      this.getTotalFees();
    }
    checkboxChanged(event, fee) {
-     console.log(event.option.selected, fee.name)
     fee.selected = event.option.selected;
     fee.total = (event.option.selected) ? fee.trueValue : fee.falseValue;
     this.getTotalFees();

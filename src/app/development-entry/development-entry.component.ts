@@ -130,8 +130,7 @@ showHelp() {
   buildingTypeChanged(card:DevelopmentCard) {
     let key = card.construction.key;
     this.isResidential = false;
-    debugger
-    if (card.building.group.indexOf("R-3") > -1) {
+    if (card.building.group.indexOf("R-3") > -1 || card.building.group === 'U Utility, miscellaneous - Residential') {
       card.calculations.isResidential = true;
       this.isResidential = true;
     } else {

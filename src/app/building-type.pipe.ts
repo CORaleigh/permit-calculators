@@ -12,7 +12,6 @@ export class BuildingTypePipe implements PipeTransform {
       return buildings;
     }
     else {
-      console.log(construction);
       let retVals = [];
       buildings.forEach(building => {
         if ((construction === 'IIIB' || construction === 'VB') && building.group.indexOf('I-2') === -1) {

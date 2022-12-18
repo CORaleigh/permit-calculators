@@ -29,14 +29,12 @@ export class StormwaterMapComponent implements OnInit {
           id: "6184901db24d4ac48eaa70ea721e5eb2"
         }
       });
-      console.log(webmap)
       this.mapView = new MapView({
         map: webmap,
         container: this.mapViewEl.nativeElement
       });
       
       this.mapView.when(() => {
-        debugger
         let layer = this.mapView.map.allLayers.find(function (layer) {
           return layer.title === "Property";
         });
@@ -134,7 +132,6 @@ export class StormwaterMapComponent implements OnInit {
           query.returnGeometry = false;
           query.outFields = ['ZONESUB_LID_VALUE'];
           layer.queryFeatures(query).then(results => {
-            debugger
             // prints the array of result graphics to the console
             let item = this.stormwaterService.checkBoxes.find(item => {return item.name === 'Flood Permit Required?'});              
             if (results.features.length > 0) {
