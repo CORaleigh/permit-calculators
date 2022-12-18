@@ -1,5 +1,5 @@
-@import '~@angular/material/theming';
-@include mat-core();
+@use '~@angular/material' as mat;
+@include mat.core();
 
 
 
@@ -104,47 +104,47 @@ $coryellowgreen: (
 );
 
 
-$my-app-primary: mat-palette($corblue);
-$my-app-accent:  mat-palette($corblue2, 500, 900, A100);
-$my-app-warn:    mat-palette($coryellowgreen);
+$my-app-primary: mat.define-palette($corblue);
+$my-app-accent:  mat.define-palette($corblue2, 500, 900, A100);
+$my-app-warn:    mat.define-palette($coryellowgreen);
 
-$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
-$my-dark-theme: mat-dark-theme($my-app-primary, $my-app-accent, $my-app-warn);
+$my-app-theme: mat.define-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+$my-dark-theme: mat.define-dark-theme($my-app-primary, $my-app-accent, $my-app-warn);
 
 @mixin my-dark-theme($theme) {
     $accent: map-get($theme, accent);
 
     .dark-class {
-        background-color: mat-color($accent);
-        @include angular-material-theme($my-dark-theme);
+        background-color: mat.get-color-from-palette($accent);
+        @include mat.all-component-themes($my-dark-theme);
 
    }
    .dark-class .mat-form-field-ripple{
         background-color: white;
         
-        @include angular-material-theme($my-dark-theme);
+        @include mat.all-component-themes($my-dark-theme);
     }
     
     .dark-class .mat-form-field.mat-focused.mat-primary .mat-form-field-ripple{
         background-color: white;
         
-        @include angular-material-theme($my-dark-theme);
+        @include mat.all-component-themes($my-dark-theme);
     }
     .dark-class .mat-form-field.mat-focused.mat-primary .mat-select-arrow{
         color: white;
         
-        @include angular-material-theme($my-dark-theme);
+        @include mat.all-component-themes($my-dark-theme);
     }
 
     .dark-class .mat-focused.mat-primary {
         color: white;
         
-        @include angular-material-theme($my-dark-theme);       
+        @include mat.all-component-themes($my-dark-theme);       
     }
     .dark-class .mat-select-arrow {
         color: white;
-        @include angular-material-theme($my-dark-theme);
+        @include mat.all-component-themes($my-dark-theme);
     }
 }
 @include my-dark-theme($my-dark-theme);
-@include angular-material-theme($my-app-theme);
+@include mat.all-component-themes($my-app-theme);
