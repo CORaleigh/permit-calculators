@@ -113,7 +113,6 @@
       }
     }
   },
-  "defaultProject": "permit-calculator",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",
