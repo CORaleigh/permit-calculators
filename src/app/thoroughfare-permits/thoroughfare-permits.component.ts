@@ -21,8 +21,9 @@ export class ThoroughfarePermitsComponent implements OnInit {
   }
 
   landuseSelected(event, landuse:Landuse) {
-    landuse.selected = event.option.selected;
-    if (!event.option.selected) {
+    debugger
+    landuse.selected = event.options[0].selected;
+    if (!event.options[0].selected) {
       landuse.total = null;
     } else if (!landuse.thresholds) {
       landuse.total = landuse.value * landuse.per;

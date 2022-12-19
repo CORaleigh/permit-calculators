@@ -5,7 +5,7 @@ import {
   ElementRef,
   HostListener
 } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 
 import {SharedService} from '../shared.service';
 import {OpenspaceService} from '../openspace.service';
@@ -122,7 +122,7 @@ export class OpenspacePermitsComponent implements OnInit {
             });
             let union = geometryEngine.union(geoms);
             
-            this.search.sources.items[0].filter = {
+            this.search.allSources.items[0].filter = {
               geometry: union
             };
           });

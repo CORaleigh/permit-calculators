@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef  } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSelectionList } from '@angular/material/list';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatLegacySelectionList as MatSelectionList } from '@angular/material/legacy-list';
+import { MatLegacySnackBar as MatSnackBar } from '@angular/material/legacy-snack-bar';
 import { SplashDialogComponent } from '../splash-dialog/splash-dialog.component'
 import {SharedService} from '../shared.service';
 import {StormwaterService} from '../stormwater.service';
@@ -204,8 +204,8 @@ export class StormwaterPermitsComponent implements OnInit {
    }
 
    listCheckBoxChanged(event, fee) {
-     fee.selected = event.option.selected;
-     if (!event.option.selected) {
+     fee.selected = event.options[0].selected;
+     if (!event.options[0].selected) {
        fee.total = 0;
      }
     this.calculateTotal(null, fee);

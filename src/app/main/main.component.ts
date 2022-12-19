@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef, AfterContentInit } from '@angular/core';
 import {Router} from "@angular/router";
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import { Observable, Subject } from 'rxjs';
 import { Injectable } from '@angular/core';

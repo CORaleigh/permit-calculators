@@ -9,7 +9,7 @@ import { Tier } from '../tier';
 import { Calculations } from '../calculations';
 import { Fee } from '../fee';
 import { ConstructionType } from '../construction-type';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { HelpDialogComponent } from '../help-dialog/help-dialog.component';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { BuildingService} from '../building.service';
