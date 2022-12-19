@@ -21,7 +21,7 @@ export class StormwaterMapComponent implements OnInit {
   }
 
   loadMap() {
-    return loadModules(['esri/WebMap', 'esri/views/MapView', 'esri/widgets/Search', 'esri/layers/FeatureLayer', 'esri/tasks/support/Query', "esri/geometry/geometryEngine", "esri/layers/GraphicsLayer", "esri/Graphic"])
+    return loadModules(['esri/WebMap', 'esri/views/MapView', 'esri/widgets/Search', 'esri/layers/FeatureLayer', 'esri/rest/support/Query', "esri/geometry/geometryEngine", "esri/layers/GraphicsLayer", "esri/Graphic"])
     .then(([WebMap, MapView, Search, FeatureLayer, Query, geometryEngine, GraphicsLayer, Graphic]) => {
 
       let webmap = new WebMap({

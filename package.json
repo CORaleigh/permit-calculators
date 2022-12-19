@@ -1,6 +1,6 @@
 {
   "name": "permit-calculator",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -24,7 +24,7 @@
     "@angular/platform-browser-dynamic": "^15.0.4",
     "@angular/router": "^15.0.4",
     "@types/arcgis-js-api": "^4.23.1",
-    "angular-cli-ghpages": "^0.6.2",
+    "angular-cli-ghpages": "^1.0.5",
     "core-js": "^3.2.1",
     "esri-loader": "^3.7.0",
     "flex-layout": "^1.0.1",

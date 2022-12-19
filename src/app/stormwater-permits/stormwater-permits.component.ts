@@ -40,7 +40,7 @@ export class StormwaterPermitsComponent implements OnInit {
   }
 
   ngOnInit() {
-    return loadModules(['esri/widgets/Search', 'esri/WebMap', 'esri/tasks/support/Query', 'esri/views/MapView'])
+    return loadModules(['esri/widgets/Search', 'esri/WebMap', 'esri/rest/support/Query', 'esri/views/MapView'])
     .then(([EsriSearch, WebMap, Query, MapView]) => {
       let webmap = new WebMap({
         portalItem: { // autocasts as new PortalItem()
