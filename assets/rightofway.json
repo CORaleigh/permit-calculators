@@ -1,120 +1,120 @@
 [
     {
         "class": "Full Streets - Major",
-         "review": 758.50,
-         "base": 56.37,
-         "primary": 0.28,
-         "secondary": 0.18,
+         "review": 805,
+         "base": 59,
+         "primary": 0.30,
+         "secondary": 0.19,
          "major": true
     },
     {
         "class": "Full Streets - Minor",
-         "review": 455.10,
-         "base": 37.92,
-         "primary": 0.18,
-         "secondary": 0.12,
+         "review": 482,
+         "base": 40,
+         "primary": 0.19,
+         "secondary": 0.13,
          "major": false
     },
     {
         "class": "Street Lane - Major",
-         "review": 455.10,
-         "base": 34.34,
-         "primary": 0.16,
-         "secondary": 0.11,
+         "review": 482,
+         "base": 36,
+         "primary": 0.17,
+         "secondary": 0.12,
          "major": true
     },    
     {
         "class": "Street Lane - Minor",
-         "review": 303.04,
-         "base": 22.86,
-         "primary": 0.11,
+         "review": 321,
+         "base": 24,
+         "primary": 0.12,
          "secondary": 0.07,
          "major": false
     },
 
     {
         "class": "Sidewalk - Major - Full Closure",
-         "review": 758.50,
-         "base": 34.34,
-         "primary": 0.16,
-         "secondary": 0.11,
+         "review": 805,
+         "base": 36,
+         "primary": 0.17,
+         "secondary": 0.12,
          "major": true
     },
     {
         "class": "Sidewalk - Major - AUX",
-         "review": 455.10,
-         "base": 22.86,
-         "primary": 0.11,
+         "review": 482,
+         "base": 24,
+         "primary": 0.12,
          "secondary": 0.07,
          "major": true
     },
     {
         "class": "Sidewalk - Major - Partial Closure",
-         "review": 303.40,
-         "base": 18.76,
-         "primary": 0.09,
+         "review": 321,
+         "base": 20,
+         "primary": 0.10,
          "secondary": 0.06,
          "major": true
     },
     {
         "class": "Sidewalk - Major - Maintenance",
-         "review": 151.70,
-         "base": 11.48,
+         "review": 161,
+         "base": 13,
          "primary": 0.06,
          "secondary": 0.04,
          "major": true
     },
     {
         "class": "Sidewalk - Minor - Full Closure",
-         "review": 303.40,
-         "base": 22.86,
-         "primary": 0.11,
+         "review": 321,
+         "base": 24,
+         "primary": 0.12,
          "secondary": 0.07,
          "major": false
     },
     {
         "class": "Sidewalk - Minor - AUX",
-         "review": 227.55,
-         "base": 18.76,
-         "primary": 0.09,
+         "review": 242,
+         "base": 20,
+         "primary": 0.10,
          "secondary": 0.06,
          "major": false
     },
     {
         "class": "Sidewalk - Minor - Partial Closure ",
-         "review": 151.70,
-         "base": 13.53,
+         "review": 161,
+         "base": 15,
          "primary": 0.07,
          "secondary": 0.05,
          "major": false
     },
     {
         "class": "Sidewalk - Minor - Maintenance",
-         "review": 75.85,
-         "base": 11.48,
+         "review": 81,
+         "base": 13,
          "primary": 0.06,
          "secondary": 0.04,
          "major": false
     },
     {
         "class": "Misc - Major - Dumpster/Pod",
-         "review": 151.70,
-         "base": 21.83,
+         "review": 161,
+         "base": 23,
          "primary": null,
          "secondary": null,
          "major": true
     },
     {
         "class": "Misc - Major - Non-Specific",
-         "review": 151.70,
-         "base": 21.83,
+         "review": 161,
+         "base": 23,
          "primary": 0.10,
          "secondary": 0.07 ,
          "major": true
     },
     {
         "class": "Misc - House Move",
-         "review": 151.70,
+         "review": 161,
          "base": null,
          "primary": null,
          "secondary": null,
@@ -122,32 +122,32 @@
     },
     {
         "class": "Misc - Minor - Dumpster/Pod",
-         "review": 75.85,
-         "base": 15.58,
+         "review": 81,
+         "base": 17,
          "primary": null,
          "secondary": null,
          "major": false
     },
     {
         "class": "Misc - Minor - Non-Specific",
-         "review": 75.85,
-         "base": 15.58,
+         "review": 81,
+         "base": 17,
          "primary": 0.08,
          "secondary": 0.05,
          "major": false
     },
     {
         "class": "Parking Lane  - Major",
-         "review": 227.50,
-         "base": 16.60,
+         "review": 242,
+         "base": 18,
          "primary": 0.08,
          "secondary": 0.05,
          "major": true
     },
     {
         "class": "Parking Lane - Minor",
-         "review": 151.70,
-         "base": 11.48,
+         "review": 161,
+         "base": 13,
          "primary": 0.06,
          "secondary": 0.04,
          "major": false
