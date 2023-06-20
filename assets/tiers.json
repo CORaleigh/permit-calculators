@@ -9,7 +9,7 @@
   "min": 500001,
   "max": 10000000,
   "costper": 0.0006,
-  "cumulative": 1000
+  "cumulative": 6900
 }, {
   "tier": 3,
   "min": 10000001,
