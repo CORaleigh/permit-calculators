@@ -3,17 +3,17 @@
   "min": 0,
   "max": 500000,
   "costper": 0.002,
-  "cumulative": 1000
+  "cumulative": 0
 }, {
   "tier": 2,
   "min": 500001,
   "max": 10000000,
   "costper": 0.0006,
-  "cumulative": 6900
+  "cumulative": 1000
 }, {
   "tier": 3,
   "min": 10000001,
   "max": null,
   "costper": 0.0001,
-  "cumulative": 0
+  "cumulative": 6900
 }]
